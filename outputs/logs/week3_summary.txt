@@ -1,0 +1,64 @@
+WEEK 3 SUMMARY  (Study A, fer-replication)
+written 2026-10-06 17:26 by code/python/make_week_summary.py
+Python 3.13.15 on Windows 10
+
+== Latest run of each script ==
+  00_packages                  OK    runs=1   00_packages_20261006-124731.log
+  01_import_verify             WARN  runs=1   01_import_verify_20261006-134022.log
+      - WARN  T3.3 (period 1, correlation): 36 cells; matches raw 21, deflated 11 -- mismatches listed in ve
+      - WARN  T3.4 (period 2, summary): 40 cells; matches raw 39, deflated 12 -- mismatches listed in verify
+      - WARN  T3.5 (period 2, correlation): 36 cells; matches raw 22, deflated 15 -- mismatches listed in ve
+      - ... 4 more WARN/ERROR lines in the log
+  02_unit_roots                WARN  runs=1   02_unit_roots_20261006-134325.log
+      - WARN  the best rule is a fixed lag, not a documented selection rule; record this in W2-09
+  03_select_bop_ndf            OK    runs=1   03_select_bop_ndf_20261006-135621.log
+  04_model_I                   OK    runs=1   04_model_I_20261006-155738.log
+  05_model_II                  OK    runs=1   05_model_II_20261006-155804.log
+  06_diagnostics_chow          OK    runs=1   06_diagnostics_chow_20261006-155849.log
+  07_classify                  OK    runs=1   07_classify_20261006-160001.log
+  collect_bop                  OK    runs=1   collect_bop_20261006-133548.log
+  create_skeleton              OK    runs=1   create_skeleton_20261006-123521.log
+  extract_original             OK    runs=3   extract_original_20261006-130252.log
+  init_config_and_metadata     OK    runs=1   init_config_and_metadata_20261006-123708.log
+  make_week_summary            OK    runs=3   make_week_summary_20261006-160849.log
+  register_wind                OK    runs=2   register_wind_20261006-133946.log
+
+== Key files ==
+  [x] outputs/tables/model_I_estimates.csv
+  [x] outputs/tables/model_II_estimates.csv
+  [x] outputs/tables/diag_vs_targets.csv
+  [x] outputs/tables/chow_vs_targets.csv
+  [x] outputs/tables/classify_cells.csv
+  [x] outputs/tables/classify_rank_model_I.csv
+
+== Source ledger (data/metadata/source_ledger.csv) ==
+  rows: 3
+  - Original document Appendix I (9 variables) an | document_extraction | rep | 2000-01..2011-12
+  - BOP 1. 经常账户 (current account balance), BPM6,  | file_download | rep | 1998-Q1..2026-Q2
+  - 无本金交割远期外汇(NDF):美元兑人民币:12个月 | manual_proprietary | rep | 1999-01-19..2026-09-23
+
+== Transformation log ==
+  rows: 14  code/python/extract_original.py: 6; code/python/collect_bop.py: 4; code/python/register_wind.py: 4
+
+== Decisions (docs/decisions.md) ==
+  W3-06 Breusch-Godfrey specification | decided
+  W3-07 Result: Model I specification reproducing Tables 4.9-4.10 | decided
+  W3-08 Result: Model II classification | decided
+  W3-09 Result: DW, BG and Chow against Tables 4.3-4.8 and 4.11 | decided
+  W3-10 Raw Period 1: expectation coefficient not identified | decided
+  W3-11 Sample sizes differ from the original N; within convention close | decided
+  W3-12 DW and BG statistics not reproduced to print | decided
+  W3-13 Chow F statistics: degrees of freedom partly matched, magnitudes | decided
+  W3-14 Reproduced counts rest largely on insignificant cells | proposed
+  W3-15 Week 3 code and outputs committed | decided
+
+== Git ==
+  branch: main
+  last commit: cccad7a Week 3: Models I and II, DW/BG/Chow, classification by W1-07 (W3-01..W3-10)
+  remote: origin	https://github.com/du-jc/fer-replication.git (fetch)
+  uncommitted changes: 4
+    ?? docs/
+    ?? outputs/logs/make_week_summary_20261006-160849.log
+    ?? outputs/logs/make_week_summary_20261006-172645.log
+    ?? outputs/logs/week3_summary.txt
+  safety: private files tracked (proprietary, original, READMEs, decisions, summary script, .env) -> NONE (good)
