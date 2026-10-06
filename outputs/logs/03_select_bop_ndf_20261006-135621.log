@@ -1,0 +1,19 @@
+2026-10-06 13:56:21 INFO  R version 4.5.3 (2026-03-11 ucrt) on x86_64-w64-mingw32; urca 1.3.4, lmtest 0.9.40
+2026-10-06 13:56:21 INFO  Fixed DF-GLS spec from outputs/tables/dfgls_selected_spec.csv (md5 dd3ea0c84d58f76c32d0e557f4a8effe, fixed at 2026-10-06 13:43:32): version=deflated det=trend sample=common rule=fixed_1
+2026-10-06 13:56:22 INFO    NDF ndf_mend  tau -2.020 (k=1)  target -2.029  gap 0.009  <- selected
+2026-10-06 13:56:22 INFO    NDF ndf_mavg  tau -2.288 (k=1)  target -2.029  gap 0.259
+2026-10-06 13:56:22 INFO  Wrote outputs/tables/select_ndf.csv (2 rows)
+2026-10-06 13:56:22 INFO  Table 4.3 DW targets found for 4 of 4 periods
+2026-10-06 13:56:22 INFO  CHECK PASS  DW computed by hand equals lmtest::dwtest
+2026-10-06 13:56:22 INFO  Stage-1 sample sizes by period: P1 n=65, P2 n=11, P3 n=24, P4 n=43
+2026-10-06 13:56:22 INFO  Wrote outputs/tables/select_bop_dw_detail.csv (12 rows)
+2026-10-06 13:56:22 INFO    note: bop_ca_hold and bop_ca_div3 are exact multiples; they tie on both criteria and the fixed order (hold first) decides. Downstream this only rescales the DBOP coefficient.
+2026-10-06 13:56:22 INFO  BOP candidates (rank sum = DF-GLS rank + DW rank):
+2026-10-06 13:56:22 INFO    bop_ca_ytd     tau -4.457 (gap 2.250, rank 1)  DW gap sum 1.595 (rank 1)  sum 2  <- selected
+2026-10-06 13:56:22 INFO    bop_ca_hold    tau -3.130 (gap 3.577, rank 2)  DW gap sum 1.771 (rank 2)  sum 4
+2026-10-06 13:56:23 INFO    bop_ca_div3    tau -3.130 (gap 3.577, rank 2)  DW gap sum 1.771 (rank 2)  sum 4
+2026-10-06 13:56:23 INFO  Wrote outputs/tables/select_bop.csv (3 rows)
+2026-10-06 13:56:23 INFO  Wrote outputs/tables/selected_inputs.csv (2 rows)
+2026-10-06 13:56:23 INFO  SELECTED: NDF = ndf_mend; BOP = bop_ca_ytd
+2026-10-06 13:56:23 INFO  Notes: BOP = current account, checked equal under BPM5 and BPM6 (W2-12); Model II uses the named Wind series and is reported 'as specified' (Replication Plan s.2.2).
+2026-10-06 13:56:23 INFO  STATUS: OK (warnings=0, errors=0)

@@ -1,0 +1,65 @@
+WEEK 2 SUMMARY  (Study A, fer-replication)
+written 2026-10-06 14:02 by code/python/make_week_summary.py
+Python 3.13.15 on Windows 10
+
+== Latest run of each script ==
+  00_packages                  OK    runs=1   00_packages_20261006-124731.log
+  01_import_verify             WARN  runs=1   01_import_verify_20261006-134022.log
+      - WARN  T3.3 (period 1, correlation): 36 cells; matches raw 21, deflated 11 -- mismatches listed in ve
+      - WARN  T3.4 (period 2, summary): 40 cells; matches raw 39, deflated 12 -- mismatches listed in verify
+      - WARN  T3.5 (period 2, correlation): 36 cells; matches raw 22, deflated 15 -- mismatches listed in ve
+      - ... 4 more WARN/ERROR lines in the log
+  02_unit_roots                WARN  runs=1   02_unit_roots_20261006-134325.log
+      - WARN  the best rule is a fixed lag, not a documented selection rule; record this in W2-09
+  03_select_bop_ndf            OK    runs=1   03_select_bop_ndf_20261006-135621.log
+  collect_bop                  OK    runs=1   collect_bop_20261006-133548.log
+  create_skeleton              OK    runs=1   create_skeleton_20261006-123521.log
+  extract_original             OK    runs=3   extract_original_20261006-130252.log
+  init_config_and_metadata     OK    runs=1   init_config_and_metadata_20261006-123708.log
+  make_week_summary            OK    runs=1   make_week_summary_20261006-131531.log
+  register_wind                OK    runs=2   register_wind_20261006-133946.log
+
+== Key files ==
+  [x] data/interim/bop_monthly_candidates.csv
+  [x] data/interim/ndf_monthly.csv
+  [x] data/interim/study_a_monthly.csv
+  [x] outputs/tables/verify_T3_summary.csv
+  [x] outputs/tables/dfgls_calibration.csv
+  [x] outputs/tables/dfgls_selected_spec.csv
+  [x] outputs/tables/select_bop.csv
+  [x] outputs/tables/select_ndf.csv
+  [x] outputs/tables/selected_inputs.csv
+
+== Source ledger (data/metadata/source_ledger.csv) ==
+  rows: 3
+  - Original document Appendix I (9 variables) an | document_extraction | rep | 2000-01..2011-12
+  - BOP 1. 经常账户 (current account balance), BPM6,  | file_download | rep | 1998-Q1..2026-Q2
+  - 无本金交割远期外汇(NDF):美元兑人民币:12个月 | manual_proprietary | rep | 1999-01-19..2026-09-23
+
+== Transformation log ==
+  rows: 14  code/python/extract_original.py: 6; code/python/collect_bop.py: 4; code/python/register_wind.py: 4
+
+== Decisions (docs/decisions.md) ==
+  W1-01 Location of the extracted appendix | decided
+  W1-02 The original document (.docx) is not committed | decided
+  W1-03 Wind NDF data | received
+  W1-04 Image-label map | decided
+  W1-05 Provenance of the original document (.docx) | decided
+  W1-06 Software environment | decided
+  W1-07 Classification of reproduction status | decided
+  W1-08 Weekly READMEs are not committed | decided
+  W1-09 The decisions log is not committed | decided
+  W1-10 The week-summary script is not committed | decided
+
+== Git ==
+  branch: main
+  last commit: 4106555 Week 2: DF-GLS spec fixed before BOP/NDF selection (W2-09)
+  remote: origin	https://github.com/du-jc/fer-replication.git (fetch)
+  uncommitted changes: 8
+    ?? outputs/logs/03_select_bop_ndf_20261006-135621.log
+    ?? outputs/logs/make_week_summary_20261006-140207.log
+    ?? outputs/tables/select_bop.csv
+    ?? outputs/tables/select_bop_dw_detail.csv
+    ?? outputs/tables/select_ndf.csv
+    ?? outputs/tables/selected_inputs.csv
+  safety: private files tracked (proprietary, original, READMEs, decisions, summary script, .env) -> NONE (good)
