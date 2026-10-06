@@ -1,0 +1,18 @@
+2026-10-06 12:37:08 INFO  PowerShell 5.1.19041.6456; running in C:\DU_202609\Projects\FER_Replication\fer-replication
+2026-10-06 12:37:08 INFO  created: .gitignore
+2026-10-06 12:37:08 INFO  created: .env.example
+2026-10-06 12:37:08 INFO  created: data\metadata\source_ledger.csv
+2026-10-06 12:37:08 INFO  created: data\metadata\transformation_log.csv
+2026-10-06 12:37:08 INFO  created: docs\decisions.md
+2026-10-06 12:37:08 INFO  CHECK PASS  .gitignore contains .env
+2026-10-06 12:37:08 INFO  CHECK PASS  .gitignore contains .venv/
+2026-10-06 12:37:08 INFO  CHECK PASS  .gitignore contains renv/library/
+2026-10-06 12:37:08 INFO  CHECK PASS  .gitignore contains .Rhistory
+2026-10-06 12:37:08 INFO  CHECK PASS  .gitignore contains .RData
+2026-10-06 12:37:08 INFO  CHECK PASS  .gitignore contains data/raw/proprietary/
+2026-10-06 12:37:08 INFO  CHECK PASS  .gitignore contains data/interim/
+2026-10-06 12:37:08 INFO  CHECK PASS  .gitignore contains data/raw/original/
+2026-10-06 12:37:08 INFO  CHECK PASS  .gitignore contains docs/readmes/
+2026-10-06 12:37:08 INFO  CHECK PASS  .gitignore contains docs/decisions.md
+2026-10-06 12:37:08 INFO  CHECK PASS  .gitignore contains code/python/make_week_summary.py
+2026-10-06 12:37:08 INFO  STATUS: OK (warnings=0, errors=0)

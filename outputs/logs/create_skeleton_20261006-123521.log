@@ -1,0 +1,17 @@
+2026-10-06 12:35:21 INFO  PowerShell 5.1.19041.6456; running in C:\DU_202609\Projects\FER_Replication
+2026-10-06 12:35:21 INFO  created  fer-replication\config
+2026-10-06 12:35:21 INFO  created  fer-replication\data\raw\original
+2026-10-06 12:35:21 INFO  created  fer-replication\data\raw\safe
+2026-10-06 12:35:21 INFO  created  fer-replication\data\raw\proprietary
+2026-10-06 12:35:21 INFO  created  fer-replication\data\interim
+2026-10-06 12:35:21 INFO  created  fer-replication\data\processed
+2026-10-06 12:35:21 INFO  created  fer-replication\data\metadata
+2026-10-06 12:35:21 INFO  created  fer-replication\code\python
+2026-10-06 12:35:21 INFO  created  fer-replication\code\R
+2026-10-06 12:35:21 INFO  created  fer-replication\outputs\tables
+2026-10-06 12:35:21 INFO  created  fer-replication\outputs\figures
+2026-10-06 12:35:21 INFO  created  fer-replication\outputs\logs
+2026-10-06 12:35:21 INFO  created  fer-replication\docs\readmes
+2026-10-06 12:35:21 INFO  created  fer-replication\tests
+2026-10-06 12:35:21 INFO  Next: extract the week-1 files into C:\DU_202609\Projects\FER_Replication\fer-replication, open it in VS Code
+2026-10-06 12:35:21 INFO  STATUS: OK (warnings=0, errors=0)

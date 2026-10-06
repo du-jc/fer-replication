@@ -1,0 +1,21 @@
+# Blueprint 0.2 / Week 1 setup: required entries (+ data/raw/original/ W1-02, docs/readmes/ W1-08, docs/decisions.md W1-09, make_week_summary.py W1-10)
+.env
+.venv/
+renv/library/
+.Rhistory
+.RData
+data/raw/proprietary/
+data/interim/
+data/raw/original/
+docs/readmes/
+docs/decisions.md
+code/python/make_week_summary.py
+
+# Word/Excel lock files, Python and R caches, OS files
+~$*
+__pycache__/
+*.pyc
+.Rproj.user/
+renv/staging/
+Thumbs.db
+desktop.ini

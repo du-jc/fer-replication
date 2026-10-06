@@ -1,0 +1,59 @@
+2026-10-06 12:56:07 INFO  Python 3.13.15; python-docx 1.2.0
+2026-10-06 12:56:07 INFO  Original document file: data\raw\original\original_document.docx  sha256=54cc371e76946fd2ba7d652e6c887780f6d76bff79eb930aed651c6520952d14
+2026-10-06 12:56:09 INFO  Tables in document: 25
+2026-10-06 12:56:09 INFO    T3.1              8 x 10  Table 3.1 Monthly data from Jan. 2000 to Dec. 2011
+2026-10-06 12:56:09 INFO    T3.2              9 x 6   Table 3.2 Summarize the first period data
+2026-10-06 12:56:09 INFO    T3.3              9 x 9   Table 3.3 Correlation analysis of the first period independent variabl
+2026-10-06 12:56:09 INFO    T3.4              9 x 6   Table 3.4 Summarize the second period data
+2026-10-06 12:56:09 INFO    T3.5              9 x 9   Table 3.5 Correlation analysis of the second period independent variab
+2026-10-06 12:56:09 INFO    T3.6              9 x 6   Table 3.6 Summarize the third period data
+2026-10-06 12:56:09 INFO    T3.7              9 x 9   Table 3.7 Correlation analysis of the third period independent variabl
+2026-10-06 12:56:09 INFO    T3.8              9 x 6   Table 3.8 Summarize the fourth period data
+2026-10-06 12:56:09 INFO    T3.9              9 x 9   Table 3.9 Correlation analysis of the fourth period independent variab
+2026-10-06 12:56:09 INFO    T4.1             11 x 5   Table 4.1 DF-GLS test for a unit root
+2026-10-06 12:56:09 INFO    T4.2             11 x 5   Table 4.2 DF-GLS test for a unit root of first order difference
+2026-10-06 12:56:09 INFO    T4.3              5 x 6   Table 4.3 DW test for DER regression equations in method I
+2026-10-06 12:56:09 INFO    T4.4              2 x 4   Table 4.4 BG test for DER regression equations in method I
+2026-10-06 12:56:09 INFO    T4.5              5 x 6   Table 4.5 DW test for DFER regression equations in method I
+2026-10-06 12:56:09 INFO    T4.6              2 x 4   Table 4.6 BG test for DFER regression equations in method I
+2026-10-06 12:56:09 INFO    T4.7              5 x 6   Table 4.7 DW test for DFER regression equations in method II
+2026-10-06 12:56:09 INFO    T4.8              4 x 4   Table 4.8 BG test for DFER regression equations in method II
+2026-10-06 12:56:09 INFO    T4.9             26 x 5   Table 4.9 Estimation result of DFER for period 1 and period 2
+2026-10-06 12:56:09 INFO    T4.10            26 x 5   Table 4.10 Estimation result of DFER for period 3 and period 4
+2026-10-06 12:56:09 INFO    T4.11             7 x 5   Table 4.11 Chow test for structural change
+2026-10-06 12:56:09 INFO    APP_I_1          30 x 10  
+2026-10-06 12:56:09 INFO    APP_I_2          34 x 10  
+2026-10-06 12:56:09 INFO    APP_I_3          34 x 10  
+2026-10-06 12:56:09 INFO    APP_I_4          34 x 10  
+2026-10-06 12:56:09 INFO    APP_I_5          17 x 10  
+2026-10-06 12:56:09 INFO  All expected tables found: Tables 3.1-3.9 and 4.1-4.11
+2026-10-06 12:56:09 INFO  Label cells needing a label: 17; confirmed: 17
+2026-10-06 12:56:09 INFO    T3.1       col r0 c6 [ole_object] proposed='pi' (unique_missing) confirmed
+2026-10-06 12:56:09 INFO    T3.2       row r6 c0 [ole_object] proposed='pi' (unique_missing) confirmed
+2026-10-06 12:56:09 INFO    T3.3       row r7 c0 [ole_object] proposed='pi' (unique_missing) confirmed
+2026-10-06 12:56:09 INFO    T3.3       col r0 c7 [ole_object] proposed='pi' (unique_missing) confirmed
+2026-10-06 12:56:09 INFO    T3.4       row r6 c0 [ole_object] proposed='pi' (unique_missing) confirmed
+2026-10-06 12:56:09 INFO    T3.5       row r7 c0 [ole_object] proposed='pi' (unique_missing) confirmed
+2026-10-06 12:56:09 INFO    T3.5       col r0 c7 [ole_object] proposed='pi' (unique_missing) confirmed
+2026-10-06 12:56:09 INFO    T3.6       row r6 c0 [ole_object] proposed='pi' (unique_missing) confirmed
+2026-10-06 12:56:09 INFO    T3.7       row r7 c0 [ole_object] proposed='pi' (unique_missing) confirmed
+2026-10-06 12:56:09 INFO    T3.7       col r0 c7 [ole_object] proposed='pi' (unique_missing) confirmed
+2026-10-06 12:56:09 INFO    T3.8       row r6 c0 [ole_object] proposed='pi' (unique_missing) confirmed
+2026-10-06 12:56:09 INFO    T3.9       row r7 c0 [ole_object] proposed='pi' (unique_missing) confirmed
+2026-10-06 12:56:09 INFO    T3.9       col r0 c7 [ole_object] proposed='pi' (unique_missing) confirmed
+2026-10-06 12:56:09 INFO    T4.1       row r5 c0 [ole_object] proposed='pi' (unique_missing) confirmed
+2026-10-06 12:56:09 INFO    T4.2       row r5 c0 [text+ole_object] proposed='Dpi' (unique_missing) confirmed
+2026-10-06 12:56:09 INFO    T4.9       row r2 c0 [ole_object] proposed='DER_hathat' (unique_missing) confirmed
+2026-10-06 12:56:09 INFO    T4.10      row r2 c0 [ole_object] proposed='DER_hathat' (unique_missing) confirmed
+2026-10-06 12:56:09 INFO  CHECK PASS  rows == 144
+2026-10-06 12:56:09 INFO  CHECK PASS  every month label reads as YYYY.M
+2026-10-06 12:56:09 INFO  CHECK PASS  first month 2000-01
+2026-10-06 12:56:09 INFO  CHECK PASS  last month 2011-12
+2026-10-06 12:56:09 INFO  CHECK PASS  months consecutive, no duplicates
+2026-10-06 12:56:09 INFO  CHECK PASS  same number of values in every row
+2026-10-06 12:56:09 INFO  CHECK PASS  every value cell is a plain number
+2026-10-06 12:56:09 INFO  CHECK PASS  column names unique and non-empty
+2026-10-06 12:56:09 INFO  Wrote data\interim\original_appendix.csv: 144 rows, columns ['FER', 'GDP', 'ER', 'AER', 'NX', 'pi', 'FDI', 'FDB', 'i']
+2026-10-06 12:56:09 INFO  Wrote data\metadata\original_targets.csv: 850 rows {'value': 516, 'text': 78, 'empty': 212, 'paren': 44}; rows with an unconfirmed label: 0
+2026-10-06 12:56:09 INFO  Ledger already has a row for this .docx (same sha256); not added again
+2026-10-06 12:56:09 INFO  STATUS: OK (warnings=0, errors=0)
