@@ -1,0 +1,51 @@
+2026-10-06 16:00:01 INFO  R version 4.5.3 (2026-03-11 ucrt) on x86_64-w64-mingw32; urca 1.3.4, lmtest 0.9.40
+2026-10-06 16:00:01 INFO  Read outputs/tables/model_I_estimates.csv (528 rows)
+2026-10-06 16:00:01 INFO  Read outputs/tables/model_II_estimates.csv (104 rows)
+2026-10-06 16:00:01 INFO  Tables 4.9-4.10 targets: 48 numeric cells (44 with a standard error)
+2026-10-06 16:00:01 INFO  Star legend from the notes of T4.9, T4.10 (W1-07): * p<0.05, ** p<0.01, *** p<0.001; dagger p<0.1 (significant)
+2026-10-06 16:00:02 INFO  Wrote outputs/tables/classify_cells.csv (576 rows)
+2026-10-06 16:00:02 INFO  Wrote outputs/tables/classify_N.csv (56 rows)
+2026-10-06 16:00:02 INFO  N (full): 2 of 28 comparisons equal the original N
+2026-10-06 16:00:02 INFO  N (within): 4 of 28 comparisons equal the original N
+2026-10-06 16:00:02 INFO  Wrote outputs/tables/classify_summary.csv (28 rows)
+2026-10-06 16:00:02 INFO  Wrote outputs/tables/classify_rank_model_I.csv (24 rows)
+2026-10-06 16:00:02 INFO  Model I combinations ranked (W3-02): reproduced count, then mean |gap|/original SE, then order
+2026-10-06 16:00:02 INFO    convention full (primary):
+2026-10-06 16:00:02 INFO      1. alternative j=2 deflated reproduced 19, partial 0, not 1 of 20; mean gap/SE 37.77
+2026-10-06 16:00:02 INFO      2. primary     j=2 deflated reproduced 18, partial 1, not 1 of 20; mean gap/SE 37.32
+2026-10-06 16:00:02 INFO      3. primary     j=1 deflated reproduced 18, partial 1, not 1 of 20; mean gap/SE 38.58
+2026-10-06 16:00:02 INFO      4. primary     j=3 deflated reproduced 17, partial 2, not 1 of 20; mean gap/SE 36.71
+2026-10-06 16:00:02 INFO      5. alternative j=1 deflated reproduced 17, partial 2, not 1 of 20; mean gap/SE 41.50
+2026-10-06 16:00:02 INFO      6. primary     j=1 raw      reproduced 16, partial 2, not 2 of 20; mean gap/SE 44.28
+2026-10-06 16:00:02 INFO      7. alternative j=3 deflated reproduced 16, partial 2, not 2 of 20; mean gap/SE 47.54
+2026-10-06 16:00:02 INFO      8. primary     j=3 raw      reproduced 15, partial 2, not 3 of 20; mean gap/SE 34.23
+2026-10-06 16:00:02 INFO      9. alternative j=1 raw      reproduced 15, partial 3, not 2 of 20; mean gap/SE 47.51
+2026-10-06 16:00:02 INFO     10. alternative j=2 raw      reproduced 14, partial 2, not 4 of 20; mean gap/SE 32.10
+2026-10-06 16:00:02 INFO     11. alternative j=3 raw      reproduced 14, partial 2, not 4 of 20; mean gap/SE 33.74
+2026-10-06 16:00:02 INFO     12. primary     j=2 raw      reproduced 14, partial 4, not 2 of 20; mean gap/SE 42.61
+2026-10-06 16:00:02 INFO    convention within (sensitivity):
+2026-10-06 16:00:02 INFO      1. alternative j=1 deflated reproduced 18, partial 1, not 1 of 20; mean gap/SE 41.99
+2026-10-06 16:00:02 INFO      2. alternative j=2 deflated reproduced 17, partial 2, not 1 of 20; mean gap/SE 40.19
+2026-10-06 16:00:02 INFO      3. primary     j=1 deflated reproduced 17, partial 2, not 1 of 20; mean gap/SE 43.63
+2026-10-06 16:00:02 INFO      4. primary     j=3 deflated reproduced 16, partial 1, not 3 of 20; mean gap/SE 41.89
+2026-10-06 16:00:02 INFO      5. alternative j=1 raw      reproduced 16, partial 2, not 2 of 20; mean gap/SE 49.12
+2026-10-06 16:00:02 INFO      6. alternative j=3 deflated reproduced 16, partial 2, not 2 of 20; mean gap/SE 54.35
+2026-10-06 16:00:02 INFO      7. alternative j=3 raw      reproduced 15, partial 2, not 3 of 20; mean gap/SE 38.90
+2026-10-06 16:00:02 INFO      8. primary     j=2 deflated reproduced 15, partial 2, not 3 of 20; mean gap/SE 40.26
+2026-10-06 16:00:02 INFO      9. primary     j=2 raw      reproduced 15, partial 2, not 3 of 20; mean gap/SE 42.79
+2026-10-06 16:00:02 INFO     10. primary     j=1 raw      reproduced 15, partial 3, not 2 of 20; mean gap/SE 44.96
+2026-10-06 16:00:02 INFO     11. alternative j=2 raw      reproduced 14, partial 2, not 4 of 20; mean gap/SE 35.41
+2026-10-06 16:00:02 INFO     12. primary     j=3 raw      reproduced 13, partial 1, not 6 of 20; mean gap/SE 29.69
+2026-10-06 16:00:02 INFO  HEADLINE (Model I, full convention): alternative, lag 2, deflated data; 19 of 20 cells reproduced (rank 1 decided by count)
+2026-10-06 16:00:02 INFO    of the 19 reproduced: 14 because both are insignificant; 15 also within one original SE
+2026-10-06 16:00:02 INFO    Not every cell is reproduced: the note reports which ones (classify_cells.csv).
+2026-10-06 16:00:02 INFO  Model II deflated full  : reproduced 22, partial 2, not 0 of 24; mean gap/SE 27.87
+2026-10-06 16:00:02 INFO  Model II deflated within: reproduced 23, partial 1, not 0 of 24; mean gap/SE 28.17
+2026-10-06 16:00:02 INFO  Model II raw      full  : reproduced 20, partial 2, not 2 of 24; mean gap/SE 29.66
+2026-10-06 16:00:02 INFO  Model II raw      within: reproduced 20, partial 2, not 2 of 24; mean gap/SE 29.71
+2026-10-06 16:00:02 INFO    Model II deflated full  : of the 22 reproduced, 18 both insignificant, 20 also within one original SE
+2026-10-06 16:00:02 INFO    Model II deflated within: of the 23 reproduced, 18 both insignificant, 21 also within one original SE
+2026-10-06 16:00:02 INFO    Model II raw      full  : of the 20 reproduced, 17 both insignificant, 15 also within one original SE
+2026-10-06 16:00:02 INFO    Model II raw      within: of the 20 reproduced, 17 both insignificant, 17 also within one original SE
+2026-10-06 16:00:02 INFO  Record the headline and the Model II result in the W3 result decisions (README_week3 s.7).
+2026-10-06 16:00:02 INFO  STATUS: OK (warnings=0, errors=0)

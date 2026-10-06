@@ -1,0 +1,81 @@
+2026-10-06 15:58:49 INFO  R version 4.5.3 (2026-03-11 ucrt) on x86_64-w64-mingw32; urca 1.3.4, lmtest 0.9.40
+2026-10-06 15:58:49 INFO  Selected inputs (W2-10): BOP = bop_ca_ytd; NDF = ndf_mend
+2026-10-06 15:58:49 INFO  Panel data/interim/study_a_monthly.csv: 144 months x 18 columns
+2026-10-06 15:58:51 INFO  CHECK PASS  Chow F by hand equals strucchange::sctest (96 tests)
+2026-10-06 15:58:51 INFO  13 Chow test(s) dropped a regressor without variation (column 'dropped')
+2026-10-06 15:58:51 INFO  Wrote outputs/tables/diag_dw_bg.csv (128 rows)
+2026-10-06 15:58:51 INFO  Wrote outputs/tables/chow.csv (96 rows)
+2026-10-06 15:58:52 INFO  DW/BG targets: 17 rows from T4.3, T4.4, T4.5, T4.6, T4.7, T4.8
+2026-10-06 15:58:52 INFO  Wrote outputs/tables/diag_vs_targets.csv (168 rows)
+2026-10-06 15:58:52 INFO  T4.3 raw      full  : 0 of 4 statistics within print, 1 of 4 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.3 raw      within: 0 of 4 statistics within print, 1 of 4 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.3 deflated full  : 0 of 4 statistics within print, 2 of 4 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.3 deflated within: 0 of 4 statistics within print, 3 of 4 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.4 raw      full  : 0 of 1 statistics within print, 1 of 1 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.4 raw      within: 0 of 1 statistics within print, 1 of 1 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.4 deflated full  : 0 of 1 statistics within print, 1 of 1 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.4 deflated within: 0 of 1 statistics within print, 1 of 1 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.5 raw      full  : 0 of 24 statistics within print, 12 of 24 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.5 raw      within: 0 of 24 statistics within print, 12 of 24 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.5 deflated full  : 0 of 24 statistics within print, 22 of 24 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.5 deflated within: 0 of 24 statistics within print, 21 of 24 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.6 raw      full  : 1 of 6 statistics within print, 6 of 6 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.6 raw      within: 0 of 6 statistics within print, 5 of 6 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.6 deflated full  : 0 of 6 statistics within print, 6 of 6 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.6 deflated within: 0 of 6 statistics within print, 6 of 6 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.7 raw      full  : 0 of 4 statistics within print, 3 of 4 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.7 raw      within: 0 of 4 statistics within print, 3 of 4 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.7 deflated full  : 0 of 4 statistics within print, 3 of 4 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.7 deflated within: 0 of 4 statistics within print, 4 of 4 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.8 raw      full  : 0 of 3 statistics within print, 2 of 3 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.8 raw      within: 0 of 3 statistics within print, 2 of 3 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.8 deflated full  : 0 of 3 statistics within print, 3 of 3 decisions as in the original
+2026-10-06 15:58:52 INFO  T4.8 deflated within: 0 of 3 statistics within print, 3 of 3 decisions as in the original
+2026-10-06 15:58:52 INFO  Stage-1 n by period (full): 65/11/24/43
+2026-10-06 15:58:52 INFO  Stage-1 n by period (within): 65/10/23/42
+2026-10-06 15:58:52 INFO  Chow targets: 6 rows from Table 4.11
+2026-10-06 15:58:52 INFO  Wrote outputs/tables/chow_vs_targets.csv (96 rows)
+2026-10-06 15:58:52 INFO  Chow Model I, periods 1-2: original F (5, 67) =17677.62
+2026-10-06 15:58:52 INFO      diff_full   raw      df (4,67 | 4,66 | 4,65)  df match: no  F range 3.62 .. 3.81
+2026-10-06 15:58:52 INFO      diff_full   deflated df (5,65 | 5,64 | 5,63)  df match: no  F range 2.04 .. 3.25
+2026-10-06 15:58:52 INFO      diff_within raw      df (4,65 | 4,63 | 4,61)  df match: no  F range 2.57 .. 2.92
+2026-10-06 15:58:52 INFO      diff_within deflated df (5,63 | 5,61 | 5,59)  df match: no  F range 1.65 .. 2.89
+2026-10-06 15:58:52 INFO      levels      raw      df (4,69)  df match: no  F range 0.23 .. 0.23
+2026-10-06 15:58:52 INFO      levels      deflated df (5,67)  df match: yes  F range 0.12 .. 0.12
+2026-10-06 15:58:52 INFO  Chow Model I, periods 2-3: original F (5, 25) = 5736.75
+2026-10-06 15:58:52 INFO      diff_full   raw      df (5,25)  df match: yes  F range 0.78 .. 1.10
+2026-10-06 15:58:52 INFO      diff_full   deflated df (5,25)  df match: yes  F range 0.26 .. 1.10
+2026-10-06 15:58:52 INFO      diff_within raw      df (5,21 | 5,19 | 5,17)  df match: no  F range 0.55 .. 1.04
+2026-10-06 15:58:52 INFO      diff_within deflated df (5,21 | 5,19 | 5,17)  df match: no  F range 0.68 .. 1.25
+2026-10-06 15:58:52 INFO      levels      raw      df (5,25)  df match: yes  F range 2.57 .. 2.57
+2026-10-06 15:58:52 INFO      levels      deflated df (5,25)  df match: yes  F range 5.20 .. 5.20
+2026-10-06 15:58:52 INFO  Chow Model I, periods 3-4: original F (5, 57) = 1.6e+06
+2026-10-06 15:58:52 INFO      diff_full   raw      df (5,57)  df match: yes  F range 0.02 .. 0.17
+2026-10-06 15:58:52 INFO      diff_full   deflated df (5,57)  df match: yes  F range 0.07 .. 0.35
+2026-10-06 15:58:52 INFO      diff_within raw      df (5,53 | 5,51 | 5,49)  df match: no  F range 0.04 .. 0.10
+2026-10-06 15:58:52 INFO      diff_within deflated df (5,53 | 5,51 | 5,49)  df match: no  F range 0.09 .. 0.35
+2026-10-06 15:58:52 INFO      levels      raw      df (5,57)  df match: yes  F range 5.70 .. 5.70
+2026-10-06 15:58:52 INFO      levels      deflated df (5,57)  df match: yes  F range 41.47 .. 41.47
+2026-10-06 15:58:52 INFO  Chow Model II, periods 1-2: original F (6, 65) =16379.22
+2026-10-06 15:58:52 INFO      diff_full   raw      df (6,64)  df match: no  F range 2.50 .. 2.50
+2026-10-06 15:58:52 INFO      diff_full   deflated df (6,64)  df match: no  F range 2.37 .. 2.37
+2026-10-06 15:58:52 INFO      diff_within raw      df (6,63)  df match: no  F range 2.22 .. 2.22
+2026-10-06 15:58:52 INFO      diff_within deflated df (6,63)  df match: no  F range 2.01 .. 2.01
+2026-10-06 15:58:52 INFO      levels      raw      df (6,65)  df match: yes  F range 1.40 .. 1.40
+2026-10-06 15:58:52 INFO      levels      deflated df (6,65)  df match: yes  F range 2.05 .. 2.05
+2026-10-06 15:58:52 INFO  Chow Model II, periods 2-3: original F (6, 23) = 7859.14
+2026-10-06 15:58:52 INFO      diff_full   raw      df (6,23)  df match: yes  F range 1.69 .. 1.69
+2026-10-06 15:58:52 INFO      diff_full   deflated df (6,23)  df match: yes  F range 1.48 .. 1.48
+2026-10-06 15:58:52 INFO      diff_within raw      df (6,21)  df match: no  F range 1.68 .. 1.68
+2026-10-06 15:58:52 INFO      diff_within deflated df (6,21)  df match: no  F range 1.54 .. 1.54
+2026-10-06 15:58:52 INFO      levels      raw      df (6,23)  df match: yes  F range 0.98 .. 0.98
+2026-10-06 15:58:52 INFO      levels      deflated df (6,23)  df match: yes  F range 2.37 .. 2.37
+2026-10-06 15:58:52 INFO  Chow Model II, periods 3-4: original F (6, 55) =94985.79
+2026-10-06 15:58:52 INFO      diff_full   raw      df (6,55)  df match: yes  F range 0.83 .. 0.83
+2026-10-06 15:58:52 INFO      diff_full   deflated df (6,55)  df match: yes  F range 1.08 .. 1.08
+2026-10-06 15:58:52 INFO      diff_within raw      df (6,53)  df match: no  F range 0.89 .. 0.89
+2026-10-06 15:58:52 INFO      diff_within deflated df (6,53)  df match: no  F range 1.07 .. 1.07
+2026-10-06 15:58:52 INFO      levels      raw      df (6,55)  df match: yes  F range 25.71 .. 25.71
+2026-10-06 15:58:52 INFO      levels      deflated df (6,55)  df match: yes  F range 45.56 .. 45.56
+2026-10-06 15:58:52 INFO  Chow assumptions to check in the tables: equal error variance in both periods (var_ratio, var_ratio_p), no autocorrelation (DW/BG above), and more observations than parameters in each period.
+2026-10-06 15:58:52 INFO  STATUS: OK (warnings=0, errors=0)
