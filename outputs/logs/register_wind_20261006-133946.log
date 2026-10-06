@@ -1,0 +1,26 @@
+2026-10-06 13:39:46 INFO  Python 3.13.15 on Windows 10
+2026-10-06 13:39:46 INFO  CHECK PASS  data/raw/proprietary/ is in .gitignore
+2026-10-06 13:39:46 INFO  File data/raw/proprietary/无本金交割远期外汇(NDF)_美元兑人民.xlsx sha256=d06df952c52f84ea7a59216c61d55615229ba84152e9aea870170280ebb6b49d
+2026-10-06 13:39:46 INFO  Layout of data/raw/proprietary/无本金交割远期外汇(NDF)_美元兑人民.xlsx / sheet '无本金交割远期外汇(NDF)_美元兑人民':
+2026-10-06 13:39:46 INFO    header row 1: first cell '指标名称' -> name
+2026-10-06 13:39:46 INFO    header row 2: first cell '单位' -> unit
+2026-10-06 13:39:46 INFO    header row 3: first cell '指标ID' -> id
+2026-10-06 13:39:46 INFO    header row 4: first cell '来源' -> source
+2026-10-06 13:39:46 INFO    data rows 5..7141 (7137 dated rows), date order descending
+2026-10-06 13:39:46 INFO    footer lines: ['数据来源:Wind']
+2026-10-06 13:39:46 INFO    series in column B: name=无本金交割远期外汇(NDF):美元兑人民币:12个月; id=G0008386; source=根据新闻整理
+2026-10-06 13:39:46 INFO  [G0008386] unit 'yuan' supplied on the command line
+2026-10-06 13:39:46 INFO  [G0008386] freq 'daily' supplied on the command line
+2026-10-06 13:39:46 INFO  CHECK PASS  [G0008386] Wind ID present: G0008386
+2026-10-06 13:39:46 INFO  CHECK PASS  [G0008386] unit: yuan (supplied with --unit; not in the Wind export)
+2026-10-06 13:39:46 INFO  CHECK PASS  [G0008386] frequency: daily (supplied with --frequency; not in the Wind export)
+2026-10-06 13:39:46 INFO  CHECK PASS  [G0008386] name: 无本金交割远期外汇(NDF):美元兑人民币:12个月
+2026-10-06 13:39:46 INFO  CHECK PASS  [G0008386] dates strictly descending (no duplicates)
+2026-10-06 13:39:46 INFO  CHECK PASS  [G0008386] 7137 numeric observations, 1999-01-19 .. 2026-09-23
+2026-10-06 13:39:46 INFO  CHECK PASS  [G0008386] no gap longer than 7 calendar days
+2026-10-06 13:39:46 INFO  CHECK PASS  [G0008386] every month 2000-01..2011-12 has observations
+2026-10-06 13:39:46 INFO  CHECK PASS  [G0008386] source line mentions Wind
+2026-10-06 13:39:46 INFO  Ledger row written: G0008386
+2026-10-06 13:39:46 INFO  Monthly NDF built from G0008386 (无本金交割远期外汇(NDF):美元兑人民币:12个月)
+2026-10-06 13:39:47 INFO  Wrote data/interim/ndf_daily.csv (7137 days) and data/interim/ndf_monthly.csv (333 months)
+2026-10-06 13:39:47 INFO  STATUS: OK (warnings=0, errors=0)

@@ -1,0 +1,28 @@
+2026-10-06 13:43:25 INFO  R version 4.5.3 (2026-03-11 ucrt) on x86_64-w64-mingw32; urca 1.3.4, lmtest 0.9.40
+2026-10-06 13:43:25 INFO  Calibration variables (original-study data only): FER, GDP, ER, NX, pi, FDI, FDB, i
+2026-10-06 13:43:26 INFO  Targets: 16 rows for FER,GDP,ER,NX,pi,FDI,FDB,i; 14 with a numeric tau
+2026-10-06 13:43:31 INFO  Computed 64 DF-GLS regressions sets (2176 grid rows)
+2026-10-06 13:43:31 INFO  Wrote outputs/tables/dfgls_grid.csv (2176 rows)
+2026-10-06 13:43:32 INFO  CHECK PASS  own-sample tau equals urca::ur.ers (128 cases)
+2026-10-06 13:43:32 INFO  Wrote outputs/tables/dfgls_calibration.csv (136 rows)
+2026-10-06 13:43:32 INFO  Best specifications (mean |gap| over targets):
+2026-10-06 13:43:32 INFO     1. deflated trend    common fixed_1   mean 0.005  max 0.037  (14 targets)
+2026-10-06 13:43:32 INFO     2. deflated trend    own    fixed_1   mean 0.252  max 0.547  (14 targets)
+2026-10-06 13:43:32 INFO     3. raw      trend    common fixed_1   mean 0.381  max 1.397  (14 targets)
+2026-10-06 13:43:32 INFO     4. raw      trend    own    fixed_1   mean 0.403  max 1.002  (14 targets)
+2026-10-06 13:43:32 INFO     5. raw      trend    common fixed_0   mean 1.772  max 4.676  (14 targets)
+2026-10-06 13:43:32 INFO     6. deflated trend    own    fixed_2   mean 1.837  max 7.786  (14 targets)
+2026-10-06 13:43:32 INFO     7. deflated trend    common fixed_2   mean 1.883  max 8.098  (14 targets)
+2026-10-06 13:43:32 INFO     8. deflated trend    own    fixed_3   mean 1.992  max 9.114  (14 targets)
+2026-10-06 13:43:32 INFO     9. raw      trend    own    fixed_2   mean 1.998  max 7.816  (14 targets)
+2026-10-06 13:43:32 INFO    10. raw      trend    own    fixed_0   mean 2.023  max 5.343  (14 targets)
+2026-10-06 13:43:32 INFO    Stata default (trend, common sample, MAIC) on raw data ranks 72 of 136 (mean 3.652)
+2026-10-06 13:43:32 INFO    Stata default (trend, common sample, MAIC) on deflated data ranks 79 of 136 (mean 3.748)
+2026-10-06 13:43:32 INFO  Wrote outputs/tables/dfgls_selected_spec.csv (1 rows)
+2026-10-06 13:43:32 INFO  SELECTED SPEC: version=deflated det=trend sample=common rule=fixed_1 (mean gap 0.005)
+2026-10-06 13:43:32 WARN  the best rule is a fixed lag, not a documented selection rule; record this in W2-09
+2026-10-06 13:43:33 INFO  Wrote outputs/tables/dfgls_table4_1_4_2.csv (14 rows)
+2026-10-06 13:43:33 INFO  Under the selected spec: 7 of 14 taus agree to the printed decimals
+2026-10-06 13:43:33 INFO  Wrote outputs/tables/dfgls_lag_sensitivity.csv (224 rows)
+2026-10-06 13:43:33 INFO  Next: commit dfgls_selected_spec.csv BEFORE running 03_select_bop_ndf.R (fixed rule)
+2026-10-06 13:43:33 INFO  STATUS: WARN (warnings=1, errors=0)

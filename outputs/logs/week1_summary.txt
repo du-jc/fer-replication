@@ -1,0 +1,49 @@
+WEEK 1 SUMMARY  (Study A, fer-replication)
+written 2026-10-06 13:15 by code/python/make_week_summary.py
+Python 3.13.15 on Windows 10
+
+== Latest run of each script ==
+  00_packages                  OK    runs=1   00_packages_20261006-124731.log
+  create_skeleton              OK    runs=1   create_skeleton_20261006-123521.log
+  extract_original             OK    runs=3   extract_original_20261006-130252.log
+  init_config_and_metadata     OK    runs=1   init_config_and_metadata_20261006-123708.log
+
+== Key files ==
+  [x] requirements.txt
+  [x] renv.lock
+  [x] .gitignore
+  [x] config/wind_request.csv
+  [x] config/original_label_map.csv
+  [x] data/interim/original_appendix.csv
+  [x] data/metadata/original_targets.csv
+  [x] data/metadata/source_ledger.csv
+  [x] data/metadata/transformation_log.csv
+  [x] docs/decisions.md
+  label map: 17/17 labels confirmed
+
+== Source ledger (data/metadata/source_ledger.csv) ==
+  rows: 1
+  - Original document Appendix I (9 variables) an | document_extraction | rep | 2000-01..2011-12
+
+== Transformation log ==
+  rows: 6  code/python/extract_original.py: 6
+
+== Decisions (docs/decisions.md) ==
+  W1-01 Location of the extracted appendix | decided
+  W1-02 The original document (.docx) is not committed | decided
+  W1-03 Wind NDF data | received
+  W1-04 Image-label map | decided
+  W1-05 Provenance of the original document (.docx) | decided
+  W1-06 Software environment | decided
+  W1-07 Classification of reproduction status | decided
+  W1-08 Weekly READMEs are not committed | decided
+  W1-09 The decisions log is not committed | decided
+  W1-10 The week-summary script is not committed | decided
+
+== Git ==
+  branch: main
+  last commit: c57ec56 Week 1: setup, original document extraction, label map, Wind NDF request record
+  remote: origin	https://github.com/du-jc/fer-replication.git (fetch)
+  uncommitted changes: 1
+    ?? outputs/logs/make_week_summary_20261006-131531.log
+  safety: private files tracked (proprietary, original, READMEs, decisions, summary script, .env) -> NONE (good)

@@ -1,0 +1,13 @@
+2026-10-06 13:37:51 INFO  Python 3.13.15 on Windows 10
+2026-10-06 13:37:51 INFO  CHECK PASS  data/raw/proprietary/ is in .gitignore
+2026-10-06 13:37:51 INFO  File data/raw/proprietary/无本金交割远期外汇(NDF)_美元兑人民.xlsx sha256=d06df952c52f84ea7a59216c61d55615229ba84152e9aea870170280ebb6b49d
+2026-10-06 13:37:52 INFO  Layout of data/raw/proprietary/无本金交割远期外汇(NDF)_美元兑人民.xlsx / sheet '无本金交割远期外汇(NDF)_美元兑人民':
+2026-10-06 13:37:52 INFO    header row 1: first cell '指标名称' -> name
+2026-10-06 13:37:52 INFO    header row 2: first cell '单位' -> unit
+2026-10-06 13:37:52 INFO    header row 3: first cell '指标ID' -> id
+2026-10-06 13:37:52 INFO    header row 4: first cell '来源' -> source
+2026-10-06 13:37:52 INFO    data rows 5..7141 (7137 dated rows), date order descending
+2026-10-06 13:37:52 INFO    footer lines: ['数据来源:Wind']
+2026-10-06 13:37:52 INFO    series in column B: name=无本金交割远期外汇(NDF):美元兑人民币:12个月; id=G0008386; source=根据新闻整理
+2026-10-06 13:37:52 INFO  --inspect: layout only; nothing checked, registered or written
+2026-10-06 13:37:52 INFO  STATUS: OK (warnings=0, errors=0)

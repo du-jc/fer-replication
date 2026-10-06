@@ -1,0 +1,2 @@
+"version","det","conv","rule","mean_gap","max_gap","n_targets","n_specs_compared","runner_up","runner_up_mean_gap","calibration_vars","fixed_at","decision"
+"deflated","trend","common","fixed_1",0.00495227373344593,0.0372558067265558,14,136,"deflated/trend/own/fixed_1",0.251812021621329,"FER;GDP;ER;NX;pi;FDI;FDB;i","2026-10-06 13:43:32","W2-02"

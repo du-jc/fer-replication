@@ -1,0 +1,23 @@
+2026-10-06 13:35:48 INFO  Python 3.13.15 on Windows 10
+2026-10-06 13:35:51 INFO  GET https://www.safe.gov.cn/safe/zggjszphb/index.html -> HTTP 200, 19087 bytes
+2026-10-06 13:35:51 INFO  Release page: https://www.safe.gov.cn/safe/2019/0627/13519.html
+2026-10-06 13:35:52 INFO  GET https://www.safe.gov.cn/safe/2019/0627/13519.html -> HTTP 200, 15944 bytes
+2026-10-06 13:35:52 INFO  Excel link: https://www.safe.gov.cn/safe/file/file/20260929/6674650e17de4f20a45c64610118a96f.xlsx (title '中国国际收支平衡表时间序列(BPM6).xlsx', release date 2026-09-29)
+2026-10-06 13:35:54 INFO  GET https://www.safe.gov.cn/safe/file/file/20260929/6674650e17de4f20a45c64610118a96f.xlsx -> HTTP 200, 1375052 bytes
+2026-10-06 13:35:54 INFO  Saved new vintage data/raw/safe/SAFE_BOP_BPM6_timeseries_release20260929_dl20261006_9922402b.xlsx (sha256 9922402b6df05bb8...)
+2026-10-06 13:35:54 INFO  Raw file data/raw/safe/SAFE_BOP_BPM6_timeseries_release20260929_dl20261006_9922402b.xlsx sha256=9922402b6df05bb81371c846c376a3aa9d87b07cebe14b01a392cb898c2eab3e
+2026-10-06 13:35:55 INFO    sheet 1: 年度BOP（人民币）
+2026-10-06 13:35:55 INFO    sheet 2: 季度BOP（人民币）
+2026-10-06 13:35:55 INFO    sheet 3: 年度BOP（美元） 
+2026-10-06 13:35:55 INFO    sheet 4: 季度BOP（美元）
+2026-10-06 13:35:55 INFO    sheet 5: 年度BOP（SDR)
+2026-10-06 13:35:55 INFO    sheet 6: 季度BOP（SDR）
+2026-10-06 13:35:55 INFO  Reading sheet 4 '季度BOP（美元）': 294 rows
+2026-10-06 13:35:55 INFO  CHECK PASS  unit line: 单位:亿美元
+2026-10-06 13:35:55 INFO  Header rows (Excel numbering) [4]; 114 quarterly columns, 0 annual columns skipped
+2026-10-06 13:35:55 INFO    bop_ca: row 6 (Excel), 114 numeric quarters
+2026-10-06 13:35:55 INFO  CHECK PASS  bop_ca: all 48 sample quarters present (file covers 1998Q1..2026Q2)
+2026-10-06 13:35:55 INFO  Wrote data/interim/bop_quarterly.csv and data/interim/bop_monthly_candidates.csv (144 months, 3 candidates)
+2026-10-06 13:35:55 INFO  Ledger row written: sheet4:1. 经常账户
+2026-10-06 13:35:55 INFO  Note: the current-account row was checked to be the same under BPM5 and BPM6 for the sample (decision W2-12)
+2026-10-06 13:35:55 INFO  STATUS: OK (warnings=0, errors=0)
