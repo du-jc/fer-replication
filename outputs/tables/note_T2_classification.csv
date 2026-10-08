@@ -1,0 +1,5 @@
+"model","version","n_cells","reproduced","reproduced_both_insignificant","reproduced_within_one_se","partially","not_reproduced","mean_std_gap"
+"I","deflated",20,19,"14","15",0,1,37.7737146774435
+"I","raw",20,14,"12","14",2,4,32.0994442148252
+"II","deflated",24,22,"18","20",2,0,27.8681513999789
+"II","raw",24,20,"17","15",2,2,29.662214369734

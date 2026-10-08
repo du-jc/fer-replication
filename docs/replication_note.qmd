@@ -1,0 +1,576 @@
+---
+title: "Renminbi Exchange-Rate Expectations and China's Foreign Exchange Reserves: A Replication of Du, Ge and Qiao (2014)"
+author:
+  - "Jiancheng Du"
+date: last-modified
+format:
+  pdf:
+    documentclass: article
+    pdf-engine: xelatex
+    keep-tex: true
+    number-sections: true
+    papersize: a4
+    geometry:
+      - margin=1in
+    fontsize: 11pt
+    mainfont: "Times New Roman"
+    CJKmainfont: "SimSun"
+    colorlinks: true
+    fig-pos: "H"
+    fig-width: 7
+    fig-height: 5
+  html:
+    number-sections: true
+    embed-resources: true
+  docx:
+    number-sections: true
+execute:
+  echo: false
+  warning: false
+  message: false
+crossref:
+  eq-prefix: ""
+bibliography: [references.bib, packages.bib]
+nocite: |
+  @R-base, @R-urca, @R-lmtest, @R-sandwich, @R-strucchange, @R-car, @R-flextable, @R-knitr
+---
+
+```{r setup}
+knitr::opts_knit$set(root.dir = normalizePath(".."))
+```
+
+```{r software-bib}
+# Bibliography entries for the software cited (nocite above), written from the installed versions
+knitr::write_bib(c("base", "urca", "lmtest", "sandwich", "strucchange", "car", "flextable", "knitr"),
+                 file = file.path("docs", "packages.bib"))
+```
+
+```{r helpers}
+# Every number in the text comes from a table written by the project's code, through the
+# functions below. Nothing is typed. A missing file or row prints as [missing: ...].
+options(knitr.table.format = "pipe")   # pandoc wraps long pipe tables in LaTeX and Word
+knitr::opts_chunk$set(out.width = "100%")   # figures fit the text width in every format
+tbl_dir <- file.path("outputs", "tables")
+fig_dir <- file.path("outputs", "figures")
+rd <- function(f) {
+  p <- file.path(tbl_dir, f)
+  if (!file.exists(p)) return(NULL)
+  utils::read.csv(p, check.names = FALSE, encoding = "UTF-8", stringsAsFactors = FALSE)
+}
+miss <- function(what) paste0("[missing: ", what, "]")
+f <- function(x, d = 2) ifelse(is.na(x), "n.i.", formatC(as.numeric(x), format = "f", digits = d, big.mark = ","))
+p_txt <- function(p) ifelse(is.na(p), "n.i.", ifelse(p < 0.001, "< 0.001", paste("=", formatC(p, format = "f", digits = 3))))
+stars <- function(p) ifelse(is.na(p), "", ifelse(p < 0.001, "\\*\\*\\*", ifelse(p < 0.01, "\\*\\*", ifelse(p < 0.05, "\\*", ifelse(p < 0.10, "\u2020", "")))))
+
+nums <- rd("note_numbers.csv")
+num  <- function(name) { v <- nums$value[nums$name == name]; if (length(v) == 1) v else miss(name) }
+numv <- function(name) suppressWarnings(as.numeric(num(name)))
+
+# T2: reproduction counts by model and data version
+T2 <- rd("note_T2_classification.csv")
+cls <- function(model, version, col) { x <- T2[T2$model == model & T2$version == version, col]; if (length(x) == 1) x else miss(paste(model, version, col)) }
+
+# T3: Durbin-Watson and Breusch-Godfrey comparisons, summed over the rows selected
+T3 <- rd("note_T3_dwbg.csv")
+dwbg <- function(col, test = NULL, version = NULL, convention = NULL) {
+  x <- T3
+  if (!is.null(test)) x <- x[x$test == test, ]
+  if (!is.null(version)) x <- x[x$version == version, ]
+  if (!is.null(convention)) x <- x[x$convention == convention, ]
+  sum(x[[col]])
+}
+
+# T7 (long): the expectation coefficient at each correction step. step = the row number ("0", "1", "1b",
+# "1c", ..., "4c", ..., "7"), matched exactly against the column step_id, so "4" does not also pick "4c";
+# contains = text that tells apart rows with the same number (step 2: "wild"/"block"; step 7: the variant).
+T7 <- rd("note_T7_expectation_long.csv")
+tf <- function(x) toupper(as.character(x)) %in% c("TRUE", "T")
+t7 <- function(model, step, period, what = "cell", contains = NULL, d = 2) {
+  id <- trimws(step)
+  hit <- if ("step_id" %in% names(T7)) T7$step_id == id else startsWith(T7$step, step)
+  x <- T7[T7$model == model & hit & T7$period == period, ]
+  if (!is.null(contains)) x <- x[grepl(contains, x$step, fixed = TRUE), ]
+  if (nrow(x) != 1) return(miss(paste(model, step, period, contains)))
+  if ("applies" %in% names(x) && !tf(x$applies)) return("not applicable")
+  switch(what, coef = f(x$coef, d), se = f(x$se, d), p = p_txt(x$p), stars = stars(x$p), sign = x$sign,
+         cell = if (is.na(x$coef)) "not identified" else paste0(f(x$coef, d), stars(x$p), " (SE ", f(x$se, d), ")"))
+}
+
+# T8: pooled-model Wald tests
+T8 <- rd("note_T8_pooled_tests.csv")
+wt <- function(model, version, type, test, regimes, what = "full") {
+  x <- T8[T8$model == model & T8$version == version & T8$type == type & grepl(test, T8$test, fixed = TRUE) & T8$regimes == regimes, ]
+  if (nrow(x) != 1) return(miss(paste(model, version, type, test, regimes)))
+  switch(what, p = p_txt(x$p_F), full = sprintf("*F*(%d, %d) = %s, *p* %s", as.integer(x$q), as.integer(x$df2), f(x$F, 2), p_txt(x$p_F)))
+}
+
+# T12: CPI checks; T13: Period 1 variation; T5: unit roots
+T12 <- rd("note_T12_cpi_check.csv")
+T13 <- rd("note_T13_period1.csv")
+p1 <- function(version, col, d = 3) { x <- T13[T13$version == version, col]; if (length(x) == 1) f(x, d) else miss(paste(version, col)) }
+tf <- function(x) toupper(as.character(x)) %in% c("TRUE", "T")
+
+# Relabelling check (cell level) and bootstrap summaries
+RL <- rd("corr_relabel.csv")
+rl_se_only_miss <- function() {
+  if (is.null(RL)) return(miss("corr_relabel.csv"))
+  x <- RL[!tf(RL$stars_match_if_se), ]
+  if (!nrow(x)) return("none")
+  paste(sprintf("Model %s, Period %d, %s", x$model, x$period, x$term), collapse = "; ")
+}
+BT <- rd("corr_bootstrap.csv")
+# s2c: bootstrap with a stage-2 constant; by default as in the analysis (W4-20: only on the corrected data,
+# s2c_of() in code/R/corrections.R)
+bt <- function(version, scheme, period, col, term = "DER_hathat", d = 2, s2c = version == "corrected") {
+  B <- if ("stage2_const" %in% names(BT)) BT[tf(BT$stage2_const) == s2c, ] else BT
+  x <- B[B$version == version & B$scheme == scheme & B$period == period & B$term == term, col]
+  if (length(x) != 1) return(miss(paste(version, scheme, period, col)))
+  if (col %in% c("p_boot", "p_naive")) p_txt(x) else if (is.numeric(x)) f(x, d) else x
+}
+bt_min_ok <- function() if (is.null(BT)) miss("corr_bootstrap.csv") else min(BT$n_ok)
+sel <- rd("selected_inputs.csv")
+sel_col <- function(what) if (is.null(sel)) miss("selected_inputs.csv") else sel$selected_column[toupper(sel$input) == what]
+
+# Verification of the extracted appendix against original Tables 3.2-3.9 (Week 2)
+V3 <- rd("verify_T3_summary.csv")
+
+# Tables: every table is drawn with flextable (HTML, Word and PDF alike), with fixed column widths
+# that add up to the text width, so wide tables fit the page. Tables 1a/1b come with a status file
+# (R/P/N per reproduced cell, rules in W1-07): those cells are shaded green / yellow / red.
+SHADE <- c(R = "#C6EFCE", P = "#FFEB9C", N = "#FFC7CE")
+# Optional: widths = relative column widths (overrides the automatic ones); size = font size;
+# left = columns aligned left (default: the first only); pad = space on each side of a cell (pt). In the
+# PDF, flextable ignores cell padding, so pad is passed as the column gap (tabcolsep) and the widths are
+# reduced by that gap, keeping the table inside the text width.
+ftab <- function(d, digits = 3, status = NULL, width_in = 6.3, widths = NULL, size = NULL, left = 1L, pad = 2) {
+  if (is.null(d)) return(miss("table"))
+  d <- as.data.frame(d, stringsAsFactors = FALSE)
+  d$line <- NULL
+  for (v in names(d)) {
+    x <- d[[v]]
+    if (is.numeric(x)) x <- ifelse(is.na(x), "", ifelse(abs(x - round(x)) < 1e-12, formatC(x, format = "d", big.mark = ","),
+                                                   formatC(x, format = "f", digits = digits)))
+    x <- as.character(x); x[is.na(x)] <- ""
+    d[[v]] <- x
+  }
+  labels <- gsub("_", " ", names(d))
+  if (!is.null(status) || identical(names(d)[1], "row")) labels[1] <- " "
+  labels <- sub(" (published|reproduced)$", "\n\\1", labels)          # two-line headers in Tables 1a/1b
+  if (!requireNamespace("flextable", quietly = TRUE)) {
+    names(d) <- labels
+    return(knitr::kable(d, align = c("l", rep("c", ncol(d) - 1)), row.names = FALSE))
+  }
+  ft <- flextable::theme_booktabs(flextable::flextable(d))    # horizontal rules only, as in JCRE articles
+  ft <- flextable::set_header_labels(ft, values = stats::setNames(as.list(labels), names(d)))
+  if (!is.null(status))
+    for (cl in intersect(setdiff(names(status), c("row", "line")), names(d)))
+      for (k in names(SHADE)) {
+        i <- which(status[[cl]] == k)
+        if (length(i)) ft <- flextable::bg(ft, i = i, j = cl, bg = SHADE[[k]])
+      }
+  ft <- flextable::align(ft, j = setdiff(seq_len(ncol(d)), left), align = "center", part = "all")
+  ft <- flextable::align(ft, j = left, align = "left", part = "all")
+  ft <- flextable::fontsize(ft, size = if (!is.null(size)) size else if (ncol(d) > 7) 7.5 else 8.5, part = "all")
+  ft <- flextable::padding(ft, padding.top = 1, padding.bottom = 1, padding.left = pad, padding.right = pad, part = "all")
+  # widths in proportion to the longest entry of each column (header words included), within limits
+  ew <- function(x) { u <- nchar(gsub("[^A-Z0-9_]", "", x)); nchar(x) + 0.4 * u }   # capitals and digits are wider
+  longest <- function(v, h) max(ew(c(v, strsplit(h, "[ \n]")[[1]])), 3)
+  w <- pmin(pmax(mapply(longest, d, labels), 4), 45)
+  if (!is.null(status) || all(grepl("^P[1-4]", names(d)[-1])))          # period columns: equal widths
+    w <- c(min(w[1], 22), rep(max(w[-1]), ncol(d) - 1))
+  if (!is.null(widths)) w <- widths
+  avail <- width_in - ncol(d) * 2 * pad / 72
+  ft <- flextable::width(ft, j = seq_len(ncol(d)), width = avail * w / sum(w))
+  flextable::set_table_properties(ft, layout = "fixed", opts_pdf = list(tabcolsep = pad))
+}
+ptab <- function(name, ...) {
+  d <- rd(paste0(name, ".csv"))
+  if (is.null(d)) return(miss(name))
+  d[] <- lapply(d, as.character)
+  ftab(d, status = rd(paste0(name, "_status.csv")), ...)
+}
+
+pnotes <- function(name) {
+  n <- rd(paste0(name, "_notes.csv"))
+  if (is.null(n)) return(invisible())
+  cat(paste0("^", n$letter, "^ ", n$note, collapse = "  \n"), "\n")
+}
+# Figures: path relative to docs/ (where Quarto and LaTeX look for them); error = FALSE because
+# knitr would otherwise check the path from the project root, where R's working directory is
+fig <- function(file) knitr::include_graphics(file.path("..", fig_dir, file), rel_path = FALSE, error = FALSE)
+hv <- num("headline_version")
+```
+
+# Abstract {.unnumbered}
+
+**[WRITE LAST, 120-150 words: the original claim in one sentence; what we reproduce (cite the numbers of @sec-reproduction with num()); the main errors found; whether the central conclusion survives the corrections, from @sec-effect.]**
+
+**Keywords:** replication, exchange-rate expectations, foreign exchange reserves, China, generated regressors, non-deliverable forwards.
+
+**JEL classification:** F31, F32, E58, C22, C87.
+
+**Affiliation and contact:** [AFFILIATION]; [EMAIL].
+
+**Conflict of interest:** the author of this note is the first author of the study replicated here. The research was not funded by any party with an interest in its outcome. **[CONFIRM OR EDIT]**
+
+# Introduction {#sec-intro}
+
+Du, Ge and Qiao [-@du2014] estimate how expectations about the renminbi (RMB)–US dollar exchange rate affected the accumulation of China's foreign exchange reserves (FER) between 2000 and 2011. They split the sample into four exchange-rate regimes and measure expectations in two ways: a forecast generated from a three-stage regression model (Model I) and the 12-month non-deliverable forward rate (NDF, Model II). **[YOUR READING: in two or three sentences, the article's central claim as stated in its abstract and conclusion, quoted or closely paraphrased, with page numbers.]**
+
+The question matters because **[YOUR READING: why this relation mattered, for example reserve accumulation and sterilisation costs, "hot money" inflows under an expected appreciation, and the policy debate at the time. One paragraph, with two or three references.]**
+
+This note is a replication in the sense of the *Journal of Comments and Replications in Economics*: it assesses the reliability of the article's claims. We do two things. First, we **reproduce** the published estimates from the data of the original document on which the article is based, which contains the full dataset and every test and estimation table (@sec-reproduction). Second, we **correct** twelve problems in the original analysis, one at a time, and show how each correction changes the estimated effect of expectations (Sections [-@sec-corrections] and [-@sec-effect]).
+
+**Disclosure.** The author of this note is the first author of the original article. To prevent the replication from being steered towards a preferred result, every rule that selects data, specifications or classifications was written down, dated, *before* the estimates it governs were computed, and the code and results of each step were committed to git. These rules include which balance-of-payments series is used, which unit-root specification, which Model I specification counts as the reproduction, and when an estimate counts as reproduced. Each rule is recorded, with the options considered and the evidence, in a numbered decision log, which Appendix A lists. **[W1-09: the log is kept off the public repository; state whether a cleaned version is published with the package or is available on request.]** All code and all public data are available at **[REPOSITORY URL]**; the only inputs that cannot be redistributed are the original document and the Wind NDF series (@sec-availability). The co-authors of the original study were informed of this replication on **[DATE]**. **[CONFIRM OR EDIT]**
+
+@sec-original describes the original study, @sec-data the data, @sec-reproduction the reproduction, @sec-corrections the corrections, and @sec-effect their effect on the conclusions. @sec-availability explains how to reproduce every result, and @sec-conclusion concludes.
+
+# The original study {#sec-original}
+
+## Models
+
+The article estimates two models of the monthly change in reserves, $\Delta FER_t$, separately in four periods. **Model I** builds an expected change of the exchange rate in three stages. Stage 1 regresses the change of the exchange rate (RMB per USD) on fundamentals:
+
+$$
+\Delta ER_t = b_0 + b_1\,\Delta BOP_t + b_2\,\Delta i_t + b_3\,\Delta \pi_t + b_4\,\Delta GDP_t + x_t .
+$$ {#eq-stage1}
+
+Stage 2 projects the stage-1 result on its own lags, without a constant:
+
+$$
+\widehat{\Delta ER}_t = \sum_{s=1}^{j} a_s\,\widehat{\Delta ER}_{t-s} + e_t ,
+$$ {#eq-stage2}
+
+and stage 3 uses the fitted value $\widehat{\widehat{\Delta ER}}_t$ as the expectation:
+
+$$
+\Delta FER_t = \tau_0 + \tau_1\,\widehat{\widehat{\Delta ER}}_t + \tau_2\,\Delta NX_t + \tau_3\,\Delta FDB_t + \tau_4\,\Delta FDI_t + y_t .
+$$ {#eq-stage3}
+
+**Model II** replaces the generated expectation by the observed 12-month NDF:
+
+$$
+\Delta FER_t = g_0 + g_1\,\Delta NDF_t + g_2\,\Delta GDP_t + g_3\,\Delta NX_t + g_4\,\Delta FDB_t + g_5\,\Delta FDI_t + w_t .
+$$ {#eq-model2}
+
+The variables are defined in @tbl-variables. In the original document, the regressions of Periods 1 and 3 have AR(1) errors (ARIMA(1,1,0)) and those of Periods 2 and 4 are estimated by OLS. The periods follow the exchange-rate regime (@tbl-periods).
+
+```{r}
+#| label: tbl-periods
+#| tbl-cap: "Sample periods. Source: Du, Ge and Qiao (2014); original document, Chapter 3."
+source(file.path("code", "R", "common.R"))
+ftab(data.frame(Period = PERIODS$period, From = PERIODS$start, To = PERIODS$end,
+                        Months = sapply(PERIODS$period, function(p) sum(in_period(SAMPLE_MONTHS, p)))), width_in = 4)
+```
+
+## Reported findings
+
+**[YOUR READING: the article's Table 4 findings in the article's own words, one short paragraph: which expectation coefficients it reports as significant, with which sign, and how it interprets them. Page and table numbers.]**
+
+# Data {#sec-data}
+
+## The original data
+
+All data and all reproduction targets are read by code from the original document; nothing is transcribed by hand. Appendix I of the original document supplies nine monthly variables for the 144 months from January 2000 to December 2011 (@tbl-variables). The extracted data were checked against the original study's descriptive statistics (Tables 3.2 to 3.9): of the `r if (is.null(V3)) miss("verify_T3_summary.csv") else sum(V3$n_cells)` cells of those tables, `r if (is.null(V3)) "" else sum(V3$raw_matches)` agree to the printed decimals on the raw data (decision W2-13; tolerance: half a unit of the last printed digit, W2-07). **[YOUR READING: how the remaining cells are explained, from W2-13: for example the Period 1 correlations involving the constant exchange rate.]**
+
+```{r}
+#| label: tbl-variables
+#| tbl-cap: "Variables. Source: original Appendix I; SAFE; Wind; labels corrected where the original is inaccurate (@sec-corrections)."
+ftab(rd("note_T10_variables.csv"))
+```
+
+## Inputs not in the original appendix
+
+Two regressors are not in the appendix and were collected anew, and price data were added for the corrections (@tbl-sources; @data_safe; @data_wind; @data_imf; @data_fred; @data_nbs).
+
+- **Balance of payments.** The quarterly current account (SAFE, BPM6 presentation) is converted to months. Of three candidate conversions (quarterly value held, divided by three, year-to-date), the one used, `r sel_col("BOP")`, was chosen by a rule fixed before any Model I estimate. The rule combines the distance to the original unit-root statistic and to the four stage-1 Durbin–Watson statistics (W2-01, W2-10, W2-12).^[The original document predates SAFE's BPM6 presentation and probably used BPM5 data, so a residual mismatch may reflect the accounting standard rather than the method.]
+- **NDF.** The 12-month USD/CNY NDF is the only Wind tenor that covers 2000–2011. Month-end and month-average versions of the daily series were compared with the original unit-root statistic before Model II was estimated; the version used is `r sel_col("NDF")` (W2-06, W2-10).
+- **Consumer prices.** For the deflator correction (@sec-deflator), a fixed-base consumer price index for China was taken from the IMF data portal and cross-checked against FRED (OECD data). The NBS published year-on-year index (same month of the previous year = 100) was used to identify the original study's inflation series (W4-05, W4-14).
+
+```{r}
+#| label: tbl-sources
+#| tbl-cap: "Data sources. Coverage: first and last observation in the file as downloaded. Layer rep: used in the analysis; check: used only to verify another series. Source: data/metadata/source_ledger.csv of the replication package."
+s <- rd("note_T9_sources.csv")
+# Layout only; every value is the ledger's. Coverage start and end share one column, underscores
+# become spaces, and long codes get break points (a space after each comma; a line break after the
+# last "/"), so that every entry wraps inside its column.
+brk <- function(x) {
+  x <- gsub(",(?=\\S)", ", ", x, perl = TRUE)
+  ifelse(nchar(x) > 16 & !grepl(" ", x), sub("/(?=[^/]*$)", "/\n", x, perl = TRUE), x)
+}
+# A long path inside a sentence (no spaces) gets a line break after its middle "/".
+brk_words <- function(x) vapply(strsplit(x, " ", fixed = TRUE), function(w) {
+  long <- nchar(w) > 16 & grepl("/.", w)
+  w[long] <- vapply(w[long], function(t) {
+    pos <- gregexpr("/", t)[[1]]; pos <- pos[pos < nchar(t)]
+    p <- pos[which.min(abs(pos - nchar(t) / 2))]
+    paste0(substr(t, 1, p), "\n", substr(t, p + 1, nchar(t)))
+  }, "")
+  paste(w, collapse = " ")
+}, "")
+ftab(data.frame(Series = s$series_name, Provider = s$provider, Code = brk(s$series_key_or_code),
+                Frequency = s$frequency, Coverage = paste0(s$coverage_start, " to\n", s$coverage_end),
+                Method = gsub("_", " ", s$acquisition_method), Layer = s$layer,
+                Licence_or_access = brk_words(s$license_or_access_restriction)),
+     widths = c(1.0, 0.98, 1.36, 0.6, 0.78, 0.72, 0.36, 0.9), size = 7.5, left = 1:8, pad = 3)
+```
+
+# Reproduction {#sec-reproduction}
+
+## Procedure
+
+The reproduction follows rules fixed before estimation. Because the original document does not fully document Model I, all twelve combinations of its undocumented choices were estimated. These choices are whether stage 2 projects the stage-1 fitted values or the observed exchange rate, the number of lags (one to three), and whether the variables are used as published or divided by $\pi/100$, as the article states. The combination that reproduces most published cells was then named the headline (W3-02). Each estimate is classified on its sign and star level only (W1-07), with the meanings of the marks taken from the notes of the original tables and significance meaning *p* < 0.10. An estimate is **reproduced** if it has the same sign and the same star level as the published one, or if both are insignificant; **partially reproduced** if both are significant with the same sign but a different star level; and **not reproduced** if significance flips, or if the signs differ and either estimate is significant. Magnitude, measured as the gap in published standard errors, is reported but does not affect the class. First differences are taken on the whole 2000–2011 series (the "`r num("primary_convention")`" convention, W3-01); differencing within each period is reported as a sensitivity check.
+
+## Unit-root tests
+
+The article reports augmented Dickey–Fuller (ADF) tests; the original tables report DF-GLS tests [@elliott1996]. The original document does not state its lag rule. The specification that best reproduces the original statistics of the eight appendix variables was selected and then fixed (W2-02, W2-09). @tbl-unitroot shows the original statistics, our DF-GLS statistics and the ADF statistics at the same lag. DF-GLS and ADF agree on rejection at 5% in `r num("unitroot_agree")` of `r num("unitroot_n")` series. **[YOUR READING: how close our DF-GLS statistics are to the original study's (compare the first two columns), and whether any stationarity judgement differs.]**
+
+```{r}
+#| label: tbl-unitroot
+#| tbl-cap: "Unit-root tests. Source: original Tables 4.1 and 4.2; own calculations."
+ptab("paper_T5")
+```
+
+```{r}
+#| results: asis
+pnotes("paper_T5")
+```
+
+## Estimates
+
+The headline Model I specification uses the `r num("headline_spec")` stage-2 regressor with `r num("headline_lag")` lag(s) on `r num("headline_version")` data. It reproduces `r num("headline_reproduced")` of the `r num("headline_n_cells")` Model I cells; `r num("headline_partially")` are partially reproduced and `r num("headline_not_reproduced")` not reproduced. The ranking among the `r num("n_model_I_combinations")` combinations was decided by `r num("headline_decided_by")` (W3-07). For Model II on `r hv` data, `r cls("II", hv, "reproduced")` of `r cls("II", hv, "n_cells")` cells are reproduced (W3-08). Because two insignificant estimates count as reproduced whatever their size, the counts rest largely on such cells (W3-14): of the reproduced Model I cells, `r num("headline_reproduced_both_insignificant")` are insignificant in both the original and our estimates, and `r num("headline_reproduced_within_one_se")` lie within one published standard error of the published value; for Model II, `r cls("II", hv, "reproduced_both_insignificant")` and `r cls("II", hv, "reproduced_within_one_se")`. Tables [-@tbl-repro-a] and [-@tbl-repro-b] (Tables 4.9 and 4.10 in the original document; Table 4 in the article) set the published and the reproduced estimates side by side, and @fig-gap shows each gap in units of the published standard error.
+
+```{r}
+#| label: tbl-repro-a
+#| tbl-cap: "Published and reproduced estimates, Periods 1 and 2. Source: original Table 4.9 (= article Table 4); own estimates."
+ptab("paper_T1a")
+```
+
+```{r}
+#| results: asis
+pnotes("paper_T1a")
+```
+
+```{r}
+#| label: tbl-repro-b
+#| tbl-cap: "Published and reproduced estimates, Periods 3 and 4. Source: original Table 4.10 (= article Table 4); own estimates."
+ptab("paper_T1b")
+```
+
+```{r}
+#| results: asis
+pnotes("paper_T1b")
+```
+
+```{r}
+#| label: fig-gap
+#| fig-cap: "Gap between reproduced and published Model I estimates, in published standard errors (headline specification). Dashed lines: one standard error. Cells beyond the clipped axis are marked with triangles and labelled with their gap. Source: own estimates; original Tables 4.9-4.10."
+fig("fig1_std_gap.png")
+```
+
+**[YOUR READING, from @tbl-repro-a, @tbl-repro-b and W3-07: which terms reproduce (the controls, the AR terms) and which do not (the expectation term and the constants of Periods 1 and 3). For the constants, W3-07 records the ratio ours/original; say whether you read it as a difference in units or scaling of the constant, and mark it as your interpretation.]**
+
+**[YOUR READING (W4-19; companion 6.6): whether the original's stage 2 had a constant. The numbers, from corr_stage2_const_diag.csv: with a constant in stage 2 (row 1c of @tbl-steps-1), the Period 1 constant lies `r num("s2c_P1_cons_std_gap_with")` published standard errors from the published value (`r num("s2c_P1_cons_std_gap_without")` without it), the Period 3 constant `r num("s2c_P3_cons_std_gap_with")` (`r num("s2c_P3_cons_std_gap_without")`); `r num("s2c_n_changed_other")` other Model I cells change class (`r num("s2c_n_changed")` of `r num("s2c_n_cells")` in all). By the rule fixed before the run, the outcome is (`r num("s2c_outcome")`): `r num("s2c_outcome_text")`. State the rule, then the outcome; the headline is unchanged. Then the differencing prompt (companion 4B.9).]**
+
+The number of observations in the original document is matched in `r num("N_match")` of `r num("N_compared")` comparisons (W3-11). **[YOUR READING: whether the original study appears to have differenced within periods, with reference to W3-11.]**
+
+```{r}
+#| label: tbl-classification
+#| tbl-cap: "Reproduction status by model and data version (primary convention). Model I: headline specification. Source: own classification (rules in W1-07)."
+ftab(T2, digits = 2)
+```
+
+## Autocorrelation tests
+
+The original study tests residual autocorrelation with the Durbin–Watson statistic and, where it is inconclusive, with the Breusch–Godfrey test (original Tables 4.3 to 4.8). Over all tables, data versions and conventions, `r num("dwbg_within_print")` of `r num("dwbg_n")` statistics agree with the printed values to the printed decimals, and `r num("dwbg_same_decision")` of `r num("dwbg_n")` test decisions agree (W3-12). On `r hv` data under the primary convention, the decisions agree in `r dwbg("same_decision", version = hv, convention = num("primary_convention"))` of `r dwbg("n", version = hv, convention = num("primary_convention"))` cases. **[YOUR READING: what you conclude from statistics that do not reproduce while most decisions do.]**
+
+## Chow tests
+
+The original study reports Chow tests of equal coefficients in adjacent periods (original Table 4.11). @tbl-chow shows them next to three recalculations. In every model and pair, the published *F* statistic exceeds the largest recalculated one by a factor of at least $10^{`r num("chow_min_log10_ratio")`}$ (W3-13). The published degrees of freedom match those of the same regressions estimated in levels, rather than in differences, in `r num("chow_levels_df_match")` of `r num("chow_levels_compared")` comparisons. **[YOUR READING: what the degrees-of-freedom match suggests about how the published statistics were computed. Mark it as your interpretation.]**
+
+```{r}
+#| label: tbl-chow
+#| tbl-cap: "Chow tests between adjacent periods. Source: original Table 4.11; own calculations."
+ptab("paper_T6")
+```
+
+```{r}
+#| results: asis
+pnotes("paper_T6")
+```
+
+# Corrections {#sec-corrections}
+
+We take the twelve problems listed in the replication plan one at a time. For each, we state what the original did, why that is a problem, what we do instead, and what changes. The data and model changes are cumulative, and we assess their combined effect in @sec-effect.
+
+## Standard errors labelled as t-statistics
+
+The article describes the numbers in parentheses below each coefficient as t-statistics. The significance marks printed in the same table allow a direct test. If the parentheses held t-statistics, the marks would follow from those numbers; if they held standard errors, the marks would follow from the ratio of coefficient to parenthesis. Read as standard errors, the parentheses reproduce the printed marks in `r num("relabel_match_se")` of `r num("relabel_n")` cells (`r round(100 * numv("relabel_match_se") / numv("relabel_n"))`%); read as t-statistics, in `r num("relabel_match_t")` (`r round(100 * numv("relabel_match_t") / numv("relabel_n"))`%). The cells where the standard-error reading does not reproduce the marks are: `r rl_se_only_miss()`. **[YOUR READING: what the numbers in parentheses are, and whether the non-matching cells lie near a significance threshold (corr_relabel.csv, column implied_t_if_se).]** Throughout this note, the parentheses of the published tables are treated as standard errors.
+
+## Units: level coefficients and log differences
+
+All variables of @eq-stage1 to @eq-model2 are first differences of *levels*, so each coefficient is measured in the units of the variables in @tbl-variables, for example reserves per unit change of the exchange rate. **[YOUR READING: quote the article's percentage interpretation of a coefficient, with page, and state why a level coefficient cannot be read as a percentage.]** To give the coefficients a unit-free reading, all models were re-estimated with log differences of the strictly positive series (FER, the exchange rate, the NDF, GDP, FDB and FDI). The expectation coefficient then is an elasticity; net exports, the balance of payments, inflation and the interest rate stay in level differences (row 6 of Tables [-@tbl-steps-1] and [-@tbl-steps-2]).
+
+## Sign convention
+
+Both expectation measures are quoted in RMB per US dollar, so a rise is an expected *depreciation* of the RMB. A positive coefficient therefore means that reserves grow faster when a depreciation is expected, and a negative one that they grow faster when an appreciation is expected. **[YOUR READING: how the article describes the sign in its abstract and conclusion, and whether that description matches this convention. Use the Period 4 Model II coefficient: published sign from @tbl-repro-b.]**
+
+## Generated regressors
+
+In Model I, the stage-3 regressor is estimated in stages 1 and 2. The conventional stage-3 standard errors treat it as data and so ignore the sampling variation of the earlier stages [@pagan1984; @murphy1985]. A bootstrap of the whole three-stage chain includes that variation. Stages 1 to 3 are re-estimated in each of `r num("boot_B")` replications, with seed `r num("boot_seed")` (W4-01). The primary scheme is a wild bootstrap [@mammen1993; @davidson2008]: the residuals of stage 1 and the innovations of stage 3 are multiplied by the same Rademacher draw in each month, which preserves their correlation, and the AR(1) errors of Periods 1 and 3 are rebuilt from the sign-flipped innovations. A moving-block bootstrap within periods [@kunsch1989] is reported as a check. Every coefficient was estimated in at least `r bt_min_ok()` of `r num("boot_B")` replications.
+
+For the headline specification on `r hv` data, the ratio of the bootstrap to the conventional standard error of the expectation coefficient is, by period: `r paste(sapply(1:4, function(p) paste0("Period ", p, " ", bt(hv, "wild", p, "se_ratio"))), collapse = ", ")` (wild) and `r paste(sapply(1:4, function(p) paste0("Period ", p, " ", bt(hv, "block", p, "se_ratio"))), collapse = ", ")` (block). @fig-ci compares the intervals, and @fig-draws shows the bootstrap distributions. **[YOUR READING: whether the conventional standard errors understate or overstate the uncertainty, and whether any significance mark changes (row 2 of @tbl-steps-1).]**
+
+```{r}
+#| label: fig-ci
+#| fig-cap: "Expectation coefficient of Model I by period: 95% intervals from the conventional standard error, the wild and the block bootstrap (percentile), and the pooled model with Newey-West standard errors. Headline specification. Source: own estimates."
+fig("fig2_expectation_ci.png")
+```
+
+```{r}
+#| label: fig-draws
+#| fig-cap: "Wild-bootstrap distribution of the Model I expectation coefficient by period. Solid line: point estimate; dashed lines: conventional 95% interval. Source: own estimates."
+fig("fig3_bootstrap_draws.png")
+```
+
+## Stage-2 constant {#sec-stage2-const}
+
+**[WRITE (W4-20; companion 1.2): declare this as a correction outside the replication plan. Stage 2 (@eq-stage2) has no constant, so the forecast of the exchange-rate change has mean zero; in the managed-appreciation periods the change has a drift, which the lag coefficients then absorb (omitted-intercept bias). We add a constant to stage 2 on the corrected data (row 4c of @tbl-steps-1); for Model I, the bootstrap, the log-difference and the pooled rows on the corrected data build on it. Model II has no stage 2. Effect, from @tbl-steps-1, rows 4 and 4c: Period 2 `r t7("I", "4", 2)` and `r t7("I", "4c", 2)`; Period 3 `r t7("I", "4", 3)` and `r t7("I", "4c", 3)`; Period 4 `r t7("I", "4", 4)` and `r t7("I", "4c", 4)`. Your reading of the change.]**
+
+## Year-to-date GDP
+
+In the appendix, the GDP of every month of a quarter is the cumulative GDP of the year to date. Its first difference is therefore zero in two months of each quarter, positive at each quarter start, and strongly negative every January, when the cumulation restarts. This January fall is an accounting artefact that enters both models as a regressor. The correction replaces it by discrete quarterly GDP (the difference of consecutive year-to-date values), held in each month of the quarter (W4-05). The code first verifies that the appendix value is constant within every quarter. The effect is shown in row 3 of @tbl-steps-1 and @tbl-steps-2, to be compared with row 1b, the reproduction on the same (raw) data.
+
+## Deflator {#sec-deflator}
+
+The article divides every variable by $\pi/100$. Here $\pi$ is the consumer price index with the same month of the previous year = 100, a year-on-year growth factor $P_t/P_{t-12}$ rather than a price level. Dividing by it gives $X_t P_{t-12}/P_t$: the real value multiplied by last year's price level, not a real series. The correction divides the value variables (FER, GDP, net exports, FDI, external debt and the balance of payments) by a fixed-base consumer price index, rebased to 2000 = 100, from the IMF. The exchange rate and the NDF are not deflated: they are prices of one currency in another, and a real exchange rate would require both countries' price levels (W4-05).^[The US-dollar variables are thereby deflated by China's consumer prices, which measures their purchasing power over Chinese goods.]
+
+We check the price data in two ways (@tbl-cpi and @fig-cpi). First, we compare the original $\pi$ with the same-month year-on-year index published by the National Bureau of Statistics (NBS): `r num("cpi_pi_nbs_within_print")` of `r num("cpi_pi_n")` months agree within the printed decimals, with a largest gap of `r num("cpi_pi_nbs_max_abs_gap")` points (W4-14). **[YOUR READING: what this comparison shows about the source of the original $\pi$.]** Second, the year-on-year rates implied by the IMF index agree with the published ones within the printed decimals in `r num("cpi_nbs_imf_within_print")` of `r num("cpi_pi_n")` months (largest gap `r num("cpi_nbs_imf_max_abs_gap")` points).^[We compared the FRED series with the IMF's in the same way (largest year-on-year gap `r num("cpi_imf_fred_max_abs_gap")`). **[YOUR READING: whether FRED is an independent measure or the same index, and therefore what it confirms.]**] **[YOUR READING: from @fig-cpi, where the gaps between the published and the index-implied rates lie in time. "Our interpretation suggests ..." (for example the NBS basket changes; mark as a hypothesis).]**
+
+```{r}
+#| label: tbl-cpi
+#| tbl-cap: "Consumer-price checks, 2000-2011. Within print: gap no larger than half a unit of the last decimal printed in the original document. Source: original Appendix I; IMF; FRED; NBS; own calculations."
+ftab(T12, digits = 4)
+```
+
+```{r}
+#| label: fig-cpi
+#| fig-cap: "Gaps between the original inflation series, the NBS published year-on-year CPI and the year-on-year rate implied by the IMF CPI index, 2000-2011. Source: original Appendix I; NBS; IMF; own calculations."
+fig("fig4_cpi_gap.png")
+```
+
+## Period 1: exchange-rate variation
+
+From January 2000 to June 2005 the RMB was pegged to the US dollar, and the appendix exchange rate is constant (standard deviation `r p1("raw", "sd_ER_level")` on raw data). Its change is zero, so no expectation effect can be estimated from it: the coefficient is not identified (W3-10). In the article's deflated data the exchange rate varies (standard deviation `r p1("deflated", "sd_ER_level")`), and that variation comes from the deflator: the $R^2$ of the deflated exchange-rate change on the change of $\pi$ is `r p1("deflated", "r2_DER_on_Dpi")` (@tbl-period1). A Period 1 "expectation effect" estimated on deflated data is therefore an effect of inflation. With the exchange rate undeflated (the corrected data), the Period 1 coefficient is reported as not identified.
+
+```{r}
+#| label: tbl-period1
+#| tbl-cap: "Period 1: variation of the exchange rate, its change, and the stage-3 expectation term, by data version. Source: own calculations."
+ftab(T13, digits = 4)
+```
+
+## Unit-root test label
+
+The article reports ADF tests; the original study ran DF-GLS tests. @tbl-unitroot reports both at the same lag, and they agree on rejection in `r num("unitroot_agree")` of `r num("unitroot_n")` series. This correction relabels the tests and changes no conclusion that depends on them. **[CONFIRM from @tbl-unitroot.]**
+
+## Chow tests, correctly specified
+
+The classic Chow test [@chow1960] assumes equal error variances in the two regimes and no autocorrelation. Both assumptions are doubtful with monthly data across exchange-rate regimes. The corrected test estimates one regression over 2000–2011 in which every coefficient is regime-specific (@sec-pooled), and tests the equality of all coefficients of two adjacent regimes with a Wald test based on Newey–West standard errors (last column of @tbl-chow; @tbl-pooled). For the corrected data, Model I, the tests give: regimes 1–2, `r wt("I", "corrected", "full", "robust Chow", "1-2")`; regimes 2–3, `r wt("I", "corrected", "full", "robust Chow", "2-3")`; regimes 3–4, `r wt("I", "corrected", "full", "robust Chow", "3-4")`. For Model II, in the same order: `r wt("II", "corrected", "full", "robust Chow", "1-2")`; `r wt("II", "corrected", "full", "robust Chow", "2-3")`; `r wt("II", "corrected", "full", "robust Chow", "3-4")`. **[YOUR READING: whether the regime split of the original is supported, pair by pair.]**
+
+## Period 2: pooled model with regime interactions {#sec-pooled}
+
+Period 2 has about a year of monthly observations and five or six regressors, leaving very few residual degrees of freedom. Following the replication plan, the four periods are pooled in one regression with regime-specific constants. In the *full* variant every coefficient is regime-specific, which gives the same point estimates as the separate regressions but one set of standard errors for the whole sample. In the *expectation-only* variant only the constant and the expectation term are regime-specific and the controls are common (W4-02). Standard errors are Newey–West, with a lag of `r num("nw_lag_rule")` [@newey1987; @newey1994] (W4-03).
+
+The expectation-only variant is valid only if the controls have the same effect in every regime. The Wald test of that restriction in the full model gives `r wt("I", "corrected", "full", "controls equal", "1-2-3-4")` for Model I and `r wt("II", "corrected", "full", "controls equal", "1-2-3-4")` for Model II (corrected data). The test that the expectation coefficient is the same in all regimes gives `r wt("I", "corrected", "full", "expectation equal", "1-2-3-4")` (Model I) and `r wt("II", "corrected", "full", "expectation equal", "1-2-3-4")` (Model II). **[YOUR READING: whether the equal-controls restriction is rejected, and therefore which of the two pooled variants is the appropriate one; then what the pooled model says about Period 2.]**
+
+```{r}
+#| label: tbl-pooled
+#| tbl-cap: "Pooled models, 2000-2011, with regime interactions and Newey-West standard errors; corrected data. Source: own estimates."
+ptab("paper_T4")
+```
+
+```{r}
+#| results: asis
+pnotes("paper_T4")
+```
+
+## Interest-rate label
+
+The article calls the interest rate "real". The appendix series is the nominal one-year deposit rate; @tbl-variables uses the correct label. The label does not affect any estimate.
+
+## NDF source
+
+The article does not state the source of its NDF series. We use the 12-month USD/CNY NDF from Wind, identified by its Wind code in @tbl-sources (W2-06).^[Wind lists the series as compiled from news reports; its 1-, 3- and 6-month tenors start only at the end of 2008, so the 12-month tenor is the only one covering the sample.] **[CONFIRM against W1-03 and W2-06.]**
+
+## Corrected estimates
+
+@tbl-corrected reports both models on the corrected data (discrete quarterly GDP, fixed-base CPI, exchange rates undeflated) with the original study's estimators. For Model I it also shows the wild-bootstrap standard error of the expectation term.
+
+```{r}
+#| label: tbl-corrected
+#| tbl-cap: "Corrected estimates. Source: own estimates."
+ptab("paper_T3")
+```
+
+```{r}
+#| results: asis
+pnotes("paper_T3")
+```
+
+# Effect on the conclusions {#sec-effect}
+
+Tables [-@tbl-steps-1] (Model I) and [-@tbl-steps-2] (Model II) follow the expectation coefficient through the corrections, one step at a time. Row 0 is the published value, row 1 our reproduction, and row 1b the same on raw data. Row 1c is a diagnostic, not a correction: the reproduction with a constant in stage 2 (W4-19); the headline remains row 1. Rows 3 to 6 each add one correction to the row before, with the comparisons 1 → 1b (the article's deflation), 1b → 3 (GDP), 3 → 4 (fixed-base CPI), 4 → 4c (a constant in stage 2, a correction outside the replication plan; W4-20) and 4c → 6 (log differences). Rows 2 and 5 replace the conventional standard errors by bootstrap ones, and row 7 is the pooled model; for Model I on the corrected data, rows 5 to 7 include the stage-2 constant. Model II has no stage 2, so rows 1c and 4c do not apply to it, and its row 6 follows row 4.
+
+```{r}
+#| label: tbl-steps-1
+#| tbl-cap: "Model I: the expectation coefficient through the corrections. Source: original Tables 4.9-4.10; own estimates."
+ptab("paper_T2a")
+```
+
+```{r}
+#| results: asis
+pnotes("paper_T2a")
+```
+
+```{r}
+#| label: tbl-steps-2
+#| tbl-cap: "Model II: the NDF coefficient through the corrections. Source: original Tables 4.9-4.10; own estimates."
+ptab("paper_T2b")
+```
+
+```{r}
+#| results: asis
+pnotes("paper_T2b")
+```
+
+For reference, the Model II coefficient of Period 4 is `r t7("II", "0", 4)` as published, `r t7("II", "1", 4)` in our reproduction, `r t7("II", "4", 4)` on the corrected data, and `r t7("II", "6", 4, d = 3)` as an elasticity. For Model I, Period 3, it is `r t7("I", "0", 3)` as published, `r t7("I", "1", 3)` reproduced, and `r t7("I", "4c", 3)` corrected (with the stage-2 constant), with a wild-bootstrap standard error of `r bt("corrected", "wild", 3, "se_boot")` (*p* `r bt("corrected", "wild", 3, "p_boot")`).
+
+**[YOUR READING, period by period: at which step, if any, the sign or the significance of the expectation coefficient changes; which of the article's statements about expectations survive all corrections; which depend on one particular step; and which cannot be assessed (Period 1). Use the JCRE wording for interpretations, "Our interpretation suggests ...".]**
+
+# Reproducibility and data availability {#sec-availability}
+
+Every result in this note is produced by the code in the replication package, **[REPOSITORY URL]**, at commit `r num("git_commit")`, with `r num("r_version")` and the package versions recorded in `renv.lock`; the tables and figures were generated on `r num("date_outputs")`. The code starts from the raw files and runs in a fixed order; each script writes a run log. The bootstrap uses a fixed seed, so reruns give identical draws. **[CONFIRM from two 08_corrections logs: a rerun reproduced every estimate and bootstrap standard error.]**^[Python collects and registers the data; R estimates. Each script writes a run log to `outputs/logs/`.]
+
+Public data (SAFE, IMF, FRED, NBS) are included in the package with their download dates and checksums (@tbl-sources). Two inputs cannot be redistributed. The original document is unpublished, and its reproduction targets (the numbers of its tables) are **[included / withheld; W4-08]**. The Wind NDF series is proprietary and is required to build the analysis panel: without it, the first estimation script (`01_import_verify.R`) stops, and no estimate can be reproduced (W4-23). A reader with Wind access can export the series using the code in @tbl-sources, register it with `register_wind.py`, and run the package unchanged.
+
+# Conclusion {#sec-conclusion}
+
+**[YOUR READING, one paragraph each, in JCRE's four-part logic: (1) what was reproduced and what was not (@sec-reproduction); (2) which errors were found and corrected (@sec-corrections); (3) which of the article's conclusions are confirmed and which are not (@sec-effect); (4) what remains open, for example the Period 1 and Period 3 constants and the Chow statistics.]**
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
+
+# Appendix A. Decisions cited {.unnumbered .appendix}
+
+```{r}
+#| label: tbl-decisions
+#| tbl-cap: "Decisions in the author's decision log. Each entry gives the options considered, the evidence and the date."
+# The log itself stays on the author's computer (W1-09); a copy without it prints a notice instead
+dpath <- file.path("docs", "decisions.md")
+dl <- if (file.exists(dpath)) readLines(dpath, encoding = "UTF-8", warn = FALSE) else "## W0-00 [decision log not available in this copy]"
+h <- grep("^## W[0-9]+-[0-9]+ ", dl, value = TRUE)
+ftab(data.frame(Decision = sub("^## (W[0-9]+-[0-9]+) .*$", "\\1", h),
+                Title = sub("^## W[0-9]+-[0-9]+ ", "", h)))
+```

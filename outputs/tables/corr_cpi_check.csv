@@ -1,0 +1,6 @@
+"check","n","mean_abs_gap","max_abs_gap","n_within_print","correlation"
+"original pi vs IMF CPI year-on-year",144,0.076434466908556,0.592208197191098,31,0.998867890783392
+"IMF vs FRED CPI year-on-year (sample months)",144,7.89261921330109e-06,2.4212348449737e-05,,0.999999999992895
+"IMF / FRED index ratio (constant if same index, other base)",144,6.63743472716856e-08,3.4262900286292e-07,,
+"original pi vs NBS published year-on-year",144,0,0,144,1
+"NBS published year-on-year vs IMF CPI year-on-year",144,0.076434466908556,0.592208197191098,31,0.998867890783392

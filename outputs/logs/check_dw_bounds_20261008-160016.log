@@ -1,0 +1,14 @@
+2026-10-08 16:00:16 INFO  R version 4.5.3 (2026-03-11 ucrt) on x86_64-w64-mingw32; urca 1.3.4, lmtest 0.9.40
+2026-10-08 16:00:17 INFO  CHECK  n = 15, k = 1: dL 1.077, dU 1.361 (compare with any DW table)
+2026-10-08 16:00:17 INFO  CHECK  n = 20, k = 2: dL 1.100, dU 1.537 (compare with any DW table)
+2026-10-08 16:00:17 INFO  Selected inputs (W2-10): BOP = bop_ca_ytd; NDF = ndf_mend
+2026-10-08 16:00:17 INFO  Panel data/interim/study_a_monthly.csv: 144 months x 18 columns
+2026-10-08 16:00:17 INFO  Stage-1 n by period (k = 4 regressors + constant): full 65/11/24/43; within 65/10/23/42
+2026-10-08 16:00:17 INFO  Computing exact 5% bounds for n = 6..200, k = 1..6 ...
+2026-10-08 16:01:16 INFO  Wrote outputs/tables/dw_bounds_exact.csv (1164 rows)
+2026-10-08 16:01:16 INFO    Period 1: printed dL 1.471, dU 1.731 -> exact match n=65,k=4; stage-1 n full 65, within 65
+2026-10-08 16:01:16 INFO    Period 2: printed dL 0.376, dU 2.414 -> exact match n=10,k=4; stage-1 n full 11, within 10
+2026-10-08 16:01:16 INFO    Period 3: printed dL 1.078, dU 1.660 -> exact match n=23,k=3; stage-1 n full 24, within 23
+2026-10-08 16:01:16 INFO    Period 4: printed dL 1.338, dU 1.659 -> exact match n=40,k=3; stage-1 n full 43, within 42
+2026-10-08 16:01:16 INFO  Wrote outputs/tables/check_dw_bounds.csv (4 rows)
+2026-10-08 16:01:16 INFO  STATUS: OK (warnings=0, errors=0)

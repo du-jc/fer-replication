@@ -1,0 +1,8 @@
+"letter","note"
+"a","Coefficient on the stage-3 expected change of the exchange rate (Model I) in each period (step 7: in each regime of the pooled model), standard error below in parentheses."
+"b","Step 0: original, with the numbers in parentheses read as standard errors. Step 1: our reproduction (headline data version). Step 1b: the same on raw data. Steps 3-6 add one correction at a time (README_week4 s.2.1): 1b to 3 isolates the GDP correction, 3 to 4 the fixed-base CPI."
+"c","Steps 2 and 5: bootstrap standard error of the whole three-stage chain (999 replications; wild: Rademacher; block: moving blocks within periods); marks from the centred bootstrap p-value."
+"d","Step 6: coefficients are elasticities (log differences of FER and of the exchange-rate terms). Step 7: pooled OLS 2000-2011 with regime-specific constants and expectation terms; full = all coefficients regime-specific; exp_only = controls common; Newey-West standard errors."
+"e","n.i. = not identified."
+"f","Significance (legend of original Tables 4.9-4.10): † p < 0.1, * p < 0.05, ** p < 0.01, *** p < 0.001 (two-sided; normal for the ARIMA periods, t for OLS)."
+"g","Periods: 1 = 2000-01 to 2005-06; 2 = 2005-07 to 2006-05; 3 = 2006-06 to 2008-05; 4 = 2008-06 to 2011-12 (Replication Plan s.3.3)."

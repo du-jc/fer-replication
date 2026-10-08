@@ -1,0 +1,20 @@
+2026-10-06 18:30:10 INFO  Python 3.13.15 on Windows 10
+2026-10-06 18:30:12 INFO  GET https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.STA/CPI/~/CHN.CPI._T.IX.M -> HTTP 200, 38050 bytes
+2026-10-06 18:30:12 INFO  IMF: CSV received with Accept: application/vnd.sdmx.data+csv;version=2.0.0
+2026-10-06 18:30:12 INFO  Saved new vintage data/raw/imf/IMF_CPI_CHN.CPI._T.IX.M_dl20261006_a747a112.csv (sha256 a747a11232f8ed8a...)
+2026-10-06 18:30:12 INFO  IMF data/raw/imf/IMF_CPI_CHN.CPI._T.IX.M_dl20261006_a747a112.csv: 404 monthly rows; constant columns {'STRUCTURE[;]': 'dataflow', 'STRUCTURE_ID': 'IMF.STA:CPI(5.0.0)', 'ACTION': 'R', 'COUNTRY': 'CHN', 'INDEX_TYPE': 'CPI', 'COICOP_1999': '_T', 'TYPE_OF_TRANSFORMATION': 'IX', 'FREQUENCY': 'M', 'SCALE': '0', 'DERIVATION_TYPE': 'O', 'OVERLAP': 'OL', 'REFERENCE_PERIOD': '2020A', 'COMMON_REFERENCE_PERIOD': '2020A', 'IFS_FLAG': 'true'}
+2026-10-06 18:30:12 INFO  CHECK PASS  cpi_imf: every month 1999-01..2011-12 present (file covers 1993-01..2026-08, 404 months)
+2026-10-06 18:30:12 INFO  Ledger row written: IMF.STA/CPI/CHN.CPI._T.IX.M (layer rep)
+2026-10-06 18:30:12 INFO  CHECK PASS  FRED_API_KEY format: 32 lower-case letters/digits
+2026-10-06 18:30:16 INFO  GET https://api.stlouisfed.org/fred/series -> HTTP 200, 919 bytes
+2026-10-06 18:30:18 INFO  GET https://api.stlouisfed.org/fred/series/observations -> HTTP 200, 38807 bytes
+2026-10-06 18:30:18 INFO  Saved new vintage data/raw/fred/FRED_CHNCPIALLMINMEI_dl20261006_0a329079.json (sha256 0a3290793cde89fc...)
+2026-10-06 18:30:18 INFO  FRED data/raw/fred/FRED_CHNCPIALLMINMEI_dl20261006_0a329079.json: 388 monthly rows; units 'Index 2015=100', last updated 2025-05-15 14:19:51-05
+2026-10-06 18:30:18 INFO  CHECK PASS  cpi_fred: every month 1999-01..2011-12 present (file covers 1993-01..2025-04, 388 months)
+2026-10-06 18:30:18 INFO  Ledger row written: CHNCPIALLMINMEI (layer check)
+2026-10-06 18:30:18 INFO  NBS data/raw/nbs/NBS_CPI_yoy_monthly_199801-201512.csv: row '居民消费价格指数 (上年同月=100)', 216 monthly columns; 数据库：月度数据 | 时间：1998年01月-2015年12月
+2026-10-06 18:30:18 INFO  CHECK PASS  cpi_nbs_yoy: every month 1999-01..2011-12 present (file covers 1998-01..2015-12, 216 months)
+2026-10-06 18:30:18 INFO  Ledger row written: nbs:居民消费价格指数(上年同月=100) (layer check)
+2026-10-06 18:30:18 INFO  Wrote data/interim/cpi_monthly.csv (404 months; cpi_fred filled; cpi_nbs_yoy filled)
+2026-10-06 18:30:18 INFO  Next: Rscript code/R/08_corrections.R (rebasing and deflation are done in R)
+2026-10-06 18:30:18 INFO  STATUS: OK (warnings=0, errors=0)

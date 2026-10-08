@@ -1,0 +1,25 @@
+"model","version","stage2_const","type","test","regimes","vars_tested","q","F","df2","p_F","nw_lag","n"
+"I","deflated","FALSE","full","all coefficients equal (robust Chow)","1-2","_cons;DER_hathat;DNX;DFDB;DFDI",5,7.90060502951357,121,1.81060722531632e-06,4,141
+"I","deflated","FALSE","full","all coefficients equal (robust Chow)","2-3","_cons;DER_hathat;DNX;DFDB;DFDI",5,6.58427690631076,121,1.87418668391971e-05,4,141
+"I","deflated","FALSE","full","all coefficients equal (robust Chow)","3-4","_cons;DER_hathat;DNX;DFDB;DFDI",5,1.37119614707389,121,0.239852336104104,4,141
+"I","deflated","FALSE","full","controls equal in all regimes","1-2-3-4","DNX;DFDB;DFDI",9,4.52026022216916,121,3.87891551117399e-05,4,141
+"I","deflated","FALSE","full","expectation equal in all regimes","1-2-3-4","DER_hathat",3,0.143415075292105,121,0.933713899054008,4,141
+"I","deflated","FALSE","exp_only","expectation equal in all regimes","1-2-3-4","DER_hathat",3,0.108703045265572,130,0.954882877505632,4,141
+"II","deflated","","full","all coefficients equal (robust Chow)","1-2","_cons;DNDF;DGDP;DNX;DFDB;DFDI",6,7.00138623548916,119,2.14155955328891e-06,4,143
+"II","deflated","","full","all coefficients equal (robust Chow)","2-3","_cons;DNDF;DGDP;DNX;DFDB;DFDI",6,6.8190902135132,119,3.09712050787195e-06,4,143
+"II","deflated","","full","all coefficients equal (robust Chow)","3-4","_cons;DNDF;DGDP;DNX;DFDB;DFDI",6,2.79430350303432,119,0.0140554111827665,4,143
+"II","deflated","","full","controls equal in all regimes","1-2-3-4","DGDP;DNX;DFDB;DFDI",12,8.62657716641479,119,1.27944326103716e-11,4,143
+"II","deflated","","full","expectation equal in all regimes","1-2-3-4","DNDF",3,0.959491120978773,119,0.414348526102646,4,143
+"II","deflated","","exp_only","expectation equal in all regimes","1-2-3-4","DNDF",3,1.67986361009686,131,0.174465259257991,4,143
+"II","corrected","","full","all coefficients equal (robust Chow)","1-2","_cons;DNDF;DGDP;DNX;DFDB;DFDI",6,6.49762961655788,119,5.9589790116486e-06,4,143
+"II","corrected","","full","all coefficients equal (robust Chow)","2-3","_cons;DNDF;DGDP;DNX;DFDB;DFDI",6,12.9067852940137,119,3.39539231307189e-11,4,143
+"II","corrected","","full","all coefficients equal (robust Chow)","3-4","_cons;DNDF;DGDP;DNX;DFDB;DFDI",6,3.9732323724107,119,0.00116782972535969,4,143
+"II","corrected","","full","controls equal in all regimes","1-2-3-4","DGDP;DNX;DFDB;DFDI",12,3.54772091256874,119,0.000161272083823328,4,143
+"II","corrected","","full","expectation equal in all regimes","1-2-3-4","DNDF",3,1.5459287851035,119,0.206245174809672,4,143
+"II","corrected","","exp_only","expectation equal in all regimes","1-2-3-4","DNDF",3,2.64273086376171,131,0.0520112386733809,4,143
+"I","corrected","TRUE","full","all coefficients equal (robust Chow)","1-2","_cons;DNX;DFDB;DFDI",4,2.22101117746865,122,0.0706100859139311,4,141
+"I","corrected","TRUE","full","all coefficients equal (robust Chow)","2-3","_cons;DER_hathat;DNX;DFDB;DFDI",5,2.60199503685942,122,0.0284077413048708,4,141
+"I","corrected","TRUE","full","all coefficients equal (robust Chow)","3-4","_cons;DER_hathat;DNX;DFDB;DFDI",5,0.820907724252388,122,0.53706370779879,4,141
+"I","corrected","TRUE","full","controls equal in all regimes","1-2-3-4","DNX;DFDB;DFDI",9,3.27984679065575,122,0.00130847106817112,4,141
+"I","corrected","TRUE","full","expectation equal in all regimes","1-2-3-4","DER_hathat",2,0.897109292301231,122,0.410419077113855,4,141
+"I","corrected","TRUE","exp_only","expectation equal in all regimes","1-2-3-4","DER_hathat",2,0.900414274461436,131,0.408901282718614,4,141

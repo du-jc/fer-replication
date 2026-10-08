@@ -1,0 +1,10 @@
+2026-10-08 15:04:43 INFO  Python 3.13.15 on Windows 10
+2026-10-08 15:04:43 INFO  CHECK PASS  data/raw/proprietary/ is in .gitignore
+2026-10-08 15:04:43 ERROR FileNotFoundError: no .xlsx file in data/raw/proprietary/
+2026-10-08 15:04:43 INFO      File "C:\DU_202609\Projects\FER_Replication\fer-replication\code\python\register_wind.py", line 593, in main
+2026-10-08 15:04:43 INFO        for path in find_files(args.file):
+2026-10-08 15:04:43 INFO                    ~~~~~~~~~~^^^^^^^^^^^
+2026-10-08 15:04:43 INFO      File "C:\DU_202609\Projects\FER_Replication\fer-replication\code\python\register_wind.py", line 576, in find_files
+2026-10-08 15:04:43 INFO        raise FileNotFoundError("no .xlsx file in data/raw/proprietary/")
+2026-10-08 15:04:43 INFO    FileNotFoundError: no .xlsx file in data/raw/proprietary/
+2026-10-08 15:04:43 INFO  STATUS: FAIL (warnings=0, errors=1)

@@ -1,0 +1,7 @@
+"letter","note"
+"a","Pooled OLS over 2000-2011, data version 'corrected', level form, with regime-specific constants. full: every coefficient regime-specific (point estimates equal the separate per-period OLS fits; controls not shown); exp_only: only the constant and the expectation term regime-specific, controls common."
+"b","Newey-West standard errors in parentheses: Bartlett kernel, lag floor(4(n/100)^(2/9)), no prewhitening, small-sample factor n/(n-k); p-values from t(n-k). Results with the automatic bandwidth are in corr_pooled_coefs.csv and corr_pooled_tests.csv."
+"c","Tests: Wald tests with the Newey-West covariance, reported as F = W/q with (q, n-k) degrees of freedom. A term not identified in a regime is left out of the restrictions."
+"d","Model I uses the stage-3 expected change of the exchange rate from the headline specification; its pooled standard errors do not account for the generated regressor (see Table 3 for the bootstrap)."
+"e","Significance (legend of original Tables 4.9-4.10): † p < 0.1, * p < 0.05, ** p < 0.01, *** p < 0.001 (two-sided; normal for the ARIMA periods, t for OLS)."
+"f","Periods: 1 = 2000-01 to 2005-06; 2 = 2005-07 to 2006-05; 3 = 2006-06 to 2008-05; 4 = 2008-06 to 2011-12 (Replication Plan s.3.3)."

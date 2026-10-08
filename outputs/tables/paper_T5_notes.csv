@@ -1,0 +1,4 @@
+"letter","note"
+"a","Original DF-GLS: original Tables 4.1 (levels) and 4.2 (first differences). Our DF-GLS and ADF use the specification fixed in Week 2 (deflated/trend/common/fixed_1) and the same number of lags."
+"b","Critical values at 5%: DF-GLS from urca (Elliott, Rothenberg and Stock 1996 tables), ADF from urca (Dickey-Fuller tables). The original's critical values (Stata dfgls, finite-sample) differ by construction; compare the statistics."
+"c","Rejects: the unit-root null is rejected at 5%."

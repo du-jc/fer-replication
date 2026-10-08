@@ -1,0 +1,31 @@
+2026-10-08 15:24:22 INFO  R version 4.5.3 (2026-03-11 ucrt) on x86_64-w64-mingw32; urca 1.3.4, lmtest 0.9.40
+2026-10-08 15:24:22 INFO  CHECK PASS  appendix: 144 rows, months 2000-01..2011-12 consecutive
+2026-10-08 15:24:22 INFO  CHECK PASS  all 9 variables numeric, no missing values
+2026-10-08 15:24:22 INFO  Raw ER standard deviation in Period 1: 0.000000
+2026-10-08 15:24:22 INFO  CHECK PASS  label map: 17/17 labels confirmed
+2026-10-08 15:24:22 INFO  CHECK PASS  T3.2 (period 1, summary): 40 cells; matches raw 40, deflated 12
+2026-10-08 15:24:22 WARN  T3.3 (period 1, correlation): 36 cells; matches raw 21, deflated 11 -- mismatches listed in verify_T3_cells.csv
+2026-10-08 15:24:23 WARN  T3.4 (period 2, summary): 40 cells; matches raw 39, deflated 12 -- mismatches listed in verify_T3_cells.csv
+2026-10-08 15:24:23 WARN  T3.5 (period 2, correlation): 36 cells; matches raw 22, deflated 15 -- mismatches listed in verify_T3_cells.csv
+2026-10-08 15:24:23 WARN  T3.6 (period 3, summary): 40 cells; matches raw 38, deflated 12 -- mismatches listed in verify_T3_cells.csv
+2026-10-08 15:24:23 WARN  T3.7 (period 3, correlation): 36 cells; matches raw 35, deflated 13 -- mismatches listed in verify_T3_cells.csv
+2026-10-08 15:24:23 WARN  T3.8 (period 4, summary): 40 cells; matches raw 39, deflated 12 -- mismatches listed in verify_T3_cells.csv
+2026-10-08 15:24:23 WARN  T3.9 (period 4, correlation): 36 cells; matches raw 33, deflated 10 -- mismatches listed in verify_T3_cells.csv
+2026-10-08 15:24:23 INFO  Version matching best, per table: T3.2=raw, T3.3=raw, T3.4=raw, T3.5=raw, T3.6=raw, T3.7=raw, T3.8=raw, T3.9=raw
+2026-10-08 15:24:23 INFO  34 cell(s) match in neither version; first ones:
+2026-10-08 15:24:23 INFO    T3.3  ER     x FER        target -0.57  raw NA  deflated -0.6347
+2026-10-08 15:24:23 INFO    T3.3  ER     x GDP        target -0.33  raw NA  deflated -0.2434
+2026-10-08 15:24:23 INFO    T3.3  AER    x FER        target -0.56  raw NA  deflated -0.6347
+2026-10-08 15:24:23 INFO    T3.3  AER    x GDP        target -0.28  raw NA  deflated -0.2434
+2026-10-08 15:24:23 INFO    T3.3  AER    x ER         target 0.97  raw NA  deflated 1.0000
+2026-10-08 15:24:23 INFO    T3.3  NX     x ER         target -0.28  raw NA  deflated -0.1586
+2026-10-08 15:24:23 INFO    T3.3  NX     x AER        target -0.25  raw NA  deflated -0.1586
+2026-10-08 15:24:23 INFO    T3.3  FDI    x ER         target -0.48  raw NA  deflated -0.2672
+2026-10-08 15:24:23 INFO    T3.3  FDI    x AER        target -0.42  raw NA  deflated -0.2672
+2026-10-08 15:24:23 INFO    T3.3  pi     x ER         target -0.37  raw NA  deflated -0.9998
+2026-10-08 15:24:23 INFO  Wrote outputs/tables/verify_T3_cells.csv (304 rows)
+2026-10-08 15:24:23 INFO  Wrote outputs/tables/verify_T3_summary.csv (8 rows)
+2026-10-08 15:24:23 ERROR data/interim/ndf_monthly.csv not found (monthly NDF). Run the Python step first.
+2026-10-08 15:24:23 INFO  CHECK PASS  BOP candidates: 144 sample months, columns ca_hold, ca_div3, ca_ytd complete
+2026-10-08 15:24:23 ERROR study_a_monthly.csv not written: NDF or BOP input missing
+2026-10-08 15:24:23 INFO  STATUS: FAIL (warnings=7, errors=2)

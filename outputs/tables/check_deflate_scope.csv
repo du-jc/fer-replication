@@ -1,0 +1,16 @@
+"column","role","used_in_models","changed","divided_by_pi_over_100"
+"FER","",TRUE,TRUE,TRUE
+"GDP","",TRUE,TRUE,TRUE
+"ER","",TRUE,TRUE,TRUE
+"AER","",TRUE,TRUE,TRUE
+"NX","",TRUE,TRUE,TRUE
+"pi","",TRUE,FALSE,FALSE
+"FDI","",TRUE,TRUE,TRUE
+"FDB","",TRUE,TRUE,TRUE
+"i","",TRUE,TRUE,TRUE
+"ndf_mavg","",FALSE,FALSE,FALSE
+"ndf_mend","NDF (selected, W2-10)",TRUE,TRUE,TRUE
+"ndf_n_days","",FALSE,FALSE,FALSE
+"bop_ca_hold","",FALSE,FALSE,FALSE
+"bop_ca_div3","",FALSE,FALSE,FALSE
+"bop_ca_ytd","BOP (selected, W2-10)",TRUE,TRUE,TRUE

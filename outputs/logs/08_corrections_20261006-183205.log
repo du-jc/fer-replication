@@ -1,0 +1,98 @@
+2026-10-06 18:32:05 INFO  R version 4.5.3 (2026-03-11 ucrt) on x86_64-w64-mingw32; urca 1.3.4, lmtest 0.9.40
+2026-10-06 18:32:05 INFO  sandwich 3.1.3
+2026-10-06 18:32:05 INFO  Selected inputs (W2-10): BOP = bop_ca_ytd; NDF = ndf_mend
+2026-10-06 18:32:05 INFO  Panel data/interim/study_a_monthly.csv: 144 months x 18 columns
+2026-10-06 18:32:05 INFO  HEADLINE Model I specification (07_classify.R, W3-07): alternative, lag 2, deflated data
+2026-10-06 18:32:05 INFO  CPI file data/interim/cpi_monthly.csv: 404 months (1993-01..2026-08); FRED check column present; NBS year-on-year column present
+2026-10-06 18:32:05 INFO  == 1. Data corrections: discrete quarterly GDP; fixed-base CPI (Plan s.5)
+2026-10-06 18:32:05 INFO  CHECK PASS  appendix GDP is constant within every quarter (year-to-date, held)
+2026-10-06 18:32:05 INFO  Wrote data/interim/study_a_corrected.csv (discrete quarterly GDP, CPI 2000 = 100; git-ignored)
+2026-10-06 18:32:06 INFO  Wrote data/interim/cpi_gaps.csv (month by month; git-ignored: it holds the original pi)
+2026-10-06 18:32:06 INFO  Wrote outputs/tables/corr_cpi_check.csv (5 rows)
+2026-10-06 18:32:06 INFO    CPI check: original pi vs IMF CPI year-on-year: n 144, mean |gap| 0.0764, max |gap| 0.5922, 31 within the printed decimals of pi
+2026-10-06 18:32:06 INFO    CPI check: IMF vs FRED CPI year-on-year (sample months): n 144, mean |gap| 0.0000, max |gap| 0.0000
+2026-10-06 18:32:06 INFO    CPI check: IMF / FRED index ratio (constant if same index, other base): n 144, mean |gap| 0.0000, max |gap| 0.0000
+2026-10-06 18:32:06 INFO    CPI check: original pi vs NBS published year-on-year: n 144, mean |gap| 0.0000, max |gap| 0.0000, 144 within the printed decimals of pi
+2026-10-06 18:32:06 INFO    CPI check: NBS published year-on-year vs IMF CPI year-on-year: n 144, mean |gap| 0.0764, max |gap| 0.5922, 31 within the printed decimals of pi
+2026-10-06 18:32:06 INFO  == 2. Standard errors labelled as t-statistics (Plan s.5)
+2026-10-06 18:32:06 INFO  Star legend from the notes of T4.9, T4.10 (W1-07): * p<0.05, ** p<0.01, *** p<0.001; dagger p<0.1 (significant)
+2026-10-06 18:32:06 INFO  Tables 4.9-4.10 targets: 48 numeric cells (44 with a standard error)
+2026-10-06 18:32:06 INFO  Wrote outputs/tables/corr_relabel.csv (44 rows)
+2026-10-06 18:32:06 INFO  Stars implied by the parentheses: read as SE match the printed stars in 42 of 44 cells; read as t in 22 of 44
+2026-10-06 18:32:06 INFO  == 3. Per-period estimates: versions x forms x conventions (expectation term, primary convention)
+2026-10-06 18:32:09 INFO  Wrote outputs/tables/corr_period_estimates.csv (768 rows)
+2026-10-06 18:32:09 INFO  CHECK PASS  Model I raw/deflated level estimates equal Week 3 (86 coefficients)
+2026-10-06 18:32:09 INFO  CHECK PASS  Model II raw/deflated level estimates equal Week 3 (104 coefficients)
+2026-10-06 18:32:09 INFO    DER_hathat level   raw       P1 NA [NA]  P2 -634.4159 [1621.3901]  P3 -3106.5529 [1244.5161]*  P4 22.6203 [4191.9515]
+2026-10-06 18:32:09 INFO    DER_hathat level   deflated  P1 -257.4538 [1918.0945]  P2 -722.7066 [1885.9070]  P3 462.5466 [1016.0453]  P4 386.9869 [2575.8167]
+2026-10-06 18:32:09 INFO    DER_hathat level   gdpq      P1 NA [NA]  P2 -634.4159 [1621.3901]  P3 -3106.5529 [1244.5161]*  P4 22.6203 [4191.9515]
+2026-10-06 18:32:09 INFO    DER_hathat level   corrected P1 NA [NA]  P2 94.7189 [1152.6051]  P3 -2871.4424 [2699.4925]  P4 1476.8606 [3395.4434]
+2026-10-06 18:32:09 INFO    DER_hathat logdiff raw       P1 NA [NA]  P2 -0.7956 [1.5597]  P3 -0.7588 [0.7856]  P4 0.2801 [1.0644]
+2026-10-06 18:32:09 INFO    DER_hathat logdiff deflated  P1 0.3196 [4.3483]  P2 -0.3410 [1.9160]  P3 0.2712 [0.4551]  P4 0.5681 [0.6869]
+2026-10-06 18:32:09 INFO    DER_hathat logdiff gdpq      P1 NA [NA]  P2 -0.7956 [1.5597]  P3 -0.7588 [0.7856]  P4 0.2801 [1.0644]
+2026-10-06 18:32:09 INFO    DER_hathat logdiff corrected P1 NA [NA]  P2 0.0811 [1.0822]  P3 -1.3717 [1.9577]  P4 0.6028 [1.1009]
+2026-10-06 18:32:09 INFO    DNDF       level   raw       P1 21.1638 [123.7514]  P2 -182.0120 [577.1359]  P3 -451.9323 [608.5882]  P4 -2025.2415 [595.7177]**
+2026-10-06 18:32:09 INFO    DNDF       level   deflated  P1 111.4349 [116.9164]  P2 117.0905 [331.0006]  P3 -158.1010 [318.0285]  P4 -1282.9913 [523.6424]*
+2026-10-06 18:32:09 INFO    DNDF       level   gdpq      P1 23.5085 [115.1459]  P2 -181.2897 [526.6214]  P3 -406.0903 [409.8075]  P4 -1942.2077 [600.2732]**
+2026-10-06 18:32:09 INFO    DNDF       level   corrected P1 8.0405 [119.6018]  P2 -18.6523 [426.2268]  P3 -377.6786 [309.4672]  P4 -1506.2622 [482.7555]**
+2026-10-06 18:32:09 INFO    DNDF       logdiff raw       P1 -0.0935 [0.2357]  P2 -0.2024 [0.5486]  P3 -0.2132 [0.2376]  P4 -0.4969 [0.1550]**
+2026-10-06 18:32:09 INFO    DNDF       logdiff deflated  P1 0.2227 [0.2088]  P2 0.1163 [0.3315]  P3 -0.0685 [0.1114]  P4 -0.2526 [0.1472]+
+2026-10-06 18:32:09 INFO    DNDF       logdiff gdpq      P1 -0.0730 [0.2335]  P2 -0.2458 [0.5118]  P3 -0.1911 [0.1778]  P4 -0.4813 [0.1567]**
+2026-10-06 18:32:09 INFO    DNDF       logdiff corrected P1 -0.1017 [0.2598]  P2 -0.0565 [0.3828]  P3 -0.2125 [0.1537]  P4 -0.4599 [0.1618]**
+2026-10-06 18:32:09 INFO  == 4. Period 1: variation of the exchange rate and of the expectation term
+2026-10-06 18:32:09 INFO  Wrote outputs/tables/corr_period1.csv (4 rows)
+2026-10-06 18:32:09 INFO    Period 1 raw       sd(ER) 0.0000  sd(DER) 0.0000  sd(DER_hathat) 0.0000  R2(DER on Dpi) NA
+2026-10-06 18:32:09 INFO    Period 1 deflated  sd(ER) 0.1379  sd(DER) 0.0530  sd(DER_hathat) 0.0049  R2(DER on Dpi) 0.999
+2026-10-06 18:32:09 INFO    Period 1 gdpq      sd(ER) 0.0000  sd(DER) 0.0000  sd(DER_hathat) 0.0000  R2(DER on Dpi) NA
+2026-10-06 18:32:09 INFO    Period 1 corrected sd(ER) 0.0000  sd(DER) 0.0000  sd(DER_hathat) 0.0000  R2(DER on Dpi) NA
+2026-10-06 18:32:09 INFO  == 5. Unit roots: DF-GLS and ADF
+2026-10-06 18:32:09 INFO  CHECK PASS  ADF tau equals the Week 2 value at the same lag
+2026-10-06 18:32:09 INFO  Wrote outputs/tables/corr_unitroot.csv (14 rows)
+2026-10-06 18:32:09 INFO  Unit roots (spec deflated/trend/common/fixed_1): DF-GLS and ADF agree on rejection at 5% in 14 of 14 series
+2026-10-06 18:32:09 INFO  == 6. Pooled model with regime interactions, Newey-West (primary convention)
+2026-10-06 18:32:11 INFO  CHECK PASS  fully interacted pooled OLS equals the separate per-period OLS fits
+2026-10-06 18:32:11 INFO  Wrote outputs/tables/corr_pooled_coefs.csv (536 rows)
+2026-10-06 18:32:11 INFO  Wrote outputs/tables/corr_pooled_tests.csv (192 rows)
+2026-10-06 18:32:11 INFO  Newey-West lag by rule floor(4(n/100)^(2/9)): 4 (n = 141/143)
+2026-10-06 18:32:11 INFO    pooled full     I  raw       R1 NA [NA]  R2 -634.4159 [558.6627]  R3 -3425.1608 [1276.9340]**  R4 22.6203 [3580.4151]
+2026-10-06 18:32:11 INFO    pooled full     I  deflated  R1 -345.2321 [2072.4200]  R2 -722.7066 [790.4686]  R3 -1170.8507 [1176.8145]  R4 386.9869 [2211.7044]
+2026-10-06 18:32:11 INFO    pooled full     I  gdpq      R1 NA [NA]  R2 -634.4159 [558.6627]  R3 -3425.1608 [1276.9340]**  R4 22.6203 [3580.4151]
+2026-10-06 18:32:11 INFO    pooled full     I  corrected R1 NA [NA]  R2 94.7189 [584.2589]  R3 -2371.2608 [850.3856]**  R4 1476.8606 [3012.2850]
+2026-10-06 18:32:11 INFO    pooled exp_only I  raw       R1 NA [NA]  R2 -1196.0703 [760.5815]  R3 -3322.7946 [1296.7674]*  R4 77.8599 [3419.7864]
+2026-10-06 18:32:11 INFO    pooled exp_only I  deflated  R1 -647.1483 [3861.8893]  R2 -356.2050 [2161.7779]  R3 -937.2110 [1186.4572]  R4 349.6905 [1935.2999]
+2026-10-06 18:32:11 INFO    pooled exp_only I  gdpq      R1 NA [NA]  R2 -1196.0703 [760.5815]  R3 -3322.7946 [1296.7674]*  R4 77.8599 [3419.7864]
+2026-10-06 18:32:11 INFO    pooled exp_only I  corrected R1 NA [NA]  R2 -918.9649 [850.1364]  R3 -2288.5985 [864.1053]**  R4 1556.2306 [2891.6588]
+2026-10-06 18:32:11 INFO    pooled full     II raw       R1 -118.5253 [230.1609]  R2 -182.0120 [235.4008]  R3 -117.9069 [337.9100]  R4 -2025.2415 [900.8727]*
+2026-10-06 18:32:11 INFO    pooled full     II deflated  R1 121.1658 [156.8193]  R2 117.0905 [103.8657]  R3 162.8196 [314.8594]  R4 -1282.9913 [853.6876]
+2026-10-06 18:32:11 INFO    pooled full     II gdpq      R1 -102.7140 [226.1707]  R2 -181.2897 [185.2581]  R3 -196.3268 [347.8290]  R4 -1942.2077 [866.8588]*
+2026-10-06 18:32:11 INFO    pooled full     II corrected R1 -108.4128 [222.1840]  R2 -18.6523 [160.7077]  R3 130.5404 [344.4204]  R4 -1506.2622 [741.2413]*
+2026-10-06 18:32:11 INFO    pooled exp_only II raw       R1 -123.0005 [237.5725]  R2 450.4839 [296.1504]  R3 -239.7398 [338.8256]  R4 -2071.9416 [857.2756]*
+2026-10-06 18:32:11 INFO    pooled exp_only II deflated  R1 126.5159 [153.1988]  R2 441.7910 [200.7422]*  R3 256.8583 [304.8645]  R4 -1258.0682 [813.8119]
+2026-10-06 18:32:11 INFO    pooled exp_only II gdpq      R1 -121.4092 [238.3598]  R2 479.9347 [315.5977]  R3 -231.5634 [341.7142]  R4 -2033.9764 [833.0941]*
+2026-10-06 18:32:11 INFO    pooled exp_only II corrected R1 -116.0979 [223.0770]  R2 551.5213 [429.8319]  R3 72.6856 [278.5633]  R4 -1609.1444 [712.0742]*
+2026-10-06 18:32:11 INFO  == 7. Bootstrap of the three-stage chain (generated regressors)
+2026-10-06 18:32:11 INFO  Bootstrap: 999 replications per scheme (wild, block), seed 20261001, versions deflated, corrected, level form, convention full
+2026-10-06 18:32:23 INFO      wild: 200 of 999 replications (12 s)
+2026-10-06 18:32:35 INFO      wild: 400 of 999 replications (24 s)
+2026-10-06 18:32:46 INFO      wild: 600 of 999 replications (35 s)
+2026-10-06 18:32:57 INFO      wild: 800 of 999 replications (46 s)
+2026-10-06 18:33:09 INFO    deflated  wild  DER_hathat: P1 se 1918.0945 -> 1060.9666 (x0.55)  P2 se 1885.9070 -> 2221.8062 (x1.18)  P3 se 1016.0453 -> 1039.0926 (x1.02)  P4 se 2575.8167 -> 2023.8966 (x0.79)  (58 s)
+2026-10-06 18:33:21 INFO      block: 200 of 999 replications (12 s)
+2026-10-06 18:33:32 INFO      block: 400 of 999 replications (23 s)
+2026-10-06 18:33:44 INFO      block: 600 of 999 replications (35 s)
+2026-10-06 18:33:56 INFO      block: 800 of 999 replications (47 s)
+2026-10-06 18:34:08 INFO    deflated  block DER_hathat: P1 se 1918.0945 -> 3158.6494 (x1.65)  P2 se 1885.9070 -> 3835.8653 (x2.03)  P3 se 1016.0453 -> 1122.5427 (x1.10)  P4 se 2575.8167 -> 6063.3386 (x2.35)  (59 s)
+2026-10-06 18:34:18 INFO      wild: 200 of 999 replications (10 s)
+2026-10-06 18:34:29 INFO      wild: 400 of 999 replications (21 s)
+2026-10-06 18:34:42 INFO      wild: 600 of 999 replications (34 s)
+2026-10-06 18:34:54 INFO      wild: 800 of 999 replications (46 s)
+2026-10-06 18:35:07 INFO    corrected wild  DER_hathat: P2 se 1152.6051 -> 1409.9911 (x1.22)  P3 se 2699.4925 -> 1558.6073 (x0.58)  P4 se 3395.4434 -> 5443.9301 (x1.60)  (59 s)
+2026-10-06 18:35:23 INFO      block: 200 of 999 replications (15 s)
+2026-10-06 18:35:38 INFO      block: 400 of 999 replications (29 s)
+2026-10-06 18:35:52 INFO      block: 600 of 999 replications (44 s)
+2026-10-06 18:36:06 INFO      block: 800 of 999 replications (58 s)
+2026-10-06 18:36:20 INFO    corrected block DER_hathat: P2 se 1152.6051 -> 1922.1980 (x1.67)  P3 se 2699.4925 -> 1669.9663 (x0.62)  P4 se 3395.4434 -> 8060.9164 (x2.37)  (72 s)
+2026-10-06 18:36:20 INFO  Wrote outputs/tables/corr_bootstrap.csv (86 rows)
+2026-10-06 18:36:20 INFO  Wrote outputs/tables/corr_bootstrap_draws.csv (13986 rows)
+2026-10-06 18:36:20 INFO  Next: 09_outputs.R
+2026-10-06 18:36:20 INFO  STATUS: OK (warnings=0, errors=0)

@@ -1,0 +1,179 @@
+---
+title: "Tables for checking: replication of Du, Ge and Qiao (2014)"
+date: last-modified
+format:
+  html:
+    embed-resources: true
+  docx: default
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+knitr::opts_knit$set(root.dir = normalizePath(".."))
+```
+
+```{r helpers}
+# Reads outputs/tables/paper_*.csv (written by code/R/10_paper_tables.R) and their footnotes.
+# Nothing is computed here. Tables 1a/1b: reproduced cells shaded by their classification.
+rd <- function(f) {
+  p <- file.path("outputs", "tables", f)
+  if (!file.exists(p)) return(NULL)
+  utils::read.csv(p, colClasses = "character", check.names = FALSE, encoding = "UTF-8", na.strings = character(0))
+}
+miss <- function(what) paste0("[missing: ", what, "]")
+# Journal-style tables (10_paper_tables.R) and their lettered footnotes. Tables 1a/1b come with a
+# status file (R/P/N per reproduced cell, rules in W3-02): with the flextable package, those cells
+# are shaded green / yellow / red, in HTML and in Word; without it, the plain table is shown.
+# Tables: every table is drawn with flextable (HTML, Word and PDF alike), with fixed column widths
+# that add up to the text width, so wide tables fit the page. Tables 1a/1b come with a status file
+# (R/P/N per reproduced cell, rules in W3-02): those cells are shaded green / yellow / red.
+SHADE <- c(R = "#C6EFCE", P = "#FFEB9C", N = "#FFC7CE")
+# Optional: widths = relative column widths (overrides the automatic ones); size = font size;
+# left = columns aligned left (default: the first only); pad = space on each side of a cell (pt). In the
+# PDF, flextable ignores cell padding, so pad is passed as the column gap (tabcolsep) and the widths are
+# reduced by that gap, keeping the table inside the text width.
+ftab <- function(d, digits = 3, status = NULL, width_in = 6.3, widths = NULL, size = NULL, left = 1L, pad = 2) {
+  if (is.null(d)) return(miss("table"))
+  d <- as.data.frame(d, stringsAsFactors = FALSE)
+  d$line <- NULL
+  for (v in names(d)) {
+    x <- d[[v]]
+    if (is.numeric(x)) x <- ifelse(is.na(x), "", ifelse(abs(x - round(x)) < 1e-12, formatC(x, format = "d", big.mark = ","),
+                                                   formatC(x, format = "f", digits = digits)))
+    x <- as.character(x); x[is.na(x)] <- ""
+    d[[v]] <- x
+  }
+  labels <- gsub("_", " ", names(d))
+  if (!is.null(status) || identical(names(d)[1], "row")) labels[1] <- " "
+  labels <- sub(" (published|reproduced)$", "\n\\1", labels)          # two-line headers in Tables 1a/1b
+  if (!requireNamespace("flextable", quietly = TRUE)) {
+    names(d) <- labels
+    return(knitr::kable(d, align = c("l", rep("c", ncol(d) - 1)), row.names = FALSE))
+  }
+  ft <- flextable::theme_booktabs(flextable::flextable(d))    # horizontal rules only, as in JCRE articles
+  ft <- flextable::set_header_labels(ft, values = stats::setNames(as.list(labels), names(d)))
+  if (!is.null(status))
+    for (cl in intersect(setdiff(names(status), c("row", "line")), names(d)))
+      for (k in names(SHADE)) {
+        i <- which(status[[cl]] == k)
+        if (length(i)) ft <- flextable::bg(ft, i = i, j = cl, bg = SHADE[[k]])
+      }
+  ft <- flextable::align(ft, j = setdiff(seq_len(ncol(d)), left), align = "center", part = "all")
+  ft <- flextable::align(ft, j = left, align = "left", part = "all")
+  ft <- flextable::fontsize(ft, size = if (!is.null(size)) size else if (ncol(d) > 7) 7.5 else 8.5, part = "all")
+  ft <- flextable::padding(ft, padding.top = 1, padding.bottom = 1, padding.left = pad, padding.right = pad, part = "all")
+  # widths in proportion to the longest entry of each column (header words included), within limits
+  ew <- function(x) { u <- nchar(gsub("[^A-Z0-9_]", "", x)); nchar(x) + 0.4 * u }   # capitals and digits are wider
+  longest <- function(v, h) max(ew(c(v, strsplit(h, "[ \n]")[[1]])), 3)
+  w <- pmin(pmax(mapply(longest, d, labels), 4), 45)
+  if (!is.null(status) || all(grepl("^P[1-4]", names(d)[-1])))          # period columns: equal widths
+    w <- c(min(w[1], 22), rep(max(w[-1]), ncol(d) - 1))
+  if (!is.null(widths)) w <- widths
+  avail <- width_in - ncol(d) * 2 * pad / 72
+  ft <- flextable::width(ft, j = seq_len(ncol(d)), width = avail * w / sum(w))
+  flextable::set_table_properties(ft, layout = "fixed", opts_pdf = list(tabcolsep = pad))
+}
+ptab <- function(name, ...) {
+  d <- rd(paste0(name, ".csv"))
+  if (is.null(d)) return(miss(name))
+  d[] <- lapply(d, as.character)
+  ftab(d, status = rd(paste0(name, "_status.csv")), ...)
+}
+
+pnotes <- function(name) {
+  n <- rd(paste0(name, "_notes.csv"))
+  if (is.null(n)) return(invisible())
+  cat(paste0("^", n$letter, "^ ", n$note, collapse = "  \n"), "\n")
+}
+```
+
+## Table 1a. Reproduction of original Table 4.9 (Periods 1 and 2)
+
+```{r t1a}
+ptab("paper_T1a")
+```
+
+```{r t1a-notes}
+#| results: asis
+pnotes("paper_T1a")
+```
+
+## Table 1b. Reproduction of original Table 4.10 (Periods 3 and 4)
+
+```{r t1b}
+ptab("paper_T1b")
+```
+
+```{r t1b-notes}
+#| results: asis
+pnotes("paper_T1b")
+```
+
+## Table 2a. The expectation coefficient through the corrections, Model I
+
+```{r t2a}
+ptab("paper_T2a")
+```
+
+```{r t2a-notes}
+#| results: asis
+pnotes("paper_T2a")
+```
+
+## Table 2b. The expectation coefficient through the corrections, Model II
+
+```{r t2b}
+ptab("paper_T2b")
+```
+
+```{r t2b-notes}
+#| results: asis
+pnotes("paper_T2b")
+```
+
+## Table 3. Corrected estimates
+
+```{r t3}
+ptab("paper_T3")
+```
+
+```{r t3-notes}
+#| results: asis
+pnotes("paper_T3")
+```
+
+## Table 4. Pooled models with regime interactions
+
+```{r t4}
+ptab("paper_T4")
+```
+
+```{r t4-notes}
+#| results: asis
+pnotes("paper_T4")
+```
+
+## Table 5. Unit-root tests
+
+```{r t5}
+ptab("paper_T5")
+```
+
+```{r t5-notes}
+#| results: asis
+pnotes("paper_T5")
+```
+
+## Table 6. Chow tests
+
+```{r t6}
+ptab("paper_T6")
+```
+
+```{r t6-notes}
+#| results: asis
+pnotes("paper_T6")
+```
