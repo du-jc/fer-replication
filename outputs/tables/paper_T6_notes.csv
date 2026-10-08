@@ -1,4 +1,4 @@
 "letter","note"
 "a","Published: original Table 4.11 as printed."
-"b","Classic: Chow F with a common error variance, on the model as estimated in first differences, and on the same regressors in levels (whose degrees of freedom are compared with the published ones in the text)."
+"b","Classic: Chow F with a common error variance, on the model as estimated in first differences under the primary (within) convention, as specified (W3-05, W4-27); classic differences 2: the same under the other (full) convention; and on the same regressors in levels (whose degrees of freedom are compared with the published ones in the text)."
 "c","Robust Wald: equality of all coefficients of the two regimes in the fully interacted pooled model (Table 4), Newey-West covariance, F = W/q."

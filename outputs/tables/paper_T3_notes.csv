@@ -1,6 +1,6 @@
 "letter","note"
 "a","Data version 'corrected': discrete quarterly GDP; FER, GDP, NX, FDI, FDB and BOP divided by the IMF consumer price index (2000 = 100); exchange rates, inflation and the interest rate not deflated."
-"b","Model I: alternative stage-2 regressor, 2 lag(s) (the headline specification); same estimators as the original (ARIMA(1,0,0) by ML in Periods 1 and 3, OLS in Periods 2 and 4)."
+"b","Model I: alternative stage-2 regressor, 1 lag(s) (the headline specification), with a constant in stage 2 (step 4c, a correction outside Plan s.5; decision W4-20); same estimators as the original (ARIMA(1,0,0) by ML in Periods 1 and 3, OLS in Periods 2 and 4)."
 "c","Second line: conventional standard error (OPG in the ARIMA periods). Third line, expectation term of Model I only: wild-bootstrap standard error of the whole three-stage chain (999 replications), marks from the centred bootstrap p-value."
 "d","n.i. = not identified (no variation of the exchange rate under the Period 1 peg when it is not deflated)."
 "e","Significance (legend of original Tables 4.9-4.10): † p < 0.1, * p < 0.05, ** p < 0.01, *** p < 0.001 (two-sided; normal for the ARIMA periods, t for OLS)."

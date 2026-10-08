@@ -1,6 +1,6 @@
 "letter","note"
 "a","Published: original Table 4.10 as printed (marks as printed); the numbers in parentheses are those printed below each coefficient, which the article labels t-statistics (see the section 'Standard errors labelled as t-statistics')."
-"b","Reproduced: our estimates, Model I with the alternative stage-2 regressor and 2 lag(s) on deflated data (rank 1 under the pre-specified rule W3-02; result W3-07); Model II on the same data; differences on the full convention. Standard errors in parentheses: OPG for ARIMA periods, OLS otherwise."
+"b","Reproduced: our estimates, Model I with the alternative stage-2 regressor and 1 lag(s) on deflated data (rank 1 under the pre-specified rule W3-02; result W3-07); Model II on the same data; differences on the within convention. Standard errors in parentheses: OPG for ARIMA periods, OLS otherwise."
 "c","n.i. = not identified: the regressor has no variation in that period (the exchange rate was pegged in Period 1)."
 "d","Estimator: ARIMA = regression in first differences with AR(1) errors (ARIMA(1,1,0) in levels), exact maximum likelihood; OLS otherwise."
 "e","Our coefficients are rounded to the decimals printed in the original."

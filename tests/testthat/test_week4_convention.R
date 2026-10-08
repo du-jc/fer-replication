@@ -36,11 +36,11 @@ test_that("read_headline() of 08 takes the rank-1 row of the primary convention"
 })
 
 test_that("no script selects the 'full' convention by a literal", {
-  bad <- "convention\\s*==\\s*[\"']full[\"']|conv\\s*=\\s*[\"']full[\"']|[\"']diff_full[\"']|CONVENTIONS\\s*<-\\s*c\\([\"']full"
+  bad <- "convention\\s*==\\s*[\"']full[\"']|conv\\s*=\\s*[\"']full[\"']|[\"']diff_full[\"']|CONVENTIONS\\s*<-\\s*c\\([\"']full|\"[^\"]*full convention[^\"]*\""   # last part: a log or table label naming the convention (07, W4-27 rerun 2)
   hits <- unlist(lapply(r_files, function(f) {
     x <- readLines(f, warn = FALSE)
     i <- grep(bad, x)
     if (length(i)) sprintf("%s:%d: %s", basename(f), i, trimws(x[i])) else character(0)
   }))
-  expect_identical(hits, character(0))
+  expect(length(hits) == 0, paste(c("hard-coded 'full' convention found (W4-27):", hits), collapse = "\n"))
 })

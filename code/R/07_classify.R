@@ -19,7 +19,7 @@
 #     1. number of Model I cells reproduced (more is better)
 #     2. mean |ours - original| / original SE over the Model I cells we estimated (smaller)
 #     3. candidate order: primary before alternative, lower lag, raw before deflated
-#   The headline is the full convention (W3-01); the within convention is reported alongside.
+# The headline is the primary convention, CONVENTIONS[1] (within since W4-27; full before, W3-01); the other is reported alongside.
 #   Model II has no spec choice; its cells are classified per version and convention.
 #
 # Outputs (outputs/tables/): classify_cells.csv, classify_N.csv, classify_summary.csv,
@@ -123,8 +123,9 @@ main <- function(lg) {
   }
   top <- r[r$convention == CONVENTIONS[1] & r$rank == 1, ]
   if (nrow(top)) {
-    lg$info(sprintf("HEADLINE (Model I, full convention): %s, lag %d, %s data; %d of %d cells reproduced (rank 1 decided by %s)",
-                    top$spec, top$lag, top$version, top$reproduced, top$n_cells, top$tie_broken_by))
+    lg$info(sprintf("HEADLINE (Model I, %s convention): %s, lag %d, %s data; %d of %d cells reproduced (rank 1 decided by %s)",
+                  CONVENTIONS[1], top$spec, top$lag, top$version, top$reproduced, top$n_cells,
+                  top$tie_broken_by))
     lg$info(sprintf("  of the %d reproduced: %d because both are insignificant; %d also within one original SE",
                     top$reproduced, top$reproduced_both_insignificant, top$reproduced_within_one_se))
     if (top$reproduced < top$n_cells)
