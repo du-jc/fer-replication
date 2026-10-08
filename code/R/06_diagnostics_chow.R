@@ -14,7 +14,7 @@
 #        for estat bgodfrey; lmtest::bgtest fill = 0)                        (W3-06)
 #   Chow F = [(RSS_pooled - RSS_1 - RSS_2)/k] / [(RSS_1 + RSS_2)/(n1 + n2 - 2k)], OLS,
 #        k = parameters incl. the constant, adjacent periods only                (W3-05)
-#        "as specified": the estimating equation in differences, full convention;
+#        "as specified": the estimating equation in differences under the primary convention (full until W4-27, within since);
 #        diagnostic variants: within convention, and the same equation in LEVELS. The
 #        variants only show which construction reproduces the original's degrees of freedom
 #        and size of F; they are not corrections (those are Week 4, Plan s.5).
