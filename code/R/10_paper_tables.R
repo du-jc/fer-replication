@@ -155,7 +155,8 @@ table_steps <- function(lg) {
       for (p in PERIODS$period) {
         k <- which(y$period == p)
         na <- "applies" %in% names(y) && !as_lgl(y$applies[1])           # step absent for this model (Model II: 1c, 4c)
-        r1[[paste0("P", p)]] <- if (na) "\u2014" else if (length(k) && !is.na(y$coef[k])) paste0(num_d(y$coef[k], 3), mark(y$p[k])) else "n.i."
+        mk <- if ("stars" %in% names(y)) y$stars[k] else mark(y$p[k])      # row 0: marks as printed (W4-28)
+        r1[[paste0("P", p)]] <- if (na) "\u2014" else if (length(k) && !is.na(y$coef[k])) paste0(num_d(y$coef[k], 3), mk) else "n.i."
         r2[[paste0("P", p)]] <- if (!na && length(k) && !is.na(y$se[k])) paste0("(", num_d(y$se[k], 3), ")") else ""
       }
       rows <- c(rows, list(r1, r2))
@@ -164,7 +165,7 @@ table_steps <- function(lg) {
     notes <- c(
       sprintf("Coefficient on %s in each period (step 7: in each regime of the pooled model), standard error below in parentheses.",
               if (mdl == "I") "the stage-3 expected change of the exchange rate (Model I)" else "DNDF (Model II)"),
-      "Step 0: original, with the numbers in parentheses read as standard errors. Step 1: our reproduction (headline data version). Step 1b: the same on raw data. Steps 3-6 add one correction at a time (README_week4 s.2.1): 1b to 3 isolates the GDP correction, 3 to 4 the fixed-base CPI.",
+      "Step 0: original, with the significance marks as printed and the numbers in parentheses read as standard errors (decision W4-28). Step 1: our reproduction (headline data version). Step 1b: the same on raw data. Steps 3-6 add one correction at a time (README_week4 s.2.1): 1b to 3 isolates the GDP correction, 3 to 4 the fixed-base CPI.",
       if (mdl == "I") "Step 1c is a diagnostic, not a correction (decision W4-19): the reproduction of step 1 re-estimated with a constant in stage 2, to test whether the original's stage 2 had one; the reproduction itself (step 1) is unchanged. Step 4c is a correction outside Plan s.5 (decision W4-20): step 4 with a constant in stage 2; for Model I, steps 5, 6 and the pooled model on the corrected data build on 4c." else "Steps 1c and 4c (a stage-2 constant, decisions W4-19 and W4-20) concern stage 2 of Model I; Model II has no stage 2, so they do not apply (\u2014).",
       if (mdl == "I") "Steps 2 and 5: bootstrap standard error of the whole three-stage chain (999 replications; wild: Rademacher; block: moving blocks within periods); marks from the centred bootstrap p-value." else "No bootstrap for Model II: its expectation regressor is observed, not generated.",
       "Step 6: coefficients are elasticities (log differences of FER and of the exchange-rate terms). Step 7: pooled OLS 2000-2011 with regime-specific constants and expectation terms; full = all coefficients regime-specific; exp_only = controls common; Newey-West standard errors.",
@@ -283,14 +284,17 @@ table_unitroot <- function(lg) {
 table_chow <- function(lg) {
   t4 <- rd("note_T4_chow.csv", lg, required = FALSE)
   if (is.null(t4)) return()
+  conv1 <- if ("classic_diff_convention" %in% names(t4)) t4$classic_diff_convention[1] else CONVENTIONS[1]
   tab <- data.frame(model = t4$model, periods = t4$pair, published = t4$original,
                     classic_differences = sprintf("F(%s) = %s", t4$classic_diff_df, t4$classic_diff_F),
+                    classic_differences_2 = if ("classic_diff2_F" %in% names(t4)) sprintf("F(%s) = %s", t4$classic_diff2_df, t4$classic_diff2_F) else "",
                     classic_levels = sprintf("F(%s) = %s", t4$levels_df, t4$levels_F),
                     robust_wald = sprintf("F(%s) = %s, p = %s", t4$robust_wald_df, t4$robust_wald_F, t4$robust_wald_p),
                     stringsAsFactors = FALSE)
   notes <- c(
     "Published: original Table 4.11 as printed.",
-    "Classic: Chow F with a common error variance, on the model as estimated in first differences, and on the same regressors in levels (whose degrees of freedom are compared with the published ones in the text).",
+    sprintf("Classic: Chow F with a common error variance, on the model as estimated in first differences under the primary (%s) convention, as specified (W3-05, W4-27); classic differences 2: the same under the other (%s) convention; and on the same regressors in levels (whose degrees of freedom are compared with the published ones in the text).",
+            conv1, if ("classic_diff2_convention" %in% names(t4)) t4$classic_diff2_convention[1] else CONVENTIONS[2]),
     "Robust Wald: equality of all coefficients of the two regimes in the fully interacted pooled model (Table 4), Newey-West covariance, F = W/q.")
   out_table(tab, notes, "paper_T6", lg)
 }

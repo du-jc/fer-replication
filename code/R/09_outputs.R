@@ -9,7 +9,8 @@
 # Selection rules (fixed; W4-06):
 #   Model I   = the headline specification of 07 (rank 1, primary convention, W3-07)
 #   version   = the headline's data version for the reproduction; "corrected" for corrections
-#   convention = the primary one (CONVENTIONS[1], W3-01)
+#   convention = the primary one (CONVENTIONS[1]: within since W4-27; full before, W3-01)
+#   row 0      = the published estimates with the marks as printed (W4-28)
 #   stage 2   = without a constant, except Model I on the corrected data (W4-20; s2c_of() and
 #               keep_s2c() in corrections.R); row 1c of T7 is the W4-19 diagnostic
 #
@@ -125,14 +126,22 @@ main <- function(lg) {
   cv <- tab("chow_vs_targets.csv", lg)
   pt <- keep_s2c(tab("corr_pooled_tests.csv", lg))        # one stage 2 per version (W4-20)
   cvs <- cv[cv$version == hv & (cv$model == "II" | cv$variant == "levels" | (cv$spec == h$spec & cv$lag == h$lag)), ]
+  # "as specified" = the estimating equation in differences under the primary convention (W3-05, W4-27);
+  # the other convention is the second variant
+  v1 <- paste0("diff_", CONVENTIONS[1]); v2 <- paste0("diff_", CONVENTIONS[2])
   t4 <- do.call(rbind, lapply(split(cvs, paste(cvs$model, cvs$pair)), function(d) {
     g <- function(v, what) { x <- d[d$variant == v, ]; if (!nrow(x)) NA else x[[what]][1] }
     w <- pt[pt$model == d$model[1] & pt$version == hv & pt$form == "level" & pt$type == "full" & pt$nw == "rule" &
               pt$regimes == d$pair[1] & grepl("robust Chow", pt$test), ]
     data.frame(model = d$model[1], pair = d$pair[1], original = d$target_text[1],
-               classic_diff_F = fmt(g("diff_full", "F"), 2),
-               classic_diff_df = sprintf("%s,%s", g("diff_full", "df1"), g("diff_full", "df2")),
-               classic_diff_df_match = g("diff_full", "df_match"),
+               classic_diff_convention = CONVENTIONS[1],
+               classic_diff_F = fmt(g(v1, "F"), 2),
+               classic_diff_df = sprintf("%s,%s", g(v1, "df1"), g(v1, "df2")),
+               classic_diff_df_match = g(v1, "df_match"),
+               classic_diff2_convention = CONVENTIONS[2],
+               classic_diff2_F = fmt(g(v2, "F"), 2),
+               classic_diff2_df = sprintf("%s,%s", g(v2, "df1"), g(v2, "df2")),
+               classic_diff2_df_match = g(v2, "df_match"),
                levels_F = fmt(g("levels", "F"), 2), levels_df = sprintf("%s,%s", g("levels", "df1"), g("levels", "df2")),
                levels_df_match = g("levels", "df_match"),
                robust_wald_F = if (nrow(w)) fmt(w$F[1], 2) else NA, robust_wald_df = if (nrow(w)) sprintf("%d,%d", w$q[1], w$df2[1]) else NA,
@@ -191,11 +200,12 @@ main <- function(lg) {
   long <- list()
   # step_id: the row number of the step ("0", "1", "1b", "1c", ..., "7"), matched exactly by the note's t7()
   # applies = FALSE: the step does not exist for this model (1c and 4c of Model II, which has no stage 2)
-  addl <- function(model, step, period, coef, se, p, s2c = NA, applies = TRUE) {
+  # stars_printed: the marks as printed in the original (row 0 only, W4-28); every other row's marks come from p
+  addl <- function(model, step, period, coef, se, p, s2c = NA, applies = TRUE, stars_printed = NA_character_) {
     if (!length(period)) return()
     long[[length(long) + 1]] <<- data.frame(model = model, step_id = sub(" .*$", "", step), step = step, period = period,
                                             stage2_const = s2c, applies = applies, coef = coef, se = se, p = p,
-                                            stringsAsFactors = FALSE)
+                                            stars_printed = stars_printed, stringsAsFactors = FALSE)
   }
   na_row <- function(model, step) addl(model, step, PERIODS$period, NA_real_, NA_real_, NA_real_, NA, FALSE)
   S1C <- "1c reproduction + stage-2 constant (diagnostic W4-19)"
@@ -203,7 +213,9 @@ main <- function(lg) {
   for (mdl in intersect(c("I", "II"), unique(pe$model))) {
     ev <- if (mdl == "I") "DER_hathat" else "DNDF"
     th <- tg[tg$model == mdl & tg$term == ev, ]
-    addl(mdl, "0 original (parentheses read as SE)", th$period, th$target, th$target_se, 2 * stats::pnorm(-abs(th$target / th$target_se)))
+    # W4-28: the marks as printed (stars and dagger of original_targets.csv); p = coef/SE is kept for information
+    addl(mdl, "0 original (published marks; parentheses read as SE)", th$period, th$target, th$target_se,
+         2 * stats::pnorm(-abs(th$target / th$target_se)), stars_printed = sig_label(th$target_level))
     s2 <- if (mdl == "I") function(v) v else function(v) NA       # Model II has no stage 2
     pv <- function(ver, form, s2c = FALSE) {
       x <- pe[pe$model == mdl & pe$term == ev & pe$version == ver & pe$form == form & pe$convention == conv, ]
@@ -244,14 +256,16 @@ main <- function(lg) {
     }
   }
   long <- do.call(rbind, long)
-  long$stars <- star(long$p)
+  long$stars <- ifelse(is.na(long$stars_printed), star(long$p), long$stars_printed)
+  long$significant <- ifelse(is.na(long$coef), NA, nzchar(long$stars))   # any mark, the dagger included (W1-07, W4-16)
   long$sign <- ifelse(is.na(long$coef), NA, ifelse(long$coef > 0, "+", ifelse(long$coef < 0, "-", "0")))
   write_table(long, "note_T7_expectation_long.csv", lg)
   wide <- do.call(rbind, lapply(split(long, paste(long$model, long$step)), function(d) {
     r <- data.frame(model = d$model[1], step_id = d$step_id[1], step = d$step[1], stringsAsFactors = FALSE)
     for (p in PERIODS$period) {
       k <- which(d$period == p)
-      r[[paste0("P", p)]] <- if (!d$applies[1]) "\u2014" else if (length(k)) cell(d$coef[k], d$se[k], d$p[k]) else "n.i."
+      r[[paste0("P", p)]] <- if (!d$applies[1]) "\u2014" else if (length(k))
+        ifelse(is.na(d$coef[k]), "n.i.", sprintf("%s (%s)%s", fmt(d$coef[k], 3), fmt(d$se[k], 3), d$stars[k])) else "n.i."
     }
     r
   }))
@@ -290,6 +304,7 @@ main <- function(lg) {
   dg <- tab("corr_stage2_const_diag.csv", lg, required = FALSE)
   if (!is.null(dg)) {
     r <- stage2_rule(dg)
+    put("s2c_headline", sprintf("%s, lag %s, %s", dg$spec[1], dg$lag[1], dg$version[1]), "corr_stage2_const_diag.csv")
     put("s2c_outcome", r$outcome, "corr_stage2_const_diag.csv")
     put("s2c_outcome_text", S2C_OUTCOME_TEXT[[r$outcome]], "corr_stage2_const_diag.csv")
     put("s2c_n_cells", r$n_cells, "corr_stage2_const_diag.csv")

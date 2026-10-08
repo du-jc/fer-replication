@@ -1,0 +1,3 @@
+SHA256 hash of docs\readmes\decisions_prerun2_W4-27.md:
+d86417c5bee513f77448471ac6363831221021f27d6ed24e8d249ca8cfaf0474
+CertUtil: -hashfile command completed successfully.

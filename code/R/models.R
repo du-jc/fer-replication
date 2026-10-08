@@ -6,17 +6,17 @@
 # functions.
 #
 #   data versions   raw | deflated (every variable except pi divided by pi/100; Plan s.2.1)
-#   conventions     full   = differences and stage-2 lags may reach into the previous period
-#                            (computed on the whole 2000-2011 series, then split)  PRIMARY
-#                   within = each period is its own dataset: differences and lags start
-#                            inside the period                                     SENSITIVITY
-#                   (W3-01, which settles the Period 3 part of W2-05)
+#   conventions     within = each period is its own dataset: differences and lags start
+#                            inside the period                                     PRIMARY (W4-27)
+#                   full   = differences and stage-2 lags may reach into the previous period
+#                            (computed on the whole 2000-2011 series, then split)  SENSITIVITY
+#                   (W3-01 made full primary; W4-27 switched to within after the W4-25 check)
 #   estimators      Periods 1 and 3: regression on differenced variables with AR(1) errors
 #                   and a constant, exact ML  (= Stata  arima y x, arima(1,1,0));
 #                   Periods 2 and 4: OLS.  (Blueprint A.2 step A4; Plan s.3.3)
 
 VERSIONS    <- c("raw", "deflated")
-CONVENTIONS <- c("full", "within")            # first = primary (W3-01)
+CONVENTIONS <- c("within", "full")            # first = primary (W4-27; was full, W3-01)
 ARIMA_PERIODS <- c(1L, 3L)                    # Plan s.3.3
 SPECS <- c("primary", "alternative")          # Plan s.3.1
 LAGS  <- 1:3                                  # Plan s.3.1: j = 1, 2, 3

@@ -92,8 +92,10 @@ t7 <- function(model, step, period, what = "cell", contains = NULL, d = 2) {
   if (!is.null(contains)) x <- x[grepl(contains, x$step, fixed = TRUE), ]
   if (nrow(x) != 1) return(miss(paste(model, step, period, contains)))
   if ("applies" %in% names(x) && !tf(x$applies)) return("not applicable")
-  switch(what, coef = f(x$coef, d), se = f(x$se, d), p = p_txt(x$p), stars = stars(x$p), sign = x$sign,
-         cell = if (is.na(x$coef)) "not identified" else paste0(f(x$coef, d), stars(x$p), " (SE ", f(x$se, d), ")"))
+  # marks: the stars column (row 0: as printed in the original, W4-28; other rows: from p), escaped for markdown
+  mk <- if ("stars" %in% names(x)) gsub("*", "\\*", ifelse(is.na(x$stars), "", x$stars), fixed = TRUE) else stars(x$p)
+  switch(what, coef = f(x$coef, d), se = f(x$se, d), p = p_txt(x$p), stars = mk, sign = x$sign,
+         cell = if (is.na(x$coef)) "not identified" else paste0(f(x$coef, d), mk, " (SE ", f(x$se, d), ")"))
 }
 
 # T8: pooled-model Wald tests
