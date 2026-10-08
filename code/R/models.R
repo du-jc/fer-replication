@@ -254,7 +254,10 @@ fit_dfer <- function(y, X, period) {
 #   alternative : DER(t)     on DER(t-1..t-j)       (the printed equation)
 # Under "full", a lag at the start of a period reaches into the previous period (the
 # stage-1 fitted values of that period); under "within" it is missing.
-model_I_chain <- function(base, conv, spec, lag) {
+# stage2_const = TRUE adds a constant to stage 2 (W4-19 diagnostic, W4-20 step 4c); the fitted
+# value DER_hathat then includes it. The default FALSE is the printed equation (W3-04) and
+# gives exactly the Week 3 results.
+model_I_chain <- function(base, conv, spec, lag, stage2_const = FALSE) {
   pid <- base$period
   der_hat <- rep(NA_real_, nrow(base))
   s1 <- list(); s1_fits <- list()
@@ -274,8 +277,8 @@ model_I_chain <- function(base, conv, spec, lag) {
   for (p in PERIODS$period) {
     ok <- pid == p & !is.na(src) & stats::complete.cases(L)
     rows <- which(ok)
-    if (length(rows) <= lag) next
-    f <- fit_ols(src[rows], L[rows, , drop = FALSE], intercept = FALSE)
+    if (length(rows) <= lag + stage2_const) next
+    f <- fit_ols(src[rows], L[rows, , drop = FALSE], intercept = stage2_const)
     der_hathat[rows] <- f$fitted
     s2[[p]] <- data.frame(period = p, n = f$n,
                           term = if (nrow(f$coef)) f$coef$term else NA_character_,
