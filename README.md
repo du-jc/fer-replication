@@ -9,7 +9,7 @@ This repository rebuilds the article's analysis of how expectations about the re
 > Study A is complete at tag **`studyA-v1.0`**. A separate new study with data for 2000–2025 (Study B) is in a different repository.
 
 - **Replication note:** [`docs/replication_note.pdf`](docs/replication_note.pdf) (source: [`docs/replication_note.qmd`](docs/replication_note.qmd); to render it yourself, see "How to run", step 4)
-- **Status:** complete, version 1.0 (tag `studyA-v1.0`, [DATE OF W4-39])
+- **Status:** complete, version 1.0 (tag `studyA-v1.0`, [2026-10-13])
 - **Author of this replication:** Jiancheng Du
 
 ------------------------------------------------------------------------
