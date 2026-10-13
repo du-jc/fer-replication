@@ -1,0 +1,14 @@
+2026-10-13 13:16:48 INFO  PowerShell 5.1.19041.6456 on Microsoft Windows NT 10.0.19045.0
+2026-10-13 13:16:48 INFO  git version 2.53.0.windows.2; repository C:\DU_202609\Projects\FER_Replication\fer-replication
+2026-10-13 13:16:48 INFO  branch main at 46a5784
+2026-10-13 13:16:48 INFO  remote: origin	https://github.com/du-jc/fer-replication.git (fetch)
+2026-10-13 13:16:48 INFO  remote: origin	https://github.com/du-jc/fer-replication.git (push)
+2026-10-13 13:16:48 INFO  CHECK PASS  data/raw/original/                 never committed on any ref, not tracked  [original document (W1-02)]
+2026-10-13 13:16:49 INFO  CHECK PASS  data/raw/proprietary/              never committed on any ref, not tracked  [Wind exports (Blueprint 0.3)]
+2026-10-13 13:16:49 INFO  CHECK PASS  .env                               never committed on any ref, not tracked  [API keys (Blueprint 0.3)]
+2026-10-13 13:16:49 INFO  CHECK PASS  data/interim/                      never committed on any ref, not tracked  [Wind- and original-derived values (W2-08; Week 4 check)]
+2026-10-13 13:16:49 INFO  CHECK PASS  docs/readmes/                      never committed on any ref, not tracked  [weekly READMEs (W1-08)]
+2026-10-13 13:16:49 INFO  CHECK PASS  docs/decisions.md                  never committed on any ref, not tracked  [decisions log (W1-09)]
+2026-10-13 13:16:49 INFO  CHECK PASS  code/python/make_week_summary.py   never committed on any ref, not tracked  [week-summary script (W1-10)]
+2026-10-13 13:16:49 INFO  RESULT: PASS  nothing protected is, or ever was, in the git history. The repository may be made public.
+2026-10-13 13:16:49 INFO  STATUS: OK (warnings=0, errors=0)

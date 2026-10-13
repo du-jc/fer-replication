@@ -224,9 +224,12 @@
 
 
 \title{Renminbi Exchange-Rate Expectations and China's Foreign Exchange
-Reserves: A Replication of Du, Ge and Qiao (2014)}
+Reserves: A Replication of Du, Ge and Qiao (2014)\thanks{Contact:
+Jiancheng Du, jiancheng.du@okstate.edu. Code, public data and the
+decision index are in the replication package,
+https://github.com/du-jc/fer-replication.}}
 \author{Jiancheng Du}
-\date{2026-10-12}
+\date{2026-10-13}
 \begin{document}
 \maketitle
 
@@ -241,7 +244,7 @@ and a market-based expectation using the 12-month non-deliverable
 forward rate (NDF; Model II), in four exchange-rate regimes. From the
 data of the original document we reproduce 18 of 20 Model I and 23 of 24
 Model II estimates by sign and significance, most because both estimates
-are significant. We correct standard errors labelled as
+are insignificant. We correct standard errors labelled as
 \emph{t}-statistics, an inflation growth factor used as a deflator,
 year-to-date GDP, coefficients read as percentages, standard errors that
 ignore the generated regressor, and Chow statistics that cannot be
@@ -255,8 +258,6 @@ exchange reserves, China, generated regressors, non-deliverable
 forwards.
 
 \textbf{JEL classification:} F31, F32, E58, C22, C87.
-
-\textbf{Affiliation and contact:} {[}AFFILIATION{]}; {[}EMAIL{]}.
 
 \textbf{Conflict of interest:} the author of this note is one of the
 authors of the study replicated here. The research was not funded by any
@@ -285,14 +286,14 @@ sample into four exchange-rate regimes and measure expectations in two
 ways: a forecast generated from a three-stage regression model (Model I)
 and the 12-month non-deliverable forward rate (NDF, Model II). The
 abstract states that both methods ``indicated that the change of
-expectation of RMB exchange rate positively correlated to FER'' (p.1).
-The conclusions state that the expectation ``had a significant impact on
-the FER recently'', as shown in Period 4 (June 2008 to December 2011),
-and that ``before June 2006, the change of RMB exchange rate expectation
-did not affect the FER significantly because of exchange rate
-management'' (p.16). Of the eight published expectation coefficients,
-those marked as significant are: Model II, Period 4 (article Table 4,
-p.13).
+expectation of RMB exchange rate positively correlated to FER''
+(p.~327). The conclusions state that the expectation ``had a significant
+impact on the FER recently'', as shown in Period 4 (June 2008 to
+December 2011), and that ``before June 2006, the change of RMB exchange
+rate expectation did not affect the FER significantly because of
+exchange rate management'' (p.~341). Of the eight published expectation
+coefficients, those marked as significant are: Model II, Period 4
+(article Table 4, p.~339).
 
 How much of China's reserve accumulation was driven by expected
 appreciation was part of a wider debate (Prasad and Wei 2007). Under a
@@ -362,12 +363,12 @@ the change of the exchange rate (RMB per USD) on fundamentals:
 }\end{equation}
 
 Stage 2 forecasts the change of the exchange rate from its own past,
-without a constant. The original article (Du et al. (2014)) is ambiguous
-about which series it projects: its equation (4-2) regresses the
-observed change on its own lags, while its tables label the stage-3
-regressor with a double hat, which indicates the stage-1 fitted values.
-We estimate both, though we thought the stage-1 fitted values were the
-intended regressor.
+without a constant. The original document is ambiguous about which
+series it projects: its equation (4-2) regresses the observed change on
+its own lags, while its tables label the stage-3 regressor with a double
+hat, which indicates the stage-1 fitted values. We estimate both. The
+primary form follows the double hat, the stage-1 fitted values, which
+the original authors intended.
 
 \begin{equation}\protect\phantomsection\label{eq-stage2}{
 \widehat{\Delta ER}_t = \sum_{s=1}^{j} a_s\,\widehat{\Delta ER}_{t-s} + e_t  \qquad \text{(primary)},
@@ -393,11 +394,11 @@ The coefficients of stages 1 and 2 are estimated from all months of a
 period, so the fitted value for month \emph{t} uses information from
 months after \emph{t}. It is an in-sample fitted value, not an
 expectation that could have been formed at the time, although the
-article calls it a rational expectation (p.1; p.6). This holds for both
-forms of the stage-2 regressor and both differencing conventions
-(W4-17). This is one of the limitation of Model I that we don't correct
-in the replication report and propose a future research direction in
-Section~\ref{sec-conclusion}.
+article calls it a rational expectation (p.~327; p.~332). This holds for
+both forms of the stage-2 regressor and both differencing conventions
+(W4-17). This is a limitation of Model I that we do not correct in this
+note; Section~\ref{sec-conclusion} proposes how to address it in future
+work.
 
 \textbf{Model II} replaces the generated expectation by the observed
 12-month NDF:
@@ -411,13 +412,13 @@ document, the regressions of Periods 1 and 3 have AR(1) errors
 (ARIMA(1,1,0)) and those of Periods 2 and 4 are estimated by OLS. The
 periods follow the exchange-rate regime (Table~\ref{tbl-periods}).
 
-The article's conceptual model (its Figure 1, p.6) lets reserves affect
-the exchange rate and the expected exchange rate affect reserves. The
-estimated equations (p.8) do not identify this loop: stage 1 omits
-reserves (equation \ref{eq-stage1}), and each equation is estimated by
-single-equation methods. None of the estimated coefficients can
-therefore be read as a causal effect of expectations on reserve; they
-measure associations (W4-21). The original document itself names
+The article's conceptual model (its Figure 1, p.~332) lets reserves
+affect the exchange rate and the expected exchange rate affect reserves.
+The estimated equations (p.~334) do not identify this loop: stage 1
+omits reserves (equation \ref{eq-stage1}), and each equation is
+estimated by single-equation methods. None of the estimated coefficients
+can therefore be read as a causal effect of expectations on reserves;
+they measure associations (W4-21). The original document itself names
 simultaneous equations as the approach for future research (Section
 4.5), which is also a future research direction we propose in this
 report.
@@ -490,20 +491,21 @@ report.
 
 \subsection{Reported findings}\label{reported-findings}
 
-The article reads its Table 4 (p.13) in Section 4.3 (p.14-15). It
+The article reads its Table 4 (p.~339) in Section 4.3 (p.~340-341). It
 reports that both expectation measures have positive coefficients in
 Periods 1 and 2, and negative ones in Periods 3 and 4, and attributes
 the change to the regime: before June 2006 the RMB was ``managed or
 simply peg on the dollar'', after it ``a basket of currency policy was
-adopted'' (p.15). Of the expectation coefficients, it reports only the
+adopted'' (p.~341). Of the expectation coefficients, it reports only the
 NDF coefficient of Model II in Period 4 as significant, at the 5\% level
-(p.14-15), and calls it ``positive'' in one sentence and ``negative'' in
-another (Section~\ref{sec-corrections}, sign convention). Other
-coefficients are read as percentage effects (p.14). From Chow tests, the
-article concludes that the determinants of reserves changed structurally
-between the periods (conclusion 2, p.16), and it recommends ``decreasing
-the expectation of RMB exchange rate and the amount of foreign debt
-balance'' to keep reserves at a moderate scale (conclusion 3, p.16).
+(p.~340-341), and calls it ``positive'' in one sentence and ``negative''
+in another (Section~\ref{sec-corrections}, sign convention). Other
+coefficients are read as percentage effects (p.~340). From Chow tests,
+the article concludes that the determinants of reserves changed
+structurally between the periods (conclusion 2, p.~342), and it
+recommends ``decreasing the expectation of RMB exchange rate and the
+amount of foreign debt balance'' to keep reserves at a moderate scale
+(conclusion 3, p.~342).
 
 \section{Data}\label{sec-data}
 
@@ -525,9 +527,10 @@ correlations involving the exchange rate, and a few means, standard
 deviations and correlations in other periods, differ from ours by small
 amounts. With the tolerance of 0.05, set after the comparison was seen
 (W2-07), only the Period 1 correlations remain unmatched. Our
-interpretation is that the mismatch is very likely caused by rounding
-that the article used variables with more decimals than the ones shown
-in the Appendix.
+interpretation suggests that the small gaps arise because the original
+computed its statistics from data with more decimals than the appendix
+prints. This does not explain the Period 1 correlations, which are
+undefined on the raw data.
 
 \global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
 
@@ -763,7 +766,7 @@ variables are used as published or divided by \(\pi/100\), as the
 article states. The combination that reproduces most published cells was
 then named the headline (W3-02). Each estimate is classified on its sign
 and star level only (W1-07), with the meanings of *, ** and *** taken
-from the notes of the original table 4 (p.13) and significance meaning
+from the notes of the original table 4 (p.~339) and significance meaning
 \emph{p} \textless{} 0.10; the dagger, which those notes do not define
 and which appears once in the original table, is read as \emph{p}
 \textless{} 0.10 (W4-16). An estimate is \textbf{reproduced} if it has
@@ -787,22 +790,21 @@ sensitivity check (W4-31).
 
 \subsection{Unit-root tests}\label{unit-root-tests}
 
-The article (Du et al. (2014)) and the text of the original document
-(its section 4.1.1), describe the unit-root test as an augmented
-Dickey-Fuller (ADF) test; the tables of the original document report
-DF-GLS (Elliott et al. 1996). The original document does not state its
-lag rule. The specification that best reproduces the original statistics
-of the eight appendix variables was selected and then fixed (W2-02,
-W2-09). Table~\ref{tbl-unitroot} shows the original statistics, our
-DF-GLS statistics and the ADF statistics at the same lag. DF-GLS and ADF
-agree on rejection at 5\% in 14 of 14 series. Our DF-GLS statistics
-agree with the original's to the printed decimals for some series and
-differ slightly for the others (Table~\ref{tbl-unitroot}). No
-stationarity judgment at the 5\% level differs from the original's
-(W2-09). The specification that achieves this closeness uses a fixed lag
-of one, which is not a documented lag-selection rule; it was chosen
-because it reproduces the original statistics, and it is reported as
-such.
+The article (Du et al. 2014) and the text of the original document (its
+Section 4.1.1) describe the unit-root test as an augmented Dickey-Fuller
+(ADF) test; the tables of the original document report DF-GLS (Elliott
+et al. 1996). The original document does not state its lag rule. The
+specification that best reproduces the original statistics of the eight
+appendix variables was selected and then fixed (W2-02, W2-09).
+Table~\ref{tbl-unitroot} shows the original statistics, our DF-GLS
+statistics and the ADF statistics at the same lag. DF-GLS and ADF agree
+on rejection at 5\% in 14 of 14 series. Our DF-GLS statistics agree with
+the original's to the printed decimals for some series and differ
+slightly for the others (Table~\ref{tbl-unitroot}). No stationarity
+judgment at the 5\% level differs from the original's (W2-09). The
+specification that achieves this closeness uses a fixed lag of one,
+which is not a documented lag-selection rule; it was chosen because it
+reproduces the original statistics, and it is reported as such.
 
 \global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
 
@@ -1462,26 +1464,26 @@ The outcome is the same under the convention fixed before estimation
 (W4-22, W4-29).
 
 The second explanation is a scaling of the data. The article states that
-``all variables are divided by inflation which is noted as π'' (p.8),
+``all variables are divided by inflation which is noted as π'' (p.~334),
 where π is an index close to 100, while our deflated data, like the data
-printed in the article (Table 2, p.9), divided by π/100. Dividing every
-variable by π instead of π/100 multiplies all of them by 1/100. Such a
-common rescaling leaves every slope, every autoregressive coefficient
-and every \emph{t} statistic unchanged and divides the constant and its
-standard error by 100, which is the pattern in Tables \ref{tbl-repro-a}
-and \ref{tbl-repro-b}. Rescaled by 1/100, our constants lie the
-following numbers of published standard errors from the published ones:
-Model I, Period 1: 0.01; Model I, Period 3: 0.96; Model II, Period 1:
-0.00; Model II, Period 3: 0.00; 4 of the 4 are within one standard
-error. This diagnosis was found after the results were seen (W4-26). Our
-interpretation suggests that the original regressions used the variables
-divided by π, as the article's text says, and that this accounts for the
-size of the published constants; no slope coefficient, and hence no
-conclusion of the article, is affected.
+printed in the article (Table 2, p.~335), divided by π/100. Dividing
+every variable by π instead of π/100 multiplies all of them by 1/100.
+Such a common rescaling leaves every slope, every autoregressive
+coefficient and every \emph{t} statistic unchanged and divides the
+constant and its standard error by 100, which is the pattern in Tables
+\ref{tbl-repro-a} and \ref{tbl-repro-b}. Rescaled by 1/100, our
+constants lie the following numbers of published standard errors from
+the published ones: Model I, Period 1: 0.01; Model I, Period 3: 0.96;
+Model II, Period 1: 0.00; Model II, Period 3: 0.00; 4 of the 4 are
+within one standard error. This diagnosis was found after the results
+were seen (W4-26). Our interpretation suggests that the original
+regressions used the variables divided by π, as the article's text says,
+and that this accounts for the size of the published constants; no slope
+coefficient, and hence no conclusion of the article, is affected.
 
 The sample sizes printed in the original document are matched in 4 of 28
 comparisons (W3-11). Two further pieces of evidence bear on how the
-original built its period samples. First the original prints the same
+original built its period samples. First, the original prints the same
 number of observations for Model I as for Model II in Periods 1 and 3,
 although the stage-2 lags remove months from the Model I sample under
 either differencing convention as we implement it (W4-18). Second, the
@@ -1669,7 +1671,7 @@ of freedom of such regressions, rather than on the estimating equations
 in differences. The degrees of freedom do not explain the size of the
 published statistics, which no variant comes close to. We report the
 published Chow statistics as not reproduced, and we assess the article's
-conclusion of structural change (conclusion 2, p.16) with the robust
+conclusion of structural change (conclusion 2, p.~342) with the robust
 test of Section~\ref{sec-pooled}.
 
 \global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
@@ -1801,9 +1803,9 @@ differences of \emph{levels}, so each coefficient is measured in the
 units of the variables in Table~\ref{tbl-variables}, for example
 reserves per unit change of the exchange rate. The article reads the
 coefficients as percentages, for example ``DFER would increase by
-\ldots\% when DFDB increased by 1\%'' (p.14), and reads the Period 4 NDF
-coefficient in the same way (p.14). Because the variables are first
-differences of levels, a coefficient is the change in reserves, in
+\ldots\% when DFDB increased by 1\%'' (p.~340), and reads the Period 4
+NDF coefficient in the same way (p.~340). Because the variables are
+first differences of levels, a coefficient is the change in reserves, in
 hundred million US dollars, per unit change of the regressor in its own
 units. It is a percentage only if both variables are in logarithms. To
 give the coefficients a unit-free reading, all models were re-estimated
@@ -1822,15 +1824,15 @@ expected, and a negative one that they grow faster when an appreciation
 is expected. The published Period 4 NDF coefficient of Model II is
 negative and significant (Table~\ref{tbl-repro-b}). The article
 describes it in four ways. The abstract speaks of a positive correlation
-(p.~1). Section 4.3.1 calls it a ``statistically significant positive
+(p.~327). Section 4.3.1 calls it a ``statistically significant positive
 impact'' and, in the next sentence, says that DFER increases ``when DNDF
-decrease{[}s{]}'' (p.~14). Section 4.3.2 calls it a ``statistically
-significant negative impact'' (p.~15). The first conclusion reads it as
+decrease{[}s{]}'' (p.~340). Section 4.3.2 calls it a ``statistically
+significant negative impact'' (p.~341). The first conclusion reads it as
 ``one unit appreciation in RMB caused \ldots{} unit increases in foreign
-exchange reserve'' (p.~16). Under the convention above, the table,
+exchange reserve'' (p.~342). Under the convention above, the table,
 Section 4.3.2 and the first conclusion agree: reserves grew faster when
 the forward market priced a stronger renminbi. The abstract and the word
-``positive'' on p.~14 contradict the table.
+``positive'' on p.~340 contradict the table.
 
 \subsection{Generated regressors}\label{generated-regressors}
 
@@ -1942,7 +1944,7 @@ little month-to-month persistence of the exchange-rate change remains
 within a regime, so the size of a Model I expectation effect is weakly
 identified. In Period 3 the coefficient is insignificant under the wild
 bootstrap with the constant and insignificant without it, so its
-bootstrap significance does not depend on the constant either
+bootstrap significance does not depend on the constant either.
 
 \subsection{Year-to-date GDP}\label{year-to-date-gdp}
 
@@ -1979,13 +1981,15 @@ countries' price levels (W4-05).\footnote{The US-dollar variables are
 
 The article divides the exchange rates, the balance of payments, GDP,
 reserves, net exports, foreign debt, FDI and the NDF by \(\pi\), but not
-the interest rate, which it labels real (p.8). The deflated data version
-of this replication divides every model variable except \(\pi\) itself,
-including the interest rate, as the replication plan specifies (W4-24).
-The interest rate enters only in stage 1. Under the headline Model I
-estimates or Model II alternative, it does affect the stage-1
-regressions, and with them the Durbin-Watson comparison of
-Section~\ref{sec-reproduction} and the BOP selection rule (W2-03).
+the interest rate, which it labels real (p.~334). The deflated data
+version of this replication divides every model variable except \(\pi\)
+itself, including the interest rate, as the replication plan specifies
+(W4-24). The interest rate enters only in stage 1. Under the headline's
+stage 2 (the alternative form), stage 1 does not enter the expectation
+regressor, so the difference does not affect the headline Model I
+estimates or Model II. It does affect the stage-1 regressions, and with
+them the Durbin-Watson comparison of Section~\ref{sec-reproduction} and
+the BOP selection rule (W2-03).
 
 We check the price data in two ways (Table~\ref{tbl-cpi} and
 Figure~\ref{fig-cpi}). First, we compare the original \(\pi\) with the
@@ -2099,8 +2103,7 @@ calculations.}
 
 \end{figure}%
 
-\subsection{Period 1: exchange-rate
-variation}\label{period-1-exchange-rate-variation}
+\subsection{Period 1: exchange-rate variation}\label{sec-period1}
 
 From January 2000 to June 2005 the RMB was pegged to the US dollar, and
 the appendix exchange rate is constant (standard deviation 0.000 on raw
@@ -2211,7 +2214,7 @@ Regimes 3 and 4. For Model II, in the same order, the test rejects,
 rejects, and rejects equality. Our interpretation suggests that the
 regime split is supported where the test rejects. Two reservations
 apply. Each test uses a Newey-West covariance that is estimated from few
-months in Regime 2 (Section~\ref{sec-pooled}). And a reject says that
+months in Regime 2 (Section~\ref{sec-pooled}). And a rejection says that
 some coefficient changes, not that the expectation coefficient does
 (that test is reported in Section~\ref{sec-pooled}).
 
@@ -3174,7 +3177,7 @@ error of 236,604.08 (\emph{p} = 0.593).
 article reports as significant is significant at the steps 0 (-), 1 (-),
 1b (-), 3 (-), 4 (-), 6 (-), 7 (full corrected) (-), 7 (exp\_only
 corrected) (-) (step, sign). It keeps its significance and its sign
-through every per-period correction: the article's deflation, the GPD
+through every per-period correction: the article's deflation, the GDP
 construction, the deflator and the log form. It loses significance only
 in the pooled model on the deflated data, where the per-regime standard
 errors are unreliable (W4-32). Its sign is negative, opposite to the
@@ -3185,7 +3188,7 @@ at the time, not necessarily a causal effect (W4-21).
 
 \textbf{Model I.} None of the published Model I expectation coefficients
 is significant (row 0). The Period 3 coefficient is significant at the
-steps 4 (+), 4c (+), 6 (+), that is on the corrected data with
+steps 4 (+), 4c (+), 6 (+), that is, on the corrected data with
 conventional standard errors. It fails three checks. It is insignificant
 under the wild bootstrap of the whole three-stage chain (row 5), and
 insignificant without the stage-2 constant
@@ -3196,11 +3199,10 @@ Period 2 coefficient is significant at 7 (full deflated) (+), the pooled
 model on the deflated data, where the Newey-West standard error is
 unreliable (W4-32). Period 1 cannot be assessed: on the raw and
 corrected data, the exchange rate is constant, and on the deflated data,
-its variation comes from the deflator (Section~\ref{sec-conclusion},
-Period 1). Our interpretation suggests that Model I gives no robust
-evidence of an expectation effect in any period, and that the size of
-such an effect would in any case be weakly identified
-(Section~\ref{sec-stage2-const}).
+its variation comes from the deflator (Section~\ref{sec-period1}). Our
+interpretation suggests that Model I gives no robust evidence of an
+expectation effect in any period, and that the size of such an effect
+would in any case be weakly identified (Section~\ref{sec-stage2-const}).
 
 \textbf{Sensitivity to the differencing convention.} Under the
 convention fixed before estimation (first differences on the whole
@@ -3216,22 +3218,24 @@ Model I results are fragile, while the Model II result is robust and
 does not depend on how the period samples are built.
 
 \textbf{The article's statements.} (1) The significant recent effect of
-the first conclusion survives for the NDF in Period 4, with the opposite
-sign description in the abstract, which is identified as an error, given
-the statements in the 4.2 Model estimation result (p.12), 4.3 Discussion
-(p.14), and 5 Implication and conclusion (p.16). Its counterpart, no
-significant effect before June 2006, holds for every per-period estimate
-of Periods 1 and 2, but Model I cannot be assessed in Period 1. (2) The
-regime explanation of the signs (p.15) rests on coefficients that are
-insignificant in the original and in our estimates, and their signs
-carry no conclusion (W1-07). (3) The structural change of the second
-conclusion cannot rest on the published Chow statistics, which are not
-reproduced. The robust test of Section~\ref{sec-corrections} bears on
-it. (4) The policy recommendation of the third conclusion presupposes a
-causal effect that single-equation estimates of this kind cannot
-establish (W4-21). Model I's expectation is an in-sample fitted value
-that uses information from after the month it describes (W4-17), which
-we identify as a limitation of Model I.
+the first conclusion survives for the NDF in Period 4. Its sign agrees
+with the published table (p.~339), Section 4.3.2 (p.~341) and the first
+conclusion (p.~342), but not with the abstract's ``positive''
+correlation (p.~327) or the word ``positive'' in Section 4.3.1 (p.~340);
+we read those two descriptions as errors (Section~\ref{sec-corrections},
+sign convention). Its counterpart, no significant effect before June
+2006, holds for every per-period estimate of Periods 1 and 2, but Model
+I cannot be assessed in Period 1. (2) The regime explanation of the
+signs (p.~341) rests on coefficients that are insignificant in the
+original and in our estimates, and their signs carry no conclusion
+(W1-07). (3) The structural change of the second conclusion cannot rest
+on the published Chow statistics, which are not reproduced. The robust
+test of Section~\ref{sec-corrections} bears on it. (4) The policy
+recommendation of the third conclusion presupposes a causal effect that
+single-equation estimates of this kind cannot establish (W4-21). Model
+I's expectation is an in-sample fitted value that uses information from
+after the month it describes (W4-17), which we identify as a limitation
+of Model I.
 
 \section{Reproducibility and data availability}\label{sec-availability}
 
@@ -3241,19 +3245,23 @@ with R version 4.5.3 (2026-03-11 ucrt) and the package versions recorded
 in \texttt{renv.lock}; the tables and figures were generated on
 2026-10-08. The code starts from the raw files and runs in a fixed
 order; each script writes a run log. The bootstrap uses a fixed seed, so
-reruns give identical draws. \footnote{Python collects and registers the
+reruns give identical draws.\footnote{Python collects and registers the
   data; R estimates. Each script writes a run log to
-  \texttt{outputs/logs/}.}
+  \texttt{outputs/logs/}.} A complete run from a fresh clone of the
+repository, with only the original document and the Wind export added,
+reproduced every result table (W4-38).
 
 Public data (SAFE, IMF, FRED, NBS) are included in the package with
 their download dates and checksums (Table~\ref{tbl-sources}). Two inputs
-are not included and its reproduction targets (the numbers of its
-tables) are included in the package (W4-08). The Wind NDF series is
-proprietary and is required to build the analysis panel: without it, the
-first estimation script (\texttt{01\_import\_verify.R}) stops, and no
-estimate can be reproduced (W4-23). A reader with Wind access can export
-the series using the code in Table~\ref{tbl-sources}, register it with
-\texttt{register\_wind.py}, and run the package unchanged.
+are not included. The original document is unpublished work of the
+original authors; its reproduction targets (the numbers of its tables)
+are included in the package as \texttt{original\_targets.csv} (W4-08).
+The Wind NDF series is proprietary and is required to build the analysis
+panel: without it, the first estimation script
+(\texttt{01\_import\_verify.R}) stops, and no estimate can be reproduced
+(W4-23). A reader with Wind access can export the series using the code
+in Table~\ref{tbl-sources}, register it with \texttt{register\_wind.py},
+and run the package unchanged.
 
 \section{Conclusion}\label{sec-conclusion}
 
@@ -3315,18 +3323,18 @@ Precautionary Versus Mercantilist Views, Theory and Evidence.''}
 \bibitem[\citeproctext]{ref-chow1960}
 Chow, Gregory C. 1960. {``Tests of Equality Between Sets of Coefficients
 in Two Linear Regressions.''} \emph{Econometrica} 28 (3): 591--605.
+\url{https://doi.org/10.2307/1910133}.
 
 \bibitem[\citeproctext]{ref-davidson2008}
 Davidson, Russell, and Emmanuel Flachaire. 2008. {``The Wild Bootstrap,
 Tamed at Last.''} \emph{Journal of Econometrics} 146 (1): 162--69.
+\url{https://doi.org/10.1016/j.csda.2004.05.018}.
 
 \bibitem[\citeproctext]{ref-du2014}
-Du, Jiancheng, J. Ge, and J. Qiao. 2014. {``Impact of Renminbi Exchange
-Rate Expectation on China's Foreign Exchange Reserves: An Empirical
-Analysis.''} \emph{International Journal of Sustainable Economy} {[}TO
-COMPLETE{]} ({[}TO COMPLETE{]}): {[}TO COMPLETE{]}.
-\href{https://doi.org/\%5BTO\%20COMPLETE\%5D}{https://doi.org/{[}TO
-COMPLETE{]}}.
+Du, Jiancheng, Jiaoju Ge, and Jin Qiao. 2014. {``Impact of Renminbi
+Exchange Rate Expectation on China's Foreign Exchange Reserves: An
+Empirical Analysis.''} \emph{International Journal of Sustainable
+Economy} 6 (4): 327--44. \url{https://doi.org/10.1504/IJSE.2014.065399}.
 
 \bibitem[\citeproctext]{ref-elliott1996}
 Elliott, Graham, Thomas J. Rothenberg, and James H. Stock. 1996.
@@ -3355,16 +3363,17 @@ Dataflow, China, All Items, Index, Monthly. Dataset}.
 \bibitem[\citeproctext]{ref-kunsch1989}
 Künsch, Hans R. 1989. {``The Jackknife and the Bootstrap for General
 Stationary Observations.''} \emph{The Annals of Statistics} 17 (3):
-1217--41.
+1217--41. \url{https://doi.org/10.1214/AOS/1176347265}.
 
 \bibitem[\citeproctext]{ref-mammen1993}
 Mammen, Enno. 1993. {``Bootstrap and Wild Bootstrap for High Dimensional
 Linear Models.''} \emph{The Annals of Statistics} 21 (1): 255--85.
+\url{https://doi.org/10.1214/AOS/1176349025}.
 
 \bibitem[\citeproctext]{ref-murphy1985}
 Murphy, Kevin M., and Robert H. Topel. 1985. {``Estimation and Inference
 in Two-Step Econometric Models.''} \emph{Journal of Business \& Economic
-Statistics} 3 (4): 370--79.
+Statistics} 3 (4): 370--79. \url{https://doi.org/10.2307/1391724}.
 
 \bibitem[\citeproctext]{ref-nbs2024cpi}
 National Bureau of Statistics of China. 2024. \emph{{CPI} 的编制方法
@@ -3381,17 +3390,18 @@ Index, Same Month of the Previous Year = 100, Monthly. Dataset}.
 Newey, Whitney K., and Kenneth D. West. 1987. {``A Simple, Positive
 Semi-Definite, Heteroskedasticity and Autocorrelation Consistent
 Covariance Matrix.''} \emph{Econometrica} 55 (3): 703--8.
+\url{https://doi.org/10.2307/1913610}.
 
 \bibitem[\citeproctext]{ref-newey1994}
 Newey, Whitney K., and Kenneth D. West. 1994. {``Automatic Lag Selection
 in Covariance Matrix Estimation.''} \emph{The Review of Economic
-Studies} 61 (4): 631--53.
+Studies} 61 (4): 631--53. \url{https://doi.org/10.2307/2297912}.
 
 \bibitem[\citeproctext]{ref-obstfeld2010}
 Obstfeld, Maurice, Jay C. Shambaugh, and Alan M. Taylor. 2010.
 {``Financial Stability, the Trilemma, and International Reserves.''}
 \emph{American Economic Journal: Macroeconomics} 2 (2): 57--94.
-\url{https://doi.org/None}.
+\url{https://doi.org/10.1257/mac.2.2.57}.
 
 \bibitem[\citeproctext]{ref-data_fred}
 Organisation for Economic Co-operation and Development. 2026.
@@ -3402,7 +3412,7 @@ from FRED, Federal Reserve Bank of St. Louis. Dataset}.
 \bibitem[\citeproctext]{ref-pagan1984}
 Pagan, Adrian. 1984. {``Econometric Issues in the Analysis of
 Regressions with Generated Regressors.''} \emph{International Economic
-Review} 25 (1): 221--47.
+Review} 25 (1): 221--47. \url{https://doi.org/10.2307/2648877}.
 
 \bibitem[\citeproctext]{ref-R-urca}
 Pfaff, Bernhard. 2024. \emph{Urca: Unit Root and Cointegration Tests for
@@ -3461,444 +3471,446 @@ cited}\label{appendix-a.-decisions-cited}
 
 \providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
 
-\begin{longtable}[c]{|p{0.97in}|p{5.22in}}
+\begin{longtable}[c]{|p{0.85in}|p{4.34in}|p{0.94in}}
 
 \caption{\label{tbl-decisions}Decisions in the author's decision log.
-Each entry gives the options considered, the evidence and the date.}
+Each entry gives the options considered, the evidence and the date; the
+log is available on request. Source: docs/decisions\_index.csv, written
+from the log by make\_decisions\_index.py.}
 
 \tabularnewline
 
-\ascline{1.5pt}{666666}{1-2}
+\ascline{1.5pt}{666666}{1-3}
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Decision}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Title}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Decision}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Title}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Date}}}} \\
 
-\ascline{1.5pt}{666666}{1-2}\endfirsthead 
+\ascline{1.5pt}{666666}{1-3}\endfirsthead 
 
-\ascline{1.5pt}{666666}{1-2}
+\ascline{1.5pt}{666666}{1-3}
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Decision}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Title}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Decision}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Title}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Date}}}} \\
 
-\ascline{1.5pt}{666666}{1-2}\endhead
+\ascline{1.5pt}{666666}{1-3}\endhead
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W1-01}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Location\ of\ the\ extracted\ appendix}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W1-01}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Location\ of\ the\ extracted\ appendix}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W1-02}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} The\ original\ document\ (.docx)\ is\ not\ committed}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W1-02}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} The\ original\ document\ (.docx)\ is\ not\ committed}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W1-03}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Wind\ NDF\ data}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W1-03}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Wind\ NDF\ data}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-09-27}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W1-04}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Image-label\ map}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W1-04}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Image-label\ map}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W1-05}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Provenance\ of\ the\ original\ document\ (.docx)}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W1-05}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Provenance\ of\ the\ original\ document\ (.docx)}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W1-06}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Software\ environment}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W1-06}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Software\ environment}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W1-07}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Classification\ of\ reproduction\ status}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W1-07}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Classification\ of\ reproduction\ status}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W1-08}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Weekly\ READMEs\ are\ not\ committed}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W1-08}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Weekly\ READMEs\ are\ not\ committed}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W1-09}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} The\ decisions\ log\ is\ not\ committed}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W1-09}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} The\ decisions\ log\ is\ not\ committed}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W1-10}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} The\ week-summary\ script\ is\ not\ committed}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W1-10}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} The\ week-summary\ script\ is\ not\ committed}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-01}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} BOP\ selection\ rule:\ combining\ DF-GLS\ and\ DW}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-01}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} BOP\ selection\ rule:\ combining\ DF-GLS\ and\ DW}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-02}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} DF-GLS\ specification:\ calibrate\ on\ the\ original-study\ variables,\ then\ fix}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-02}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} DF-GLS\ specification:\ calibrate\ on\ the\ original-study\ variables,\ then\ fix}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-03}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Data\ version\ for\ the\ stage-1\ DW\ in\ the\ BOP\ rule}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-03}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Data\ version\ for\ the\ stage-1\ DW\ in\ the\ BOP\ rule}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-04}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Quarterly-to-monthly\ BOP\ conversions}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-04}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Quarterly-to-monthly\ BOP\ conversions}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-05}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Differencing\ and\ period\ samples}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-05}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Differencing\ and\ period\ samples}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-06}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} NDF:\ source\ file,\ checks\ and\ monthly\ versions}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-06}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} NDF:\ source\ file,\ checks\ and\ monthly\ versions}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-07}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Verification\ tolerance}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-07}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Verification\ tolerance}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-08}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Where\ the\ analysis\ panel\ lives}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-08}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Where\ the\ analysis\ panel\ lives}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-09}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Result:\ DF-GLS\ specification\ selected}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-09}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Result:\ DF-GLS\ specification\ selected}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-10}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Result:\ NDF\ version\ and\ BOP\ candidate\ selected}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-10}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Result:\ NDF\ version\ and\ BOP\ candidate\ selected}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-11}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} SAFE\ BPM6\ vintage\ used}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-11}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} SAFE\ BPM6\ vintage\ used}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-12}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} BOP\ series:\ current\ account\ only}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-12}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} BOP\ series:\ current\ account\ only}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-13}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Tables\ 3.2-3.9\ verification}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W2-13}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Tables\ 3.2-3.9\ verification}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-01}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Differencing\ convention\ (completes\ W2-05)}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-01}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Differencing\ convention\ (completes\ W2-05)}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-02}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Rule\ naming\ the\ Model\ I\ specification\ that\ reproduces\ Tables\ 4.9-4.10}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-02}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Rule\ naming\ the\ Model\ I\ specification\ that\ reproduces\ Tables\ 4.9-4.10}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-03}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} ARIMA(1,1,0)\ estimation\ and\ standard\ errors}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-03}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} ARIMA(1,1,0)\ estimation\ and\ standard\ errors}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-04}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Stage\ 2\ without\ a\ constant}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-04}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Stage\ 2\ without\ a\ constant}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-05}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Chow\ tests:\ as\ specified,\ plus\ diagnostic\ variants}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-05}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Chow\ tests:\ as\ specified,\ plus\ diagnostic\ variants}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-06}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Breusch-Godfrey\ specification}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-06}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Breusch-Godfrey\ specification}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-07}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Result:\ Model\ I\ specification\ reproducing\ Tables\ 4.9-4.10}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-07}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Result:\ Model\ I\ specification\ reproducing\ Tables\ 4.9-4.10}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-08}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Result:\ Model\ II\ classification}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-08}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Result:\ Model\ II\ classification}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-09}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Result:\ DW,\ BG\ and\ Chow\ against\ Tables\ 4.3-4.8\ and\ 4.11}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-09}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Result:\ DW,\ BG\ and\ Chow\ against\ Tables\ 4.3-4.8\ and\ 4.11}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-10}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Raw\ Period\ 1:\ expectation\ coefficient\ not\ identified}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-10}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Raw\ Period\ 1:\ expectation\ coefficient\ not\ identified}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-11}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Sample\ sizes\ differ\ from\ the\ original\ N;\ within\ convention\ closer}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-11}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Sample\ sizes\ differ\ from\ the\ original\ N;\ within\ convention\ closer}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-12}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} DW\ and\ BG\ statistics\ not\ reproduced\ to\ print}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-12}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} DW\ and\ BG\ statistics\ not\ reproduced\ to\ print}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-13}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Chow\ F\ statistics:\ degrees\ of\ freedom\ partly\ matched,\ magnitudes\ not}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-13}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Chow\ F\ statistics:\ degrees\ of\ freedom\ partly\ matched,\ magnitudes\ not}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-14}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Reproduced\ counts\ rest\ largely\ on\ insignificant\ cells}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-14}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Reproduced\ counts\ rest\ largely\ on\ insignificant\ cells}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-15}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Week\ 3\ code\ and\ outputs\ committed}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-15}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Week\ 3\ code\ and\ outputs\ committed}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-01}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Bootstrap\ for\ the\ generated\ regressors}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-01}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Bootstrap\ for\ the\ generated\ regressors}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-02}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Pooled\ model\ with\ regime\ interactions}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-02}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Pooled\ model\ with\ regime\ interactions}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-03}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Newey-West\ settings}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-03}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Newey-West\ settings}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-04}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Scope\ of\ the\ corrections}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-04}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Scope\ of\ the\ corrections}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-05}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Data\ corrections:\ GDP,\ CPI,\ logs}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-05}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Data\ corrections:\ GDP,\ CPI,\ logs}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-06}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Selection\ rules\ for\ the\ note\ tables}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-06}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Selection\ rules\ for\ the\ note\ tables}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-07}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} History\ check\ stricter\ than\ the\ Blueprint}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-07}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} History\ check\ stricter\ than\ the\ Blueprint}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-08}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Publishing\ original\_targets.csv;\ the\ decisions\ log}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-08}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Publishing\ original\_targets.csv;\ the\ decisions\ log}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-09}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Licence\ and\ rendered\ files}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-09}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Licence\ and\ rendered\ files}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-11}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Primary\ convention\ after\ Week\ 4\ (follow-up\ to\ W3-11)}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-11}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Primary\ convention\ after\ Week\ 4\ (follow-up\ to\ W3-11)}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-08}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-13}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} renv\ sandbox\ switched\ off}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-13}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} renv\ sandbox\ switched\ off}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-14}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} NBS\ published\ year-on-year\ CPI\ as\ a\ check\ of\ the\ original\ pi}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-14}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} NBS\ published\ year-on-year\ CPI\ as\ a\ check\ of\ the\ original\ pi}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-15}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-14\ settled:\ subsets\ reported\ in\ the\ note}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-15}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-14\ settled:\ subsets\ reported\ in\ the\ note}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-06}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-16}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Meaning\ of\ the\ dagger\ in\ Tables\ 4.9-4.10}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-16}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Meaning\ of\ the\ dagger\ in\ Tables\ 4.9-4.10}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-08}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-17}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Look-ahead\ in\ the\ Model\ I\ expectation}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-17}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Look-ahead\ in\ the\ Model\ I\ expectation}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-08}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-18}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Model\ I\ sample\ sizes\ fit\ neither\ differencing\ convention}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-18}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Model\ I\ sample\ sizes\ fit\ neither\ differencing\ convention}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-08}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-19}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Diagnostic:\ did\ the\ original's\ stage\ 2\ have\ a\ constant?}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-19}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Diagnostic:\ did\ the\ original's\ stage\ 2\ have\ a\ constant?}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-08}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-20}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Correction\ step\ outside\ Plan\ s.5:\ stage-2\ constant\ in\ the\ corrected\ Model\ I}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-20}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Correction\ step\ outside\ Plan\ s.5:\ stage-2\ constant\ in\ the\ corrected\ Model\ I}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-08}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-21}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Stage\ 1\ omits\ FER\ although\ the\ conceptual\ model\ has\ FER\ ->\ ER}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-21}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Stage\ 1\ omits\ FER\ although\ the\ conceptual\ model\ has\ FER\ ->\ ER}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-08}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-23}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Without\ the\ Wind\ export\ the\ package\ does\ not\ run}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-23}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Without\ the\ Wind\ export\ the\ package\ does\ not\ run}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-08}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-22}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Result:\ the\ stage-2\ constant\ diagnostic\ (W4-19)}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-22}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Result:\ the\ stage-2\ constant\ diagnostic\ (W4-19)}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-08}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-10}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Result:\ corrections\ that\ change\ the\ conclusions}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-10}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Result:\ corrections\ that\ change\ the\ conclusions}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-08}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-24}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Scope\ of\ the\ 'deflated'\ data\ version}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-24}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Scope\ of\ the\ 'deflated'\ data\ version}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-08}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-25}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-09\ completed:\ n\ implied\ by\ the\ Table\ 4.3\ dL/dU}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-25}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W3-09\ completed:\ n\ implied\ by\ the\ Table\ 4.3\ dL/dU}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-08}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-26}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Constants:\ the\ published\ constants\ equal\ ours\ rescaled\ by\ 1/100\ (post-hoc\ diagnosis)}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-26}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Constants:\ the\ published\ constants\ equal\ ours\ rescaled\ by\ 1/100\ (post-hoc\ diagnosis)}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-08}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-27}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Primary\ convention\ changed\ to\ within\ (the\ condition\ of\ W4-11\ is\ met)}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-27}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Primary\ convention\ changed\ to\ within\ (the\ condition\ of\ W4-11\ is\ met)}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-08}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-28}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Row\ 0\ of\ the\ step\ tables\ shows\ the\ published\ marks}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-28}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Row\ 0\ of\ the\ step\ tables\ shows\ the\ published\ marks}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-08}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-29}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Result:\ the\ stage-2\ constant\ diagnostic\ for\ the\ within\ headline\ (W4-19\ under\ W4-27)}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-29}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Result:\ the\ stage-2\ constant\ diagnostic\ for\ the\ within\ headline\ (W4-19\ under\ W4-27)}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-08}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-30}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Result:\ corrections\ that\ change\ the\ conclusions,\ primary\ convention\ within\ (supersedes\ W4-10)}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-30}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Result:\ corrections\ that\ change\ the\ conclusions,\ primary\ convention\ within\ (supersedes\ W4-10)}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-08}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-31}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Sensitivity:\ within\ (primary)\ against\ full}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-31}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Sensitivity:\ within\ (primary)\ against\ full}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-08}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-32}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Newey-West:\ rule\ lag\ and\ automatic\ bandwidth\ disagree\ (W4-03\ "would\ change\ if")}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-32}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Newey-West:\ rule\ lag\ and\ automatic\ bandwidth\ disagree\ (W4-03\ "would\ change\ if")}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-08}}}} \\
 
 
 
 
 
-\multicolumn{1}{>{\raggedright}m{\dimexpr 0.97in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-33}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 5.22in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} Report\ not\ for\ submission;\ AI-use\ disclosure}}}} \\
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.85in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} W4-40}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 4.34in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} The\ rendered\ note\ is\ committed\ (supersedes\ the\ rendered-files\ part\ of\ W4-09)}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.94in+0\tabcolsep}}{\advance\leftskip by 2.0pt\relax \advance\rightskip by 2.0pt\relax \textcolor[HTML]{000000}{\fontsize{8}{8}\selectfont{{\fontspec{Arial} 2026-10-13}}}} \\
 
-\ascline{1.5pt}{666666}{1-2}
+\ascline{1.5pt}{666666}{1-3}
 
 
 \end{longtable}

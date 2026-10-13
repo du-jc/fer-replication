@@ -1,0 +1,71 @@
+decision,title,date,status
+W1-01,Location of the extracted appendix,2026-10-06,decided
+W1-02,The original document (.docx) is not committed,2026-10-06,decided
+W1-03,Wind NDF data,2026-09-27,received
+W1-04,Image-label map,2026-10-06,decided
+W1-05,Provenance of the original document (.docx),2026-10-06,decided
+W1-06,Software environment,2026-10-06,decided
+W1-07,Classification of reproduction status,2026-10-06,decided
+W1-08,Weekly READMEs are not committed,2026-10-06,decided
+W1-09,The decisions log is not committed,2026-10-06,decided
+W1-10,The week-summary script is not committed,2026-10-06,decided
+W2-01,BOP selection rule: combining DF-GLS and DW,2026-10-06,decided (chosen in the Week 2 chat before any code ran)
+W2-02,"DF-GLS specification: calibrate on the original-study variables, then fix",2026-10-06,decided (chosen in the Week 2 chat before any code ran)
+W2-03,Data version for the stage-1 DW in the BOP rule,2026-10-06,decided (chosen in the Week 2 chat before any code ran)
+W2-04,Quarterly-to-monthly BOP conversions,2026-10-06,decided
+W2-05,Differencing and period samples,2026-10-06,decided for Period 1; Period 3 convention settled in Week 3
+W2-06,"NDF: source file, checks and monthly versions",2026-10-06,decided
+W2-07,Verification tolerance,2026-10-06,decided
+W2-08,Where the analysis panel lives,2026-10-06,decided
+W2-09,Result: DF-GLS specification selected,2026-10-06,decided
+W2-10,Result: NDF version and BOP candidate selected,2026-10-06,decided
+W2-11,SAFE BPM6 vintage used,2026-10-06,decided
+W2-12,BOP series: current account only,2026-10-06,decided (departs from Replication Plan 2.2)
+W2-13,Tables 3.2-3.9 verification,2026-10-06,decided
+W3-01,Differencing convention (completes W2-05),2026-10-06,decided; completes W2-05 (Period 3 convention)
+W3-02,Rule naming the Model I specification that reproduces Tables 4.9-4.10,2026-10-06,decided
+W3-03,"ARIMA(1,1,0) estimation and standard errors",2026-10-06,decided
+W3-04,Stage 2 without a constant,2026-10-06,decided
+W3-05,"Chow tests: as specified, plus diagnostic variants",2026-10-06,decided
+W3-06,Breusch-Godfrey specification,2026-10-06,decided
+W3-07,Result: Model I specification reproducing Tables 4.9-4.10,2026-10-06,decided
+W3-08,Result: Model II classification,2026-10-06,decided
+W3-09,"Result: DW, BG and Chow against Tables 4.3-4.8 and 4.11",2026-10-06,decided
+W3-10,Raw Period 1: expectation coefficient not identified,2026-10-06,decided
+W3-11,Sample sizes differ from the original N; within convention closer,2026-10-06,decided
+W3-12,DW and BG statistics not reproduced to print,2026-10-06,decided
+W3-13,"Chow F statistics: degrees of freedom partly matched, magnitudes not",2026-10-06,decided
+W3-14,Reproduced counts rest largely on insignificant cells,2026-10-06,proposed
+W3-15,Week 3 code and outputs committed,2026-10-06,decided
+W4-01,Bootstrap for the generated regressors,2026-10-06,decided
+W4-02,Pooled model with regime interactions,2026-10-06,decided
+W4-03,Newey-West settings,2026-10-06,decided
+W4-04,Scope of the corrections,2026-10-06,decided
+W4-05,"Data corrections: GDP, CPI, logs",2026-10-06,decided
+W4-06,Selection rules for the note tables,2026-10-06,decided
+W4-07,History check stricter than the Blueprint,2026-10-06,proposed (decided when the first check_history log exists)
+W4-08,Publishing original_targets.csv; the decisions log,2026-10-06,decided (co-author contact: [TO COMPLETE])
+W4-09,Licence and rendered files,2026-10-06,decided
+W4-11,Primary convention after Week 4 (follow-up to W3-11),2026-10-08,decided
+W4-13,renv sandbox switched off,2026-10-06,decided
+W4-14,NBS published year-on-year CPI as a check of the original pi,2026-10-06,decided
+W4-15,W3-14 settled: subsets reported in the note,2026-10-06,decided; supersedes the status of W3-14
+W4-16,Meaning of the dagger in Tables 4.9-4.10,2026-10-08,"decided (closes the ""would change if"" of W1-07 for this mark)"
+W4-17,Look-ahead in the Model I expectation,2026-10-08,decided
+W4-18,Model I sample sizes fit neither differencing convention,2026-10-08,decided
+W4-19,Diagnostic: did the original's stage 2 have a constant?,2026-10-08,decided (rule); result to be recorded in a new entry after the run
+W4-20,Correction step outside Plan s.5: stage-2 constant in the corrected Model I,2026-10-08,decided
+W4-21,Stage 1 omits FER although the conceptual model has FER -> ER,2026-10-08,decided
+W4-23,Without the Wind export the package does not run,2026-10-08,decided
+W4-22,Result: the stage-2 constant diagnostic (W4-19),2026-10-08,decided
+W4-10,Result: corrections that change the conclusions,2026-10-08,decided
+W4-24,Scope of the 'deflated' data version,2026-10-08,decided
+W4-25,W3-09 completed: n implied by the Table 4.3 dL/dU,2026-10-08,decided
+W4-26,Constants: the published constants equal ours rescaled by 1/100 (post-hoc diagnosis),2026-10-08,decided
+W4-27,Primary convention changed to within (the condition of W4-11 is met),2026-10-08,"decided; supersedes W4-11 and the ""full primary"" part of W3-01"
+W4-28,Row 0 of the step tables shows the published marks,2026-10-08,decided
+W4-29,Result: the stage-2 constant diagnostic for the within headline (W4-19 under W4-27),2026-10-08,decided
+W4-30,"Result: corrections that change the conclusions, primary convention within (supersedes W4-10)",2026-10-08,decided; supersedes W4-10
+W4-31,Sensitivity: within (primary) against full,2026-10-08,decided
+W4-32,"Newey-West: rule lag and automatic bandwidth disagree (W4-03 ""would change if"")",2026-10-08,decided
+W4-40,The rendered note is committed (supersedes the rendered-files part of W4-09),2026-10-13,decided; supersedes the rendered-files part of W4-09 (the licences of W4-09 are unchanged)
