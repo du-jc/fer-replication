@@ -1,6 +1,6 @@
 # fer-replication
 
-**A replication of Du, Ge and Qiao (2014), "Impact of renminbi exchange rate expectation on China's foreign exchange reserves: an empirical analysis", *International Journal of Sustainable Economy*.**
+**A replication of Du, Ge and Qiao (2014), Impact of renminbi exchange rate expectation on China's foreign exchange reserves: an empirical analysis. *International Journal of Sustainable Economy*, 6(4), 327–344.**
 
 This repository rebuilds the article's analysis of how expectations about the renminbi–US dollar exchange rate relate to China's foreign exchange reserves, 2000–2011. It does this from the original data and documents, with every step done by code. It then corrects the problems found in the original analysis, one at a time, and reports how each correction changes the results.
 

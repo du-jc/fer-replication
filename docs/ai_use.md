@@ -63,7 +63,6 @@ The AI made errors during the project. They included mistakes in describing the 
 
 ## 8. Records
 
-The decision log, the run logs and the git history document each step and are available on request. The code and the public data are in the replication package.
+The decision log is not in the repository and is available on request. The code and the public data are in the replication package.
 
 ------------------------------------------------------------------------
-
