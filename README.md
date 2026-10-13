@@ -9,7 +9,7 @@ This repository rebuilds the article's analysis of how expectations about the re
 > Study A is complete at tag **`studyA-v1.0`**. A separate new study with data for 2000–2025 (Study B) is in a different repository.
 
 - **Replication note:** [`docs/replication_note.pdf`](docs/replication_note.pdf) (source: [`docs/replication_note.qmd`](docs/replication_note.qmd); to render it yourself, see "How to run", step 4)
-- **Status:** complete, version 1.0 (tag `studyA-v1.0`, [2026-10-13])
+- **Status:** complete, version 1.0 (tag `studyA-v1.0`, 2026-10-13)
 - **Author of this replication:** Jiancheng Du
 
 ------------------------------------------------------------------------
@@ -18,7 +18,7 @@ This repository rebuilds the article's analysis of how expectations about the re
 
 ```
 fer-replication/
-├── README.md, LICENSE, .gitignore, .env.example, .Renviron
+├── README.md, LICENSE, .gitignore, .gitattributes, .env.example, .Renviron
 ├── renv.lock, requirements.txt            # pinned R and Python environments
 ├── create_skeleton.ps1, init_config_and_metadata.ps1, check_history.ps1
 ├── config/
@@ -72,18 +72,18 @@ fer-replication/
 
 | Source | Content | In this repository? |
 |---|---|---|
-| Original document (unpublished, by the article's authors) | Appendix I: nine monthly variables, 2000–2011; Tables 3.2–4.11 | **No.** It is unpublished work of the original authors. `original_targets.csv` (the numbers read from its tables) is [included / not included; W4-35]. |
+| Original document (unpublished, by the article's authors) | Appendix I: nine monthly variables, 2000–2011; Tables 3.2–4.11 | **No.** It is unpublished work of the original authors. `original_targets.csv` (the numbers read from its tables) is included, in `data/metadata/` (W4-08). |
 | Wind, 12-month USD/CNY non-deliverable forward | Daily quotes, Wind code `G0008386` | **No.** Proprietary. |
 | SAFE | Quarterly current account, BPM6 presentation | Yes, with release date and checksum |
 | IMF | Consumer price index, China (fixed base) | Yes |
 | FRED | Consumer price index, China (check only) | Yes |
 | NBS | Consumer price index, same month of the previous year = 100 (check only) | Yes |
 
-Every file is listed in `data/metadata/source_ledger.csv`, with its source, download date, checksum and licence.
+Every file is listed in `data/metadata/source_ledger.csv`, with its source, download date, checksum and licence. Raw files are stored byte for byte (`.gitattributes`: `data/raw/** -text`), so their checksums match the ledger on every computer.
 
 **Obtaining the two inputs that are not included.**
 
-- **Original document.** Request it from the author, Jiancheng Du (see Contact). Save it as `data/raw/original/original_document.docx`. [Keep this sentence only if the co-authors agree to share the document on request; W4-36.]
+- **Original document.** It is not distributed. Requests can be sent to the author (see Contact); access depends on the agreement of the original authors. Save it as `data/raw/original/original_document.docx`.
 - **Wind NDF.** Export from a Wind terminal the daily series `G0008386` (无本金交割远期外汇(NDF):美元兑人民币:12个月) covering at least December 1999 to December 2011, as an `.xlsx` file, unchanged. Save it in `data/raw/proprietary/`.
 
 **Without the Wind export the pipeline does not run:** the first R script stops, because the NDF is part of the analysis panel.
@@ -123,7 +123,7 @@ Rscript -e "renv::restore(prompt = FALSE)"
 .venv\Scripts\python code\python\extract_original.py
 .venv\Scripts\python code\python\register_wind.py --unit yuan --frequency daily
 .venv\Scripts\python code\python\collect_bop.py --file SAFE_BOP_BPM6_timeseries_release20260929_dl20261006_9922402b.xlsx
-.venv\Scripts\python code\python\collect_cpi.py --imf-file IMF_CPI_CHN.CPI._T.IX.M_dl20261006_a747a112.csv --fred-file [FRED FILE NAME] --nbs-file NBS_CPI_yoy_monthly_199801-201512.csv
+.venv\Scripts\python code\python\collect_cpi.py --imf-file IMF_CPI_CHN.CPI._T.IX.M_dl20261006_a747a112.csv --fred-file FRED_CHNCPIALLMINMEI_dl20261006_0a329079.json --nbs-file NBS_CPI_yoy_monthly_199801-201512.csv
 ```
 
 **3. Run the analysis, in this order**
@@ -156,7 +156,7 @@ quarto render docs\replication_note.qmd --to pdf
 - `collect_bop.py` and `collect_cpi.py` convert the stored public raw files into the monthly series in `data/interim/`, so they must run before `01_import_verify.R`. With the file options shown, they process the files in the package and download nothing. Without them, they fetch the current release, which may be a later vintage.
 - The note takes every number from the result tables when it renders. No number in its text is typed by hand.
 
-**Reproducibility check.** A complete run from a fresh clone, with only the two inputs added, reproduced every result table of the author's run, as compared by `compare_runs.py` (decision W4-38). To repeat it:
+**Reproducibility check.** A complete run from a fresh clone, with only the two inputs added, reproduced every result table and figure of the author's run: identical, or identical up to the order of rows and the record of the run's date, commit and time stamps, as compared by `compare_runs.py` (decision W4-38). To repeat it, from your own run's root (the script refuses to compare a folder with itself):
 
 ```
 python code\python\compare_runs.py --ref <first run> --new <second run>

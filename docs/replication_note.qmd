@@ -856,7 +856,7 @@ For reference, the Model II coefficient of Period 4 is `r t7("II", "0", 4)` as p
 
 # Reproducibility and data availability {#sec-availability}
 
-Every result in this note is produced by the code in the replication package, https://github.com/du-jc/fer-replication, at commit `r num("git_commit")`, with `r num("r_version")` and the package versions recorded in `renv.lock`; the tables and figures were generated on `r num("date_outputs")`. The code starts from the raw files and runs in a fixed order; each script writes a run log. The bootstrap uses a fixed seed, so reruns give identical draws.[^5] A complete run from a fresh clone of the repository, with only the original document and the Wind export added, reproduced every result table (W4-38).
+Every result in this note is produced by the code in the replication package, https://github.com/du-jc/fer-replication, at commit `r num("git_commit")`, with `r num("r_version")` and the package versions recorded in `renv.lock`; the tables and figures were generated on `r num("date_outputs")`. The code starts from the raw files and runs in a fixed order; each script writes a run log. The bootstrap uses a fixed seed, so reruns give identical draws.[^5] A complete run from a fresh clone of the repository, with only the original document and the Wind export added, reproduced every result table and figure: identical, or identical up to the order of rows and the record of the run's date, commit and time stamps (W4-38).
 
 [^5]: Python collects and registers the data; R estimates. Each script writes a run log to `outputs/logs/`.
 

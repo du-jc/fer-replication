@@ -68,4 +68,10 @@ W4-29,Result: the stage-2 constant diagnostic for the within headline (W4-19 und
 W4-30,"Result: corrections that change the conclusions, primary convention within (supersedes W4-10)",2026-10-08,decided; supersedes W4-10
 W4-31,Sensitivity: within (primary) against full,2026-10-08,decided
 W4-32,"Newey-West: rule lag and automatic bandwidth disagree (W4-03 ""would change if"")",2026-10-08,decided
+W4-33,Purpose of the report and AI-use disclosure,2026-10-13,decided
+W4-34,W3-12 and W3-13 confirmed,2026-10-13,decided; settles W3-12 and W3-13
+W4-35,Repository and sharing (completes W4-12),2026-10-13,decided
+W4-37,History check result (completes W4-07),2026-10-13,decided; W4-07 moves from proposed to decided
+W4-38,Clean-clone reproduction test,2026-10-13,decided; result PASS
+W4-39,Study A frozen,2026-10-13,decided
 W4-40,The rendered note is committed (supersedes the rendered-files part of W4-09),2026-10-13,decided; supersedes the rendered-files part of W4-09 (the licences of W4-09 are unchanged)

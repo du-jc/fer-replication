@@ -1,0 +1,4 @@
+make_decisions_index.py  20261013-151906
+CHECK PASS  76 entries read from docs/decisions.md
+Wrote docs\decisions_index.csv (decision, title, date, status; commit it)
+STATUS OK

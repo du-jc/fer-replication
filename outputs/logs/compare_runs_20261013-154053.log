@@ -1,0 +1,40 @@
+compare_runs.py  20261013-154053
+reference: C:\DU_202609\Projects\FER_Replication\fer-replication
+new run:   C:\Users\DU\AppData\Local\Temp\fer_clean
+tolerance: 1e-10
+
+== outputs/tables: 74 files in reference, 74 in new run
+  FROZEN    note_T7_expectation_long_fullrun.csv (input kept by hand, not compared)
+  EQUAL_AFTER_SORT          chow.csv
+      rows in another order; equal after sorting
+  EQUAL_AFTER_SORT          classify_N.csv
+      rows in another order; equal after sorting
+  EQUAL_EXCEPT_RUN_METADATA dfgls_selected_spec.csv
+  EQUAL_AFTER_SORT          diag_dw_bg.csv
+      rows in another order; equal after sorting
+  EQUAL_AFTER_SORT          model_II_arma_order.csv
+      rows in another order; equal after sorting
+  EQUAL_AFTER_SORT          model_II_estimates.csv
+      rows in another order; equal after sorting
+  EQUAL_AFTER_SORT          model_II_fit.csv
+      rows in another order; equal after sorting
+  EQUAL_AFTER_SORT          model_I_arma_order.csv
+      rows in another order; equal after sorting
+  EQUAL_AFTER_SORT          model_I_estimates.csv
+      rows in another order; equal after sorting
+  EQUAL_AFTER_SORT          model_I_fit.csv
+      rows in another order; equal after sorting
+  EQUAL_AFTER_SORT          model_I_stage1.csv
+      rows in another order; equal after sorting
+  EQUAL_AFTER_SORT          model_I_stage2.csv
+      rows in another order; equal after sorting
+  DIFFERS                   note_T9_sources.csv
+      row count 7 vs 9
+  EQUAL_EXCEPT_RUN_METADATA note_numbers.csv
+  EQUAL_EXCEPT_RUN_METADATA selected_inputs.csv
+  summary: DIFFERS 1, EQUAL_AFTER_SORT 11, EQUAL_EXCEPT_RUN_METADATA 3, IDENTICAL 58
+
+== outputs/figures: 4 files in reference, 4 in new run
+  summary: IDENTICAL 4
+
+STATUS FAIL
